@@ -14,7 +14,7 @@
 .counter_wrap {
 	margin: 1px 0 5px; 
 	padding: 3px 2px 3px 5px; 
-	background: #1e5e74 url(../images/ticker/counter-module-bg.gif) repeat-x scroll left top;
+	background: #1e5e74 url(../img/counter-module-bg.gif) repeat-x scroll left top;
 }
 
 .home_counter .numbers {
@@ -27,7 +27,7 @@
     height: 187px; /* height of this background-image */
     width: 13px; /* width of a number image */
     position: relative;
-    background-image: url("../images/ticker/counter_ticker_bg.gif");
+    background-image: url("../img/counter_ticker_bg.gif");
     float: left;
     margin-right: 2px;
 }

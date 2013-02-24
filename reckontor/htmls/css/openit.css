@@ -11,16 +11,16 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .popup_container label.validation { background-color: transparent; color: #CE2B1A; }
 
 .popup_content { margin: 10px auto; background-color: #ffffff; width: 600px; }
-.popup_logo { background: transparent url(../images/general/logo_viator_popup.gif) no-repeat scroll 0 0; margin: 0; padding: 0; width: 100%; }
-.popup_header { background: #006181 url(../images/general/bg_popup_blue.gif) repeat-x 0 0; position: relative; z-index: 999999}
+.popup_logo { background: transparent url(../img/logo_viator_popup.gif) no-repeat scroll 0 0; margin: 0; padding: 0; width: 100%; }
+.popup_header { background: #006181 url(../img/bg_popup_blue.gif) repeat-x 0 0; position: relative; z-index: 999999}
 .popup_header h1 {  color: #FFFFFF; margin: 0; padding: 16px 10px 15px 110px; font-size: 20px; }
 
 .popup_content .intro { border-bottom: 1px solid #CAE6EE; padding: 0; margin: 0 0 10px 0; }
 .popup_content .intro h2 { margin-bottom: 10px; }
-.popup_footer { color: #ffffff; background: #006181 url(../images/general/bg_popup_blue.gif) repeat-x 0 0; }
+.popup_footer { color: #ffffff; background: #006181 url(../img/bg_popup_blue.gif) repeat-x 0 0; }
 .popup_body { padding: 10px; }
 
-.column_head { background: url("../images/general/bg_content_column_head_top.gif") no-repeat scroll 0 0 #8E867D; border-top: 1px solid #ffffff; }
+.column_head { background: url("../img/bg_content_column_head_top.gif") no-repeat scroll 0 0 #8E867D; border-top: 1px solid #ffffff; }
 .column_head .thingstodo_item { color: #ffffff; border: 0 none; }
 .column_head .thingstodo_item .short_text { width: 400px; }
 .column_head .thingstodo_item .clause { font-size: 12px; }
@@ -30,10 +30,10 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .column_head .thingstodo_item h2.content_desc { color: #FDAF4B; font-weight: bold; font-size: 14px; text-transform: uppercase; }
 
 .miniphoto { margin-bottom: 20px; }
-.miniphoto_tr { padding: 0 10px 0 0; background: #e0eff4 url(../images/general/miniphoto_tr.gif) no-repeat scroll right top; }
-.miniphoto_tl { padding: 10px 5px 0 10px; background: #e0eff4 url(../images/general/miniphoto_tl.gif) no-repeat scroll left top; min-height: 150px; height: auto !important; height: 150px; }
-.miniphoto_br { padding: 0 10px 0 0; background: #e0eff4 url(../images/general/miniphoto_br.gif) no-repeat scroll right bottom; }
-.miniphoto_bl { padding: 0 0 0 10px; background: #e0eff4 url(../images/general/miniphoto_bl.gif) no-repeat scroll left bottom; }
+.miniphoto_tr { padding: 0 10px 0 0; background: #e0eff4 url(../img/miniphoto_tr.gif) no-repeat scroll right top; }
+.miniphoto_tl { padding: 10px 5px 0 10px; background: #e0eff4 url(../img/miniphoto_tl.gif) no-repeat scroll left top; min-height: 150px; height: auto !important; height: 150px; }
+.miniphoto_br { padding: 0 10px 0 0; background: #e0eff4 url(../img/miniphoto_br.gif) no-repeat scroll right bottom; }
+.miniphoto_bl { padding: 0 0 0 10px; background: #e0eff4 url(../img/miniphoto_bl.gif) no-repeat scroll left bottom; }
 .miniphoto_tl p { padding: 0 0 0 170px;}
 
 /* Recapcha popup
@@ -68,7 +68,7 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .dest_signup .agree_news { padding-left: 20px; text-align: right; padding-right: 20px; }
 .dest_signup .agree_news label { font-weight: normal; float: none; padding: 0; }
 
-.dest_signup .btn { float: right; padding-right: 10px; margin-left: 5px; background: transparent url(../images/general/btn_blue.gif) no-repeat left center; }
+.dest_signup .btn { float: right; padding-right: 10px; margin-left: 5px; background: transparent url(../img/btn_blue.gif) no-repeat left center; }
 .dest_signup .btn button { padding: 0 15px 0 0; }
 .dest_signup .close { float: right; padding-right: 0; }
 
@@ -105,19 +105,19 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .email_silverpop p { margin: 0; padding: 2px 0; }
 .email_silverpop select { float: left; width: 250px; margin: 0; }
 .email_silverpop label { padding-top: 2px; float: left; width: 65px; }
-.email_silverpop .btn { margin-top: -29px; float: right; background: transparent url(../images/general/btn_orange_alt.gif) no-repeat scroll left center; height: 29px; padding-bottom: 3px; width: 111px; }
+.email_silverpop .btn { margin-top: -29px; float: right; background: transparent url(../img/btn_orange_alt.gif) no-repeat scroll left center; height: 29px; padding-bottom: 3px; width: 111px; }
 .email_silverpop .btn button { font-weight: bold; height: 29px; padding-left: 13px; text-align: left; width: 111px; }
 
 
 /* Clever set hover over
 -------------------------------------------------------------- */
 .popup_container .top_picks { width: 455px; }
-.popup_container .top_picks .product { border: 0; background: transparent url(../images/general/bg_top_picks_popup.png) no-repeat scroll left top;}
+.popup_container .top_picks .product { border: 0; background: transparent url(../img/bg_top_picks_popup.png) no-repeat scroll left top;}
 .popup_container .top_picks .product h2 { padding-bottom: 0; }
 .popup_container .top_picks .star_rating { margin-bottom: 5px; }
 .popup_container .top_picks p { margin-top: 5px; }
 .popup_container .top_picks .describe { font-size: 11px; margin: 0; }
-.popup_container .top_picks .bg_foot { width:100%; height:35px; margin: 0; background: transparent url(../images/general/bg_top_picks_popup.png) no-repeat scroll -463px bottom; }
+.popup_container .top_picks .bg_foot { width:100%; height:35px; margin: 0; background: transparent url(../img/bg_top_picks_popup.png) no-repeat scroll -463px bottom; }
 
 /*  hack for IE6, will probably use this for IE7 also   */
 .popup_container .top_picks div.product {
@@ -158,7 +158,7 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .weather_provider img { vertical-align: middle; }
 .weather_units { margin-top: 5px; }
 
-.weather th { color: #00759A; text-align: center; vertical-align: middle; background: #FFFFFF url(../images/general/bg_search_result.gif) repeat-x left top; }
+.weather th { color: #00759A; text-align: center; vertical-align: middle; background: #FFFFFF url(../img/bg_search_result.gif) repeat-x left top; }
 .weather td { text-align: right; vertical-align: top; }
 .weather td.day, #weather td.desc { text-align: left; }
 .weather td.day { background-color: #F2F1EF; font-weight: bold; text-align: center; vertical-align: middle; }
@@ -194,8 +194,8 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 
 /* Pricing Calendar */
 .price_calendar .tools_topnav { background-color: transparent; float: none; position: absolute; right: 0; top: 15px; z-index: 10; }
-.price_calendar .bbborder_top_right { background: url(../images/general/bborder_top_right_dark.gif) no-repeat scroll right top #FFFFFF; }
-.price_calendar .bbborder_top_left { background: url(../images/general/bborder_top_left_dark.gif) no-repeat scroll left top #FFFFFF; }
+.price_calendar .bbborder_top_right { background: url(../img/bborder_top_right_dark.gif) no-repeat scroll right top #FFFFFF; }
+.price_calendar .bbborder_top_left { background: url(../img/bborder_top_left_dark.gif) no-repeat scroll left top #FFFFFF; }
 .price_calendar .popup_body { padding: 0; }
 
 .price_calendar .popup_content { width: 865px; }
@@ -346,7 +346,7 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .passengers_body .expand_age { margin-left: 35px; }
 .passengers_body .expand_age label { font-size: 11px; font-weight: normal; width: 110px; display: block; float: left; }
 .passengers_footer { background-color: #fff; margin: 0; border-top: 1px solid #d7d7d7; padding: 5px 5px 5px 10px; }
-.passengers_footer .btn { background:transparent url(../images/general/btn_orange.gif) no-repeat scroll left center; float:right; height:29px; padding-bottom:3px; width:111px; }
+.passengers_footer .btn { background:transparent url(../img/btn_orange.gif) no-repeat scroll left center; float:right; height:29px; padding-bottom:3px; width:111px; }
 .passengers_footer .btn button { width:111px; text-align: left; padding-left: 12px; }
 .passengers_footer p { float: left; width: 50%; margin-bottom: 0; margin-top: 5px; }
 .passengers_footer a { font-size: 11px; text-decoration: underline; }
@@ -388,7 +388,7 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .date-cell-na { background: #3e83a3 url(../wayfinder/images/calendar-na.png) no-repeat scroll center center; text-indent: -9999px; }
 .date-cell-blank {background-color: #287599;}
 
-.priceguide_footer { background: transparent url(../images/general/bg_popup_blue.gif) repeat-x scroll left center; border-top: 1px solid #00759A; height: 50px; }
+.priceguide_footer { background: transparent url(../img/bg_popup_blue.gif) repeat-x scroll left center; border-top: 1px solid #00759A; height: 50px; }
 .priceguide_footer .close { text-align: right; }
 .priceguide_footer .close img { float: right; padding-right: 10px; }
 
@@ -405,7 +405,7 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .date-carousel .day { background-color: #53B1CE; color: #fff; font-weight: bold; font-size: 11px; text-align: center; margin: 0; padding: 5px 0; border: 1px solid #E0EFF4; border-bottom: 0; }
 .date-carousel .date { background-color: #ffffff; color: #00759a; border: 1px solid #E0EFF4; border-top: 0; padding: 15px 5px 10px 5px; margin: 0; text-align: center; font-size: 35px; line-height: 1; }
 .date-carousel .na { background: #f0f7fa url(../wayfinder/images/calendar-na-large.png) no-repeat scroll center center;  text-indent: -9999px; height: 66px; }
-.date-carousel .loading { background: #ffffff url(../images/general/loading.gif) no-repeat scroll center center;  text-indent: -9999px; height: 66px; }
+.date-carousel .loading { background: #ffffff url(../img/loading.gif) no-repeat scroll center center;  text-indent: -9999px; height: 66px; }
 .date-carousel  .month { display: block; font-size: 18px; text-transform: uppercase; }
 .date-carousel  .year { display: block; font-size: 14px; text-transform: uppercase; }
 
@@ -436,7 +436,7 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 .mappopup_item .pagetop_list { margin: 0; text-align: left; }
 .mappopup_item .pagetop_list strong { text-transform: uppercase; float: left; width: 90px; }
 .mappopup_item .pagetop_list span { float: left; width: 190px; }
-.mappopup_point { margin-top: -1px; height: 23px; background: transparent url(../images/general/mappopup_point.gif) no-repeat scroll 20px 0; }
+.mappopup_point { margin-top: -1px; height: 23px; background: transparent url(../img/mappopup_point.gif) no-repeat scroll 20px 0; }
 
 
 /* Show the mods Popup
@@ -446,9 +446,9 @@ html {min-height:100.1%;} /* ff3 scroll bar bug */
 #showthemods_popup p { font-size: 14px; padding-right: 270px; }
 #showthemods_popup p.intro { padding-right: 160px; }
 #showthemods_popup .btn_box { padding-top: 25px; margin: 0; }
-#showthemods_popup .atlas_btn_big { background-image: url(../images/general/atlas_btn_w_big_sitebg.gif); padding-bottom: 10px; margin: 0; }
-#showthemods_popup .atlas_btn_big button { width: 250px; background-image: url(../images/general/atlas_btn_w_big_sitebg.gif);}
-#showthemods_popup .close {background: transparent url(../images/general/icon_close_popup_sitebg.gif) no-repeat 0 7px; padding: 5px 20px; margin-bottom: 0; }
+#showthemods_popup .atlas_btn_big { background-image: url(../img/atlas_btn_w_big_sitebg.gif); padding-bottom: 10px; margin: 0; }
+#showthemods_popup .atlas_btn_big button { width: 250px; background-image: url(../img/atlas_btn_w_big_sitebg.gif);}
+#showthemods_popup .close {background: transparent url(../img/icon_close_popup_sitebg.gif) no-repeat 0 7px; padding: 5px 20px; margin-bottom: 0; }
 .showthemods_body { background: #E0DBD5 url(../images/memberonly/popup_bubble.jpg) no-repeat 240px 30px; padding: 0 0 20px 30px; }
 .showthemods_popup_inner { background-color: #E0DBD5; height: auto; width: 500px; margin: 0 10px; }
 
