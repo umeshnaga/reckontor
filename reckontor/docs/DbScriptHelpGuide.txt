@@ -1,0 +1,3 @@
+ 1. Convention to named dbscript files
+    yyyy_mm_dd_[SequenceNumber]_name.sql
+	
