@@ -1,0 +1,218 @@
+/* --------------------------------------------------------------
+   global.css
+   Created on 10 March 2010, 10:23
+   @author Viggy Chaowei Tao
+-------------------------------------------------------------- */
+
+.hidden { display: none; }
+.omniture { display: none; }
+.spinning_img { float: right; padding: 0 10px 0 0;}
+.print_logo { display: none; }
+.hideMe { display: none; }
+
+/* Atlas Header
+================================================================*/
+#header h1 { display: none; }
+#header #print_logo { display: none; }
+#header { z-index: 105; color: #fff; margin: 0 auto 4px; width: 980px; text-align: left; position: relative; }
+#header img { float: left; }
+#header h1 { color: #fff; }
+
+/* Atlas Header toolbar
+================================================================*/
+.header_toolbar_wrap { background: transparent url(../img/bg_headbar_right.png) no-repeat right top; padding-right: 2px; margin: 10px 0 0 0; font-size: 11px; height: 26px; /*position: absolute; top: 0; left: 0; z-index: 10; */ }
+.header_toolbar { background: transparent url(../img/bg_headbar_left.png) no-repeat left top; height: 26px; line-height: 26px;}
+.header_toolbar .other_tools a { color: #ffffff; }
+.header_toolbar .other_tools ul { text-transform: uppercase; font-size: 10px; }
+.header_toolbar .other_tools ul li.list_no span.number { text-align: center; float: left; width: 16px; height: 16px; background: transparent url(../img/icon_header_no.gif) no-repeat 0 0; margin: 0 0 0 5px; font-weight: bold; font-style: normal; font-size: 11px; }*/
+.header_toolbar .other_tools ul li.critical span { background: transparent url(../img/bg_small_rnd_orange_r.gif) no-repeat right bottom; padding: 0 8px 0 0; height: 14px; float: left; }
+.header_toolbar .other_tools ul li.critical span a { background: transparent url(../img/bg_small_rnd_orange_l.gif) no-repeat left top; padding: 0 0 0 20px; height: 14px; display: block; }
+
+.header_img a { float: left; width: 548px; }
+.header_img .dest_img { width: 428px; padding: 0 0 0 4px; }
+
+/* Atlas Header dropdown tools
+================================================================*/
+.tools_topnav { height: 25px; text-transform: uppercase; list-style: none; padding: 0; margin: 0; font-size: 11px; /*padding: 0 10px;*/ }
+.tools_topnav li { line-height: 26px;position: relative; /*--Declare X and Y axis base--*/ }
+.tools_topnav a { color: #fff; text-decoration: none; border: 0;}
+
+.tools_subnav { z-index: 99999; border: 1px solid #111; background-color: #003547; list-style: none; left: -10px; top: 26px;  margin: 0; padding: 0; display: none; /*float: left; width: 150px; */position: absolute; /*--Important - Keeps tools_subnav from affecting main navigation flow--*/ }
+.tools_subnav li{ *float:left; border-top: 1px solid #145574; /*--Create bevel effect--*/ border-bottom: 1px solid #013c50; /*--Create bevel effect--*/ clear: both; margin: 0; padding: 0; /*width: 150px; */}
+.tools_subnav a { display: block; background-color: #003547; padding-left: 10px; display: block; /*float: left; width: 125px; */}
+.tools_subnav a:hover { /*--Hover effect for tools_subnav links--*/ background-color: #21556e; }
+.currencyselect li { width: 60px; }
+.langselect li {width:140px;}
+
+
+/* Loading Msg iframe
+-------------------------------------------------------------- */
+
+iframe#loadingMsg {
+    height: 200px;
+    position: absolute;
+    text-align: center;
+    visibility: hidden;
+    width: 355px;
+    z-index: 999;
+}
+
+.photo_slider_loading { left: 120px; padding: 5px; position: absolute; top: 62px; z-index: 99; background-color: #ffffff; border: 1px solid #efefef;}
+
+/* Error List
+-------------------------------------------------------------- */
+.error_list { background-color: #ffffff; padding: 5px 10px; margin-bottom: 10px; border:1px solid #D65656; background-color:#FCE6E2; }
+.error_box { padding: 0 0 5px 38px; background: transparent url(../img/icon_excalmatory.gif) no-repeat scroll left top; }
+.error_list .title { font-size: 16px; line-height: 1.2; display: block; margin-top:10px;}
+label.validation { background-color: transparent; color: #ce2b1a; }
+
+/* Alert List
+-------------------------------------------------------------- */
+.alert_list { background-color: #ffffff; color: #666666; padding: 5px 10px; margin-bottom: 10px; border: 1px solid #e37222; background-color: #FDEEDB; }
+.alert_box { padding: 0 0 5px 38px; background: transparent url(../img/icon_excalmatory_alert.gif) no-repeat scroll left top; }
+.alert_list p { font-weight: normal; }
+.alert_list ul { margin: 0; }
+.alert_list ul li { background: transparent url(../img/icon_dot_grey.gif) no-repeat scroll 0 8px; list-style-type: none; padding-left: 10px; }
+.alert_list ul li.single { background: none; padding-left: 0; }
+.alert_list .title { font-size: 16px; color: #e37222; }
+
+
+/* Content
+-------------------------------------------------------------- */
+
+#content { float: right; width: 820px; background-color: #ffffff; }
+#main { float: left;/* background-color: #fff; */}
+
+/* Button module
+-------------------------------------------------------------- */
+.next_page { padding: 10px 0; float: right; width: 135px; height: 55px; background: transparent url(../img/btn_nextpage.gif) no-repeat left center; }
+.next_page button { background-color: transparent; width: 120px; height: 50px; border: 0 none; color: #fff; font-weight: bold; }
+
+.prev_page { margin-left: 5px; padding: 10px 0; float: left; width: 155px; height: 55px; background: transparent url(../img/btn_prevpage.gif) no-repeat left center; }
+.prev_page button { background-color: transparent; width: 140px; height: 50px; border: 0 none; color: #fff; font-weight: bold; }
+
+
+/* Choose currency
+-------------------------------------------------------------- */
+.currency .tools_module_header span { background: #00759a url(../img/bg_tools_currency.gif) no-repeat top left; }
+
+.currency a{
+    cursor: pointer;
+    float: left;
+    height: 25px;
+    margin: 4px 8px;
+    width: 33px;
+    background-image: url('../img/currencyflags_32x32.gif');
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    display: inline;
+}
+
+.currency_off {
+    width: 100px;
+    float: left;
+    margin: 0 0 0 18px;
+    display: inline;
+}
+
+.currency_off a:hover { background-image: url('../img/currencyflags_32x32_hover.gif');}
+
+.currency .aud{ background-position: 0 0; }
+.currency .cad{ background-position: -33px 0; }
+.currency .eur{ background-position: -66px 0; }
+.currency .gbp{ background-position: -99px 0; }
+.currency .usd{ background-position: -132px 0; }
+
+.currency .current{
+    margin: 0 31px;
+    float: left;
+    width: 72px;
+    display: inline;
+}
+
+.currency .current a{
+    width: 72px;
+    height: 50px;
+    margin: 5px 0;
+    background-image: url('../img/currencyflags_48x48.gif');
+    background-repeat: no-repeat;
+}
+
+.currency .noclick{ cursor: default; }
+.currency .current .aud{ background-position: 0 0; }
+.currency .current .cad{ background-position: -72px 0; }
+.currency .current .eur{ background-position: -144px 0; }
+.currency .current .gbp{ background-position: -216px 0; }
+.currency .current .usd{ background-position: -288px 0; }
+
+.choosecurrency { width: 350px; position: absolute; top: 8px; right: 0; z-index: 999; }
+.choosecurrency .currency { float: left; padding: 0; }
+.choosecurrency .currency a { background-image: url(../img/currencyflags_32x32_BB.gif); }
+.choosecurrency .currencytitle { font-size: 11px; color: #ffffff; padding: 15px 5px 0 0; float: left; }
+.choosecurrency .currency .current { margin: 0; padding-right: 5px; }
+.choosecurrency .currency .current a { margin: 0; background-image: url(../img/currencyflags_48x48_BB.gif); }
+.choosecurrency .currency .currency_off { margin: 0; width: auto; padding-top: 12px; }
+.choosecurrency .currency .currency_off a:hover { background-image: url(../img/currencyflags_32x32_BB_hover.gif); }
+.choosecurrency .currency a { margin: 0 4px; }
+
+/* this is for the A|B Google testing */
+#AB_signup { background:#F2F1EF url(../img/bg_tools_orange.gif) no-repeat scroll right bottom; }
+#AB_signup p { text-align: center; }
+#AB_signup input { width: 119px; }
+#AB_signup select { width: 126px; }
+#AB_signup input, #AB_signup select { margin-left: 4px; }
+#AB_signup .tools_module_body { background-color:#F58025; background-image:none; }
+#AB_signup .tools_module_header { background: transparent url(../img/travelnews-signup.gif) no-repeat scroll left center; height: 65px; padding: 0;}
+#AB_signup .signup_text { text-indent: -9999px; margin-bottom: 14px; }
+#AB_signup .module_list { padding-top: 0; background:#F58025 url(../img/bg_tools_inner_long.gif) no-repeat scroll bottom right; }
+#AB_signup .never_spam { margin-top: 5px; margin-bottom: 0; color: #fff; font-weight: bold; }
+#AB_signup .never_spam a { color: #fff; }
+#AB_signup .btn { float: right; background:transparent url(../img/btn_blue_signup.gif) no-repeat scroll left center; width: 86px; }
+#AB_signup button { width: 86px; }
+
+#AB_signup #signmeup{ float: right; background:transparent url(../img/btn_blue_smaller_whiteBG.gif) no-repeat scroll left center; width: 106px; }
+#AB_signup #signmeup button { width: 106px;}
+
+/* --------------------------------------------------------------
+   Home page slider
+-------------------------------------------------------------- */
+/*.home_slider { padding: 0 0 5px 10px; }*/
+.sliderBoxWrap { position: relative; }
+.sliderBox{ height: 284px; }
+.sliderBox .slidesPagination{ list-style-type: none; position: absolute; bottom: 10px; right: 40px; z-index: 999; margin: 0; }
+.sliderBox .slidesPagination li{ float: left; margin: 0 3px; width: 20px; height: 20px;}
+.slidesPagination li a{ background: url('../img/new_atlas/pagination.png') no-repeat 0 0; display: block; text-indent:-9999em; float: left; width:20px; height:20px; overflow: hidden; border: 0;}
+.slidesPagination li a:hover{ border: none; background-position: 0 -80px;}
+.slidesPagination li.current a{ background-position: 0 -40px;}
+.sliderBox .prev{ border: 0 none; background: url('../img/sliderBox_arrow.png') no-repeat scroll left 50% transparent; display: block; height: 284px; left:0; top:0; position: absolute; width: 30px; z-index: 101; text-indent: -9999px;}
+.sliderBox .next{ border: 0 none; background: url('../img/sliderBox_arrow.png') no-repeat scroll right 50% transparent; display: block; height: 284px; left: 780px; top:0; position: absolute; width: 30px; z-index: 101; text-indent: -9999px;}
+.sliderBox .prev:hover, .sliderBox .next:hover{ background-image: url('../img/sliderBox_arrow_hover.png');border: 0;}
+
+/* --------------------------------------------------------------
+  for A/B Testing
+-------------------------------------------------------------- */
+.opt_rh #opt_prod_rh .mk_mod { padding: 0 0 5px 0; }
+.opt_rh #opt_prod_dest_rh .mk_mod { padding: 0 0 5px 0; }
+.opt_header { color: #333333; }
+
+/*VTC-6572 ,VTC-6579  Copied form inc/loading.jsp.  -anjan -23-07-2012 */
+
+.loading { padding: 0; background-color: transparent; margin: 10px auto; width: 220px; }
+.loading p{ font-size: 12px; line-height: 1.4em; margin: 10px 0 0 0; }
+.loading h4{ font-size: 15px; color: #333333; font-weight: bold; margin: 10px 0 0 0; }
+.loading_head_wrap { background: transparent url(../img/transborder_tr.png) no-repeat scroll right top; padding-right: 30px; }
+.loading_head { padding-top: 10px; background: transparent url(../img/transborder_tl.png) no-repeat scroll left top; padding-left: 30px;}
+.loading_body_wrap { background: transparent url(../img/transborder_br.png) no-repeat scroll right bottom; padding-right: 30px; }
+.loading_body { padding-bottom: 30px; background: transparent url(../img/transborder_bl.png) no-repeat scroll left bottom; padding-left: 30px;}
+
+/* end of loading  copy */
+
+#learnMore, #learnMore .button { border:1px solid #CCCCCC;color:#666666; }
+#learnMore { display:none;overflow:hidden;width:978px;margin: 10px auto;font-size:11px;text-align:center;background-color:white;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px; }
+#learnMore .button { display:block;margin:0 auto;width:120px;background-color:#EDEDED;-moz-border-radius:12px;-webkit-border-radius:12px;border-radius:12px;font-weight:bold;text-decoration:none;outline:none; }
+#learnMore .button:hover { text-decoration:none;color:#666666;background-color:#DFDFDF; }
+#learnMore .text_container { float:left;width:85%;font-size:12px;padding:8px 0; }
+#learnMore .button_container { float:right;width:15%;padding:4px 0; }
+#learnMore .button_container .close { background:url("../img/cross_circle.png") no-repeat scroll 0 50% transparent;display:inline-block;padding:3% 2% 2% 18%; }
+
+/* EOF */
