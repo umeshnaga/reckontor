@@ -1131,7 +1131,7 @@ ul.simple-list .no-list { list-style-type: none; }
 .global-search .btn input:hover { background-image: url("../img/btn_hover.png"); }
 
 .toolbar-count { background: transparent url("../img/btn.png") no-repeat 0 -475px; display: inline-block; }
-.toolbar-count span { display: inline-block; background: transparent url("../img/btn.png") no-repeat right -475px; height: 16px; padding: 0 7px 0 0; line-height: 16px; margin-left: 7px; }
+.toolbar-count span { display: inline-block; background: transparent url("../img/btn.png") no-repeat right -459px; height: 16px; padding: 0 7px 0 0; line-height: 16px; margin-left: 7px; }
 
 .AB-wishlist { background: transparent url("../img/bg_wishlist_AB.png") no-repeat top left; height: 60px; width: 980px; margin-bottom: 4px; margin-top: 4px; position: relative; }
 
