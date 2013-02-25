@@ -1,76 +1,4 @@
 <div class="left-col sidebar">
-                    
-
-
-
-
-
-<script type="text/javascript" src="js/pas.js"></script>
-<script type="text/javascript">
-    function doPasLoad(pas, random) {
-        if (!pas.activities_checkbox.checked) {
-            var haven = "/";
-            var srcOpt = pas.country.options[pas.country.selectedIndex];
-            if (pas.region.value!="") { srcOpt = pas.region.options[pas.region.selectedIndex]; }
-            if (srcOpt.getAttribute("destName") != null) {
-                haven += srcOpt.getAttribute("destName").replace(/\s+/g, "-").replace(/&/g, "and") + "/";
-            } else
-            {
-                haven += srcOpt.text.replace(/\s+/g, "-").replace(/&/g, "and") + "/";
-                var idx = haven.indexOf("--");
-                while (idx>-1)
-                {
-                    haven = haven.replace(/--/,"-");
-                    idx = haven.indexOf("--");
-                    //temp = temp.replace("--","-");   //if tow slash remove one
-                }
-            }
- 
-            /* Deprecated as no poi's any more. Delete next release of atlas
-            if (srcOpt.getAttribute("catName") != null) {
-                haven += srcOpt.getAttribute("catName").replace(/\s+/g, "-").replace(/&/g, "and") + "/tours-activities/d" + srcOpt.getAttribute("dID") + "-ttd" + "-spoi";
-            } else {*/
-            haven += "d" + srcOpt.getAttribute("dID") + "-ttd?activities=all" 
-
-            if (typeof(random) != 'undefined') {
-                haven += "&a=" + Math.floor(Math.random() * 100); 
-            }     
-            //}
-            window.location.href = haven;
-            return false;  
-        } else { 
-            return true;
-        } 
-    }
-    function clearDates() {
-        document.pasForm.activities_checkbox.checked=false;
-        document.pasForm.from_mm.value = "11";
-        document.pasForm.from_dd.value = "19";
-        document.pasForm.from_yyyy.value = "2012";
-        document.pasForm.to_mm.value = "11";
-        document.pasForm.to_dd.value = "25";
-        document.pasForm.to_yyyy.value = "2012";
-        document.pasForm.activities.value = "all"; 
-        return  pasReload(document.pasForm) 
-    }
-    
-    function selectCountry(select) {                
-        $.ajax({
-            url:'/pascities.jspa?country='+escape(select.options[select.selectedIndex].getAttribute('dID')), 
-            dataType: 'text', 
-            success: function(text) {
-                var region = document.getElementById("pasregion");                
-                $(region).html(text);                
-                if (region.length > 1) {
-                    region.disabled = false;
-                    region.selectedIndex = 0;
-                } else {
-                    region.disabled = true;
-                }
-            }
-        });
-    }
-</script>
 <div id="DEBUG_DIV"></div>
 <div class="mod basic viamod-alt mhn mtn">
 	<b class="top"><b class="tl"></b><b class="tr"></b></b>
@@ -2192,40 +2120,7 @@
 	</div>
 	<b class="bottom"><b class="bl"></b><b class="br"></b></b>
 </div>
-
-<script type="text/javascript">
-	sCal1 = createCalendar('sCal1', document.pasForm.from_yyyy, document.pasForm.from_mm, document.pasForm.from_dd, null, null, null);
-	document.getElementById('calendarDiv').appendChild(sCal1);
-	sCal2 = createCalendar('sCal2', document.pasForm.to_yyyy, document.pasForm.to_mm, document.pasForm.to_dd, sCal1, null, null);
-	document.getElementById('calendarDiv').appendChild(sCal2);
-	sCal1.stopDateCal = sCal2;
-	if (typeof(document.pasForm.country) != 'undefined') {
-		document.pasForm.reset();
-	}
-</script>
-
-                    
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-
-
 <!-- on the LHS -->
-
-	
-		
-			
-			
-                
-				
-				
-				
-
-
 <div mmid="3040" layoutcode="LH_HOT_DESTINATIONS" position="1">
 	<div class="mod basic viamod-alt mtn mhn">
 		<b class="top"><b class="tl"></b><b class="tr"></b></b>
@@ -2369,36 +2264,6 @@ geoIPCountry is "VN"
 		<b class="bottom"><b class="bl"></b><b class="br"></b></b>
 	</div>
 </div>
-			
-                
-				
-				
-				
-
-
-
-<!-- NewsLetterSignup : 12149 -->
-	
-
-
-
- 
-
-<script type="text/javascript" language="javascript" src="js/formValidate.js"></script>
-<script>
-   function emailFocus(obj) { 
-     if(obj.value == "Enter Email address") { 
-         obj.value = "" //this.select()
-     } 
-   } 
-   
-   function emailBlur(obj) { 
-       if(obj.value == "") { 
-           obj.value = "Enter Email address" //this.select()
-       } 
-   }
-   
-</script>
 <div class="mod basic viamod-alt mtn mhn">
 	<b class="top"><b class="tl"></b><b class="tr"></b></b>
 	<div class="inner">
