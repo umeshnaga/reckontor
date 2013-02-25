@@ -333,7 +333,7 @@ b.top, b.top b, b.bottom, b.bottom b { display: block; background-repeat: no-rep
 .viamod .inner { background: #03769a url("../img/mod_gradient.png") top left repeat-x; }
 
 /* ----- viamod with orange background (extends viamod) ----- */
-.viamod-alt .inner { background: #e36f22 url("../img/mod_gradient_alt.png") top left repeat-x; }
+.viamod-alt .inner { background: #e36f22 /*url("../img/mod_gradient_alt.png") top left repeat-x*/; }
 
 /* ----- viamod with orange bar on header (extends viamod) ----- */
 .viamod-bar-hd b { background-image: url("../img/mod_bar_hd.png"); }
@@ -439,7 +439,7 @@ input, textarea, select { font: normal 14px/1.5 "Helvetica", "Arial", "Verdana",
 
 .btn span { position: relative; background: url("../img/btn.png") no-repeat right -26px transparent; display: block; line-height: 26px; *height: 26px; }
 
-.btn a:hover, .btn span:hover, .btn button:hover, .btn button:hover span, .btn input:hover { background-image: url("../img/btn_hover.png"); }
+.btn a:hover, .btn span:hover, .btn button:hover, .btn button:hover span, .btn input:hover {background-image: url("../img/btn.png"); }
 
 .btn button, .btn a { padding: 0; }
 .btn button span, .btn a span { padding-left: 12px; padding-right: 30px; }
@@ -1128,7 +1128,7 @@ ul.simple-list .no-list { list-style-type: none; }
 .global-search { margin-top: 4px; height: 18px; }
 .global-search input[type="text"] { background: transparent url("../img/input_search.png") no-repeat top left; width: 140px; padding: 2px 5px; line-height: 1.2; font-size: 11px; border: 0; height: 18px; margin: 0; float: left; }
 .global-search .btn input { background: transparent url("../img/btn.png") no-repeat 0 -450px; height: 18px; width: 41px; padding: 0; border: 0; }
-.global-search .btn input:hover { background-image: url("../img/btn_hover.png"); }
+.global-search .btn input:hover { background-image: url("../img/btn.png"); }
 
 .toolbar-count { background: transparent url("../img/btn.png") no-repeat 0 -475px; display: inline-block; }
 .toolbar-count span { display: inline-block; background: transparent url("../img/btn.png") no-repeat right -459px; height: 16px; padding: 0 7px 0 0; line-height: 16px; margin-left: 7px; }
