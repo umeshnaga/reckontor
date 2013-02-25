@@ -57,6 +57,7 @@ body { _text-align: center; }
 
 /* IE5.5 */
 .main { /*display:table-cell;*display:block;width:auto;*/ float: right; width: 820px; }
+.main_nosidebar { /*display:table-cell;*display:block;width:auto;*/ float: left; }
 
 .body, .main { *zoom: 1; }
 
