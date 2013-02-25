@@ -2,51 +2,24 @@
     <div class="header_toolbar_wrap">
         <div class="header_toolbar">    
             <div class="main_tools size1of6 unit">
-                <ul class="tools_topnav">
-                    <li class="currencyselect unit mlm prs">
-					<a href="javascript:void(0);" class="tools_dropdown inverse-txt inverse-link hover-alt">USD ($)<i class="icon icon-down mls mrn"></i></a>
-						<ul class="tools_subnav" style="display: none;">
-							<li><a href="#" onclick="changeCurrency('GBP');return false;">GBP (�)</a></li>
-							<li><a href="#" onclick="changeCurrency('EUR');return false;">EUR (�)</a></li>
-							<li><a href="#" onclick="changeCurrency('AUD');return false;">AUD ($)</a></li>
-							<li><a href="#" onclick="changeCurrency('CAD');return false;">CAD ($)</a></li>
-						</ul>
-
-<!-- end choose currency -->
-                        
-                        <span class="toolbar-pipe">|</span>
-                    	<span></span>
-                    </li>
-                    <li class="langselect unit">
-                        <a href="javascript:void(0);" class="tools_dropdown inverse-txt inverse-link hover-alt">English <i class="icon icon-down mls mrn"></i></a>
-                        <ul class="tools_subnav" style="display: none;">
-                            <li><a href="http://www.viatorcom.de/">Deutsch</a></li>
-                            <li><a href="http://www.viatorcom.fr/">Fran�ais</a></li>
-                            <li><a href="http://www.viatorcom.es/">Espa�ol (Europa)</a></li>
-                            <li><a href="http://br.viator.com/">Portugu�s (Brasil)</a></li>
-                            <li><a href="http://www.viatorcom.mx/">Espa�ol (Am�ricas)</a></li>
-                            <li><a href="http://www.viatorcom.dk/">Dansk</a></li>
-                            <li><a href="http://www.viatorcom.nl/">Nederlands</a></li>
-                            <li><a href="http://www.viatorcom.no/">Norsk</a></li> 
-                            <li><a href="http://www.viatorcom.se/">Svenska</a></li>
-                            <li><a href="http://www.viatorcom.jp/">???</a></li>
-                        </ul>
-                    	<span></span>
-                    </li>
-                </ul>
             </div>
 			<div class="other_tools size5of6 unitRight">
 				<div id="accountToolsHeaderDiv" class="line">
 
 					<div class="unit size3of4">
 						<ul class="line mvn mhm unitRight">
+						{{ if user:logged_in }}											
+					
 					        <li class="inline-unit">
-					            <i class="icon icon-facebook unit mts"></i> Hi, <a href="http://www.viator.com/profile/5576805/Le-H" class="inverse-link" title="Le H"> Le H</a><span class="toolbar-pipe">|</span>
+					            <i class="icon icon-facebook unit mts"></i> Hi, <a href="{{ url:site uri='edit-profile' }}" target="_blank">{{ user:first_name }} {{ user:last_name }}</a><span class="toolbar-pipe">|</span>
 					        </li>
-					        <li class="inline-unit"><a id="signoutLink" href="#" class="inverse-link">Log Out</a><span class="toolbar-pipe">|</span></li>
-						    <li class="inline-unit"><a href="http://www.viator.com/customer-care" rel="nofollow" class="inverse-link">Help</a><span class="toolbar-pipe">|</span></li>
-						    <li class="inline-unit"><a href="#" onclick="showWishlistManager();return false;" class="inverse-link">Wish List</a><a href="#" onclick="showWishlistManager();return false;" class="inverse-txt no-hover mls"><span class="toolbar-count"><span id="wishlistCount">1</span></span></a><span class="toolbar-pipe">|</span></li>
-						    <li class="inline-unit">
+					        <li class="inline-unit"><a href="{{ url:site uri='users/logout' }}">{{ helper:lang line="logout_label" }}</a><span class="toolbar-pipe">|</span></li>						    
+						    
+						    {{ else }}
+						    <li class="inline-unit"><a href="{{ url:site uri='users/login' }}">{{ helper:lang line="user_login_btn" }}</a><span class="toolbar-pipe">|</span></li>
+						    <li class="inline-unit"><a href="{{ url:site uri='register' }}">{{ helper:lang line="user_register_btn" }}</a><span class="toolbar-pipe">|</span></li>
+					{{ endif }}
+					<li class="inline-unit">
 						    	<a rel="nofollow" href="http://www.viator.com/shopping-cart" class="inverse-link">Shopping Cart</a>
 						    	<a rel="nofollow" href="http://www.viator.com/shopping-cart" class="inverse-txt no-hover mls"><span class="toolbar-count"><span id="shopCartCount">0</span></span></a>
 						    </li>
@@ -80,7 +53,7 @@
 
 <div class="header page overlay mbm">
     <div class="line">
-        <a href="http://www.viator.com/" title="Viator | Travel with an insider" class="img-link no-hover"><img src="{{ theme:path }}/img/logo_tagline_full.png" alt="Viator | Travel with an insider" /></a>
+        <a href="http://www.viator.com/" title="Viator | Travel with an insider" class="img-link no-hover">{{ theme:image file="logo_tagline_full.png" alt="Viator | Travel with an insider" }}</a>
         <div class="home_counter">   
 			<div class="line inverse-txt inverse-txt xsmall strong">
 				<div class="unit size1of2">User Reviews &amp; Photos</div> 
