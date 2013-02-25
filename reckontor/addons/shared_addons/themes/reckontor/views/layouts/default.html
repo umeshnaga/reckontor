@@ -3,11 +3,17 @@
 	<head>
 		{{ theme:partial name="metadata" }}
 	</head>
-	<body  onload="body_doonload();">
-		<div class="page">
-			{{ theme:partial name="header" }}
+	<body>
+		
+	{{ theme:partial name="header" }}
+	<div class="page">
+		<div class="body">
+			<div class="main">
 			{{ template:body }}
-			{{ theme:partial name="footer" }}
+			</div>
+			{{ theme:partial name="sidebar" }}
 		</div>
+		{{ theme:partial name="footer" }}
+	</div>	
 	</body>
 </html>

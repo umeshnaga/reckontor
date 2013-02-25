@@ -1,0 +1,2432 @@
+<div class="left-col sidebar">
+                    
+
+
+
+
+
+<script type="text/javascript" src="js/pas.js"></script>
+<script type="text/javascript">
+    function doPasLoad(pas, random) {
+        if (!pas.activities_checkbox.checked) {
+            var haven = "/";
+            var srcOpt = pas.country.options[pas.country.selectedIndex];
+            if (pas.region.value!="") { srcOpt = pas.region.options[pas.region.selectedIndex]; }
+            if (srcOpt.getAttribute("destName") != null) {
+                haven += srcOpt.getAttribute("destName").replace(/\s+/g, "-").replace(/&/g, "and") + "/";
+            } else
+            {
+                haven += srcOpt.text.replace(/\s+/g, "-").replace(/&/g, "and") + "/";
+                var idx = haven.indexOf("--");
+                while (idx>-1)
+                {
+                    haven = haven.replace(/--/,"-");
+                    idx = haven.indexOf("--");
+                    //temp = temp.replace("--","-");   //if tow slash remove one
+                }
+            }
+ 
+            /* Deprecated as no poi's any more. Delete next release of atlas
+            if (srcOpt.getAttribute("catName") != null) {
+                haven += srcOpt.getAttribute("catName").replace(/\s+/g, "-").replace(/&/g, "and") + "/tours-activities/d" + srcOpt.getAttribute("dID") + "-ttd" + "-spoi";
+            } else {*/
+            haven += "d" + srcOpt.getAttribute("dID") + "-ttd?activities=all" 
+
+            if (typeof(random) != 'undefined') {
+                haven += "&a=" + Math.floor(Math.random() * 100); 
+            }     
+            //}
+            window.location.href = haven;
+            return false;  
+        } else { 
+            return true;
+        } 
+    }
+    function clearDates() {
+        document.pasForm.activities_checkbox.checked=false;
+        document.pasForm.from_mm.value = "11";
+        document.pasForm.from_dd.value = "19";
+        document.pasForm.from_yyyy.value = "2012";
+        document.pasForm.to_mm.value = "11";
+        document.pasForm.to_dd.value = "25";
+        document.pasForm.to_yyyy.value = "2012";
+        document.pasForm.activities.value = "all"; 
+        return  pasReload(document.pasForm) 
+    }
+    
+    function selectCountry(select) {                
+        $.ajax({
+            url:'/pascities.jspa?country='+escape(select.options[select.selectedIndex].getAttribute('dID')), 
+            dataType: 'text', 
+            success: function(text) {
+                var region = document.getElementById("pasregion");                
+                $(region).html(text);                
+                if (region.length > 1) {
+                    region.disabled = false;
+                    region.selectedIndex = 0;
+                } else {
+                    region.disabled = true;
+                }
+            }
+        });
+    }
+</script>
+<div id="DEBUG_DIV"></div>
+<div class="mod basic viamod-alt mhn mtn">
+	<b class="top"><b class="tl"></b><b class="tr"></b></b>
+	<div class="inner">
+		<div class="hd">
+			<div class="mam pbs mod-header hd-border h2">Find Things to Do</div>
+		</div>
+		<div class="bd">
+
+			<form action="/destProdSearch.jspa" method="get" id="pasForm" name="pasForm">
+				
+				
+				
+
+				
+				
+				
+				
+				<div class="mhm">
+					<div style="display: none;" id="tmpDisabledPascountry"><p>Select a country</p></div>
+					<select class="mbs input-full no-border" name="country" id="pascountry" onchange="selectCountry(this)">
+						<option selected="selected" value="">Select a country</option>
+						
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="77" value="/USA/d77-ttd">USA</option>
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="22" value="/Australia/d22-ttd">Australia</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="24" value="/New-Zealand/d24-ttd">New Zealand</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="51" value="/France/d51-ttd">France</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="57" value="/Italy/d57-ttd">Italy</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="67" value="/Spain/d67-ttd">Spain</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="731" value="/England/d731-ttd">England</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+								
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+										
+											
+											
+											
+										
+										<option did="60" value="/Netherlands/d60-ttd">Netherlands</option>
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+							<option value="">------------------------------</option>
+						
+	
+						
+							
+								
+								
+								
+							
+							<option did="27" value="/Antigua-and-Barbuda/d27-ttd">Antigua and Barbuda</option>
+						
+							
+								
+								
+								
+							
+							<option did="78" value="/Argentina/d78-ttd">Argentina</option>
+						
+							
+								
+								
+								
+							
+							<option did="28" value="/Aruba/d28-ttd">Aruba</option>
+						
+							
+								
+								
+								
+							
+							<option did="22" value="/Australia/d22-ttd">Australia</option>
+						
+							
+								
+								
+								
+							
+							<option did="44" value="/Austria/d44-ttd">Austria</option>
+						
+							
+								
+								
+								
+							
+							<option did="29" value="/Bahamas/d29-ttd">Bahamas</option>
+						
+							
+								
+								
+								
+							
+							<option did="30" value="/Barbados/d30-ttd">Barbados</option>
+						
+							
+								
+								
+								
+							
+							<option did="45" value="/Belgium/d45-ttd">Belgium</option>
+						
+							
+								
+								
+								
+							
+							<option did="746" value="/Belize/d746-ttd">Belize</option>
+						
+							
+								
+								
+								
+							
+							<option did="966" value="/Bermuda/d966-ttd">Bermuda</option>
+						
+							
+								
+								
+								
+							
+							<option did="79" value="/Brazil/d79-ttd">Brazil</option>
+						
+							
+								
+								
+								
+							
+							<option did="809" value="/British-Virgin-Islands/d809-ttd">British Virgin Islands</option>
+						
+							
+								
+								
+								
+							
+							<option did="12" value="/Cambodia/d12-ttd">Cambodia</option>
+						
+							
+								
+								
+								
+							
+							<option did="75" value="/Canada/d75-ttd">Canada</option>
+						
+							
+								
+								
+								
+							
+							<option did="31" value="/Cayman-Islands/d31-ttd">Cayman Islands</option>
+						
+							
+								
+								
+								
+							
+							<option did="80" value="/Chile/d80-ttd">Chile</option>
+						
+							
+								
+								
+								
+							
+							<option did="13" value="/China/d13-ttd">China</option>
+						
+							
+								
+								
+								
+							
+							<option did="4497" value="/Colombia/d4497-ttd">Colombia</option>
+						
+							
+								
+								
+								
+							
+							<option did="747" value="/Costa-Rica/d747-ttd">Costa Rica</option>
+						
+							
+								
+								
+								
+							
+							<option did="730" value="/Croatia/d730-ttd">Croatia</option>
+						
+							
+								
+								
+								
+							
+							<option did="725" value="/Curacao/d725-ttd">Curacao</option>
+						
+							
+								
+								
+								
+							
+							<option did="48" value="/Czech-Republic/d48-ttd">Czech Republic</option>
+						
+							
+								
+								
+								
+							
+							<option did="49" value="/Denmark/d49-ttd">Denmark</option>
+						
+							
+								
+								
+								
+							
+							<option did="814" value="/Dominica/d814-ttd">Dominica</option>
+						
+							
+								
+								
+								
+							
+							<option did="32" value="/Dominican-Republic/d32-ttd">Dominican Republic</option>
+						
+							
+								
+								
+								
+							
+							<option did="727" value="/Ecuador/d727-ttd">Ecuador</option>
+						
+							
+								
+								
+								
+							
+							<option did="722" value="/Egypt/d722-ttd">Egypt</option>
+						
+							
+								
+								
+								
+							
+							<option did="731" value="/England/d731-ttd">England</option>
+						
+							
+								
+								
+								
+							
+							<option did="4146" value="/Estonia/d4146-ttd">Estonia</option>
+						
+							
+								
+								
+								
+							
+							<option did="23" value="/Fiji/d23-ttd">Fiji</option>
+						
+							
+								
+								
+								
+							
+							<option did="50" value="/Finland/d50-ttd">Finland</option>
+						
+							
+								
+								
+								
+							
+							<option did="51" value="/France/d51-ttd">France</option>
+						
+							
+								
+								
+								
+							
+							<option did="52" value="/Germany/d52-ttd">Germany</option>
+						
+							
+								
+								
+								
+							
+							<option did="53" value="/Greece/d53-ttd">Greece</option>
+						
+							
+								
+								
+								
+							
+							<option did="967" value="/Grenada/d967-ttd">Grenada</option>
+						
+							
+								
+								
+								
+							
+							<option did="748" value="/Guatemala/d748-ttd">Guatemala</option>
+						
+							
+								
+								
+								
+							
+							<option did="14" value="/Hong-Kong/d14-ttd">Hong Kong</option>
+						
+							
+								
+								
+								
+							
+							<option did="54" value="/Hungary/d54-ttd">Hungary</option>
+						
+							
+								
+								
+								
+							
+							<option did="55" value="/Iceland/d55-ttd">Iceland</option>
+						
+							
+								
+								
+								
+							
+							<option did="723" value="/India/d723-ttd">India</option>
+						
+							
+								
+								
+								
+							
+							<option did="15" value="/Indonesia/d15-ttd">Indonesia</option>
+						
+							
+								
+								
+								
+							
+							<option did="56" value="/Ireland/d56-ttd">Ireland</option>
+						
+							
+								
+								
+								
+							
+							<option did="919" value="/Israel/d919-ttd">Israel</option>
+						
+							
+								
+								
+								
+							
+							<option did="57" value="/Italy/d57-ttd">Italy</option>
+						
+							
+								
+								
+								
+							
+							<option did="34" value="/Jamaica/d34-ttd">Jamaica</option>
+						
+							
+								
+								
+								
+							
+							<option did="16" value="/Japan/d16-ttd">Japan</option>
+						
+							
+								
+								
+								
+							
+							<option did="744" value="/Jordan/d744-ttd">Jordan</option>
+						
+							
+								
+								
+								
+							
+							<option did="4214" value="/Lebanon/d4214-ttd">Lebanon</option>
+						
+							
+								
+								
+								
+							
+							<option did="58" value="/Lithuania/d58-ttd">Lithuania</option>
+						
+							
+								
+								
+								
+							
+							<option did="17" value="/Malaysia/d17-ttd">Malaysia</option>
+						
+							
+								
+								
+								
+							
+							<option did="76" value="/Mexico/d76-ttd">Mexico</option>
+						
+							
+								
+								
+								
+							
+							<option did="948" value="/Monaco/d948-ttd">Monaco</option>
+						
+							
+								
+								
+								
+							
+							<option did="825" value="/Morocco/d825-ttd">Morocco</option>
+						
+							
+								
+								
+								
+							
+							<option did="60" value="/Netherlands/d60-ttd">Netherlands</option>
+						
+							
+								
+								
+								
+							
+							<option did="24" value="/New-Zealand/d24-ttd">New Zealand</option>
+						
+							
+								
+								
+								
+							
+							<option did="4499" value="/Nicaragua/d4499-ttd">Nicaragua</option>
+						
+							
+								
+								
+								
+							
+							<option did="61" value="/Norway/d61-ttd">Norway</option>
+						
+							
+								
+								
+								
+							
+							<option did="745" value="/Oman/d745-ttd">Oman</option>
+						
+							
+								
+								
+								
+							
+							<option did="749" value="/Panama/d749-ttd">Panama</option>
+						
+							
+								
+								
+								
+							
+							<option did="927" value="/Peru/d927-ttd">Peru</option>
+						
+							
+								
+								
+								
+							
+							<option did="4603" value="/Philippines/d4603-ttd">Philippines</option>
+						
+							
+								
+								
+								
+							
+							<option did="62" value="/Poland/d62-ttd">Poland</option>
+						
+							
+								
+								
+								
+							
+							<option did="63" value="/Portugal/d63-ttd">Portugal</option>
+						
+							
+								
+								
+								
+							
+							<option did="36" value="/Puerto-Rico/d36-ttd">Puerto Rico</option>
+						
+							
+								
+								
+								
+							
+							<option did="65" value="/Russia/d65-ttd">Russia</option>
+						
+							
+								
+								
+								
+							
+							<option did="732" value="/Scotland/d732-ttd">Scotland</option>
+						
+							
+								
+								
+								
+							
+							<option did="18" value="/Singapore/d18-ttd">Singapore</option>
+						
+							
+								
+								
+								
+							
+							<option did="734" value="/Slovenia/d734-ttd">Slovenia</option>
+						
+							
+								
+								
+								
+							
+							<option did="11" value="/South-Africa/d11-ttd">South Africa</option>
+						
+							
+								
+								
+								
+							
+							<option did="972" value="/South-Korea/d972-ttd">South Korea</option>
+						
+							
+								
+								
+								
+							
+							<option did="67" value="/Spain/d67-ttd">Spain</option>
+						
+							
+								
+								
+								
+							
+							<option did="37" value="/St-Kitts-and-Nevis/d37-ttd">St Kitts and Nevis</option>
+						
+							
+								
+								
+								
+							
+							<option did="38" value="/St-Lucia/d38-ttd">St Lucia</option>
+						
+							
+								
+								
+								
+							
+							<option did="728" value="/St-Maarten/d728-ttd">St Maarten</option>
+						
+							
+								
+								
+								
+							
+							<option did="68" value="/Sweden/d68-ttd">Sweden</option>
+						
+							
+								
+								
+								
+							
+							<option did="69" value="/Switzerland/d69-ttd">Switzerland</option>
+						
+							
+								
+								
+								
+							
+							<option did="25" value="/Tahiti/d25-ttd">Tahiti</option>
+						
+							
+								
+								
+								
+							
+							<option did="778" value="/Taiwan/d778-ttd">Taiwan</option>
+						
+							
+								
+								
+								
+							
+							<option did="20" value="/Thailand/d20-ttd">Thailand</option>
+						
+							
+								
+								
+								
+							
+							<option did="39" value="/Trinidad-and-Tobago/d39-ttd">Trinidad and Tobago</option>
+						
+							
+								
+								
+								
+							
+							<option did="70" value="/Turkey/d70-ttd">Turkey</option>
+						
+							
+								
+								
+								
+							
+							<option did="743" value="/United-Arab-Emirates/d743-ttd">United Arab Emirates</option>
+						
+							
+								
+								
+								
+							
+							<option did="4514" value="/Uruguay/d4514-ttd">Uruguay</option>
+						
+							
+								
+								
+								
+							
+							<option did="77" value="/USA/d77-ttd">USA</option>
+						
+							
+								
+								
+								
+							
+							<option did="40" value="/US-Virgin-Islands/d40-ttd">US Virgin Islands</option>
+						
+							
+								
+								
+								
+							
+							<option did="21" value="/Vietnam/d21-ttd">Vietnam</option>
+						
+					</select>
+					
+					<div style="display: none;" id="tmpDisabledPasregion"><p>Select region/city</p></div>
+					
+					
+						
+						<select class="input-full no-border" name="region" id="pasregion" disabled="true">
+							<option selected="selected" value="">Select region/city</option>
+						</select>
+					
+				</div>
+				
+
+				    
+
+				
+				<div class="btn unitRight mam size-btn-go">
+					<button value="Go" name="go" id="Go" onclick="return pasCheck()" type="button"><span>Go</span></button>
+				</div>
+
+
+				<input name="from_mm" value="11" onchange="setSelVal(this.form.from_yyyymm, this.form.from_mm.value+' '+this.form.from_yyyy.value);" type="hidden">
+				<input name="from_yyyy" value="2012" type="hidden">
+				<input name="to_mm" value="11" onchange="setSelVal(this.form.to_yyyymm, this.form.to_mm.value+' '+this.form.to_yyyy.value);" type="hidden">
+				<input name="to_yyyy" value="2012" type="hidden">
+				
+				<input name="section" value="ttd" type="hidden">
+				<input name="destinationID" value="" type="hidden">
+				<input name="categoryName" value="" type="hidden">
+				<input name="activities" value="all" type="hidden">
+			</form>
+		</div>
+	</div>
+	<b class="bottom"><b class="bl"></b><b class="br"></b></b>
+</div>
+
+<script type="text/javascript">
+	sCal1 = createCalendar('sCal1', document.pasForm.from_yyyy, document.pasForm.from_mm, document.pasForm.from_dd, null, null, null);
+	document.getElementById('calendarDiv').appendChild(sCal1);
+	sCal2 = createCalendar('sCal2', document.pasForm.to_yyyy, document.pasForm.to_mm, document.pasForm.to_dd, sCal1, null, null);
+	document.getElementById('calendarDiv').appendChild(sCal2);
+	sCal1.stopDateCal = sCal2;
+	if (typeof(document.pasForm.country) != 'undefined') {
+		document.pasForm.reset();
+	}
+</script>
+
+                    
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+
+
+<!-- on the LHS -->
+
+	
+		
+			
+			
+                
+				
+				
+				
+
+
+<div mmid="3040" layoutcode="LH_HOT_DESTINATIONS" position="1">
+	<div class="mod basic viamod-alt mtn mhn">
+		<b class="top"><b class="tl"></b><b class="tr"></b></b>
+		<div class="inner">
+			<div class="hd">
+				<div class="mam">
+					<i class="icon icon-destinations mbm"></i>
+					<div class="pbs mod-header hd-border h3">
+						
+						Hot Destinations
+					</div>
+				</div>
+			</div>
+			<div class="bd">
+				<ul class="mtn">
+	
+				
+					
+						<li><a href="http://www.viator.com/Rome/d511-ttd" class="inverse-txt inverse-link info-label strong">Rome</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Las-Vegas/d684-ttd" class="inverse-txt inverse-link info-label strong">Las Vegas</a></li>
+						
+					
+						<li><a href="http://www.viator.com/New-York-City/d687-ttd" class="inverse-txt inverse-link info-label strong">New York City</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Paris/d479-ttd" class="inverse-txt inverse-link info-label strong">Paris</a></li>
+						
+					
+						<li><a href="http://www.viator.com/London/d737-ttd" class="inverse-txt inverse-link info-label strong">London</a></li>
+						
+					
+					
+						<li><a href="http://www.viator.com/Florence/d519-ttd" class="inverse-txt inverse-link info-label strong">Florence</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Venice/d522-ttd" class="inverse-txt inverse-link info-label strong">Venice</a></li>
+						
+					
+						<li><a href="http://www.viator.com/San-Francisco/d651-ttd" class="inverse-txt inverse-link info-label strong">San Francisco</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Tokyo/d334-ttd" class="inverse-txt inverse-link info-label strong">Tokyo</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Sydney/d357-ttd" class="inverse-txt inverse-link info-label strong">Sydney</a></li>
+						
+					
+					
+						<li><a href="http://www.viator.com/Munich/d487-ttd" class="inverse-txt inverse-link info-label strong">Munich</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Melbourne/d384-ttd" class="inverse-txt inverse-link info-label strong">Melbourne</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Barcelona/d562-ttd" class="inverse-txt inverse-link info-label strong">Barcelona</a></li>
+						
+					
+						<li><a href="http://www.viator.com/Los-Angeles/d645-ttd" class="inverse-txt inverse-link info-label strong">Los Angeles</a></li>
+						
+					
+						<li class="last"><a href="http://www.viator.com/Amsterdam/d525-ttd" class="inverse-txt inverse-link info-label strong">Amsterdam</a></li>
+						
+					
+				</ul>
+			</div>
+		</div>
+		<b class="bottom"><b class="bl"></b><b class="br"></b></b>
+	</div>
+</div>
+			
+                
+				
+				
+				
+
+
+
+
+
+
+
+
+
+<!-- 
+request.getRemoteAddr is 113.160.225.200
+geoIPCountry is "VN"
+-->
+
+
+
+
+
+
+
+
+    
+
+
+<div mmid="4360" layoutcode="LH_CUST_CARE" position="2">
+	<div class="mod basic viamod mtn mhn">
+		<b class="top"><b class="tl"></b><b class="tr"></b></b>
+		<div class="inner">
+			<div class="hd">
+				 
+					
+				<a href="#" onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;" class="no-hover">
+					
+				
+				<div class="mam pbs mod-header hd-border h3">Questions?<br>Need a Hug?</div>
+				
+					
+				</a>
+					
+				
+			</div>
+			<div class="bd">
+				<p class="inverse-txt xlarge mvn">
+									
+					<a class="inverse-link" href="javascript:void(0);" onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;">
+						
+						Click Here</a><span class="inverse-txt"> or Call</span>
+				
+				
+					
+						<a href="javascript:void(0);" onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;" class="inverse-link">
+					
+				
+				+1(702) 648-5873				
+				
+					
+					</a>
+					
+				
+				
+				</p>
+				<i class="icon icon-customer-care mam"></i>
+			</div>
+		</div>
+		<b class="bottom"><b class="bl"></b><b class="br"></b></b>
+	</div>
+</div>
+			
+                
+				
+				
+				
+
+
+
+<!-- NewsLetterSignup : 12149 -->
+	
+
+
+
+ 
+
+<script type="text/javascript" language="javascript" src="js/formValidate.js"></script>
+<script>
+   function emailFocus(obj) { 
+     if(obj.value == "Enter Email address") { 
+         obj.value = "" //this.select()
+     } 
+   } 
+   
+   function emailBlur(obj) { 
+       if(obj.value == "") { 
+           obj.value = "Enter Email address" //this.select()
+       } 
+   }
+   
+</script>
+<div class="mod basic viamod-alt mtn mhn">
+	<b class="top"><b class="tl"></b><b class="tr"></b></b>
+	<div class="inner">
+		<div class="hd">
+			<div class="mam">
+				<i class="icon icon-newsletter mbm"></i>
+				<div class="pbs mod-header hd-border h3">Get the <br>Inside Scoop</div>
+			</div>
+		</div>
+		<div class="bd">
+			<form name="subscribe" id="subscribe" action="#" method="get">
+				<input name="EMAIL_REQUIRED" value="T" type="hidden">
+				<div class="input-full-wrap mhm">
+					<input id="user-email" name="EMAIL" maxlength="255" placeholder="Enter email address" class="input-full no-border sidebar-input" type="text">
+				</div>
+				<div class="line">
+					<div class="btn unitRight mtm mhm mbs size-btn-sign-up">
+						<button value="Sign up" type="submit" name="Sign up" onclick="f_validateForm(this.form.name);return false;"><span>Sign Up</span></button>
+					</div>
+				</div>
+				<p class="mtn txtR">
+					
+						<a href="#" onclick="window.open('/privacy-policy','privacyPolicy','toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes,width=1100,height=600'); return false;" class="inverse-txt small inverse-link">Privacy Policy</a>
+					
+				</p>
+			</form>
+		</div>
+	</div>
+	<b class="bottom"><b class="bl"></b><b class="br"></b></b>
+</div>    
+                </div>
