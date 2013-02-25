@@ -139,7 +139,7 @@ class Users extends Public_Controller
 			exit(json_encode(array('status' => false, 'message' => validation_errors())));
 		}
 
-		$this->template
+		$this->template->set_layout('nosidebar.html')
 			->build('login', array(
 				'_user' => $user,
 				'redirect_to' => $redirect_to,
@@ -414,7 +414,7 @@ class Users extends Public_Controller
 
 		// --------------------------------
 
-		$this->template
+		$this->template->set_layout('nosidebar.html')
 			->title(lang('user_register_title'))
 			->set('_user', $user)
 			->build('register');
@@ -568,7 +568,7 @@ class Users extends Public_Controller
 			}
 		}
 
-		$this->template->build('reset_pass');
+		$this->template->set_layout('nosidebar.html')->build('reset_pass');
 	}
 
 	/**
