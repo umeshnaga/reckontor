@@ -1,69 +1,129 @@
 <div id="header">
-    <div class="header_toolbar_wrap">
-        <div class="header_toolbar">    
-            <div class="main_tools size1of6 unit">
-            </div>
+	<div class="header_toolbar_wrap">
+		<div class="header_toolbar">
+			<div class="main_tools size1of6 unit"></div>
 			<div class="other_tools size5of6 unitRight">
 				<div id="accountToolsHeaderDiv" class="line">
 
 					<div class="unit size3of4">
 						<ul class="line mvn mhm unitRight">
-						{{ if user:logged_in }}											
-					
-					        <li class="inline-unit">
-					            <i class="icon icon-facebook unit mts"></i> Hi, <a href="{{ url:site uri='edit-profile' }}" target="_blank">{{ user:first_name }} {{ user:last_name }}</a><span class="toolbar-pipe">|</span>
-					        </li>
-					        <li class="inline-unit"><a href="{{ url:site uri='users/logout' }}">{{ helper:lang line="logout_label" }}</a><span class="toolbar-pipe">|</span></li>						    
-						    
-						    {{ else }}
-						    <li class="inline-unit"><a href="{{ url:site uri='users/login' }}">{{ helper:lang line="user_login_btn" }}</a><span class="toolbar-pipe">|</span></li>
-						    <li class="inline-unit"><a href="{{ url:site uri='register' }}">{{ helper:lang line="user_register_btn" }}</a><span class="toolbar-pipe">|</span></li>
-					{{ endif }}
-					<li class="inline-unit">
-						    	<a rel="nofollow" href="http://www.viator.com/shopping-cart" class="inverse-link">Shopping Cart</a>
-						    	<a rel="nofollow" href="http://www.viator.com/shopping-cart" class="inverse-txt no-hover mls"><span class="toolbar-count"><span id="shopCartCount">0</span></span></a>
-						    </li>
+							{{ if user:logged_in }}
+
+							<li class="inline-unit"><i
+								class="icon icon-facebook unit mts"></i> Hi, <a
+								href="{{ url:site uri='edit-profile' }}" target="_blank">{{
+									user:first_name }} {{ user:last_name }}</a><span
+								class="toolbar-pipe">|</span></li>
+							<li class="inline-unit"><a
+								href="{{ url:site uri='users/logout' }}">{{ helper:lang
+									line="logout_label" }}</a><span class="toolbar-pipe">|</span>
+							</li> {{ else }}
+							<li class="inline-unit"><a
+								href="{{ url:site uri='users/login' }}">{{ helper:lang
+									line="user_login_btn" }}</a><span class="toolbar-pipe">|</span>
+							</li>
+							<li class="inline-unit"><a
+								href="{{ url:site uri='register' }}">{{ helper:lang
+									line="user_register_btn" }}</a><span class="toolbar-pipe">|</span>
+							</li> {{ endif }}
+							<li class="inline-unit"><a rel="nofollow"
+								href="http://www.viator.com/shopping-cart" class="inverse-link">Shopping
+									Cart</a> <a rel="nofollow"
+								href="http://www.viator.com/shopping-cart"
+								class="inverse-txt no-hover mls"><span class="toolbar-count"><span
+										id="shopCartCount">0</span>
+								</span>
+							</a></li>
 						</ul>
 					</div>
-	
-	
+
+
 					<div class="unitRight size1of4">
 						<div class="line global-search">
-					    <form action="#" method="get" enctype="" title="search" name="search" onsubmit="return doFreeTextSearchSubmit('freeTextKeyword', '');">
-					        <div class="unit size-toolbar-input mrs">
-					            <input name="freeTextKeyword" size="16" maxlength="50" id="freeTextKeyword" placeholder="Search..." type="text" />
-					        </div>
-					        <div class="btn unit"><input name="submit" value="" title="Search Viator Tours &amp; Things to Do" type="submit" /></div>
-					   	</form>
-					   	</div>
+							<form action="#" method="get" enctype="" title="search"
+								name="search"
+								onsubmit="return doFreeTextSearchSubmit('freeTextKeyword', '');">
+								<div class="unit size-toolbar-input mrs">
+									<input name="freeTextKeyword" size="16" maxlength="50"
+										id="freeTextKeyword" placeholder="Search..." type="text" />
+								</div>
+								<div class="btn unit">
+									<input name="submit" value=""
+										title="Search Viator Tours &amp; Things to Do" type="submit" />
+								</div>
+							</form>
+						</div>
 					</div>
-<!-- end search -->
+					<!-- end search -->
 
 				</div>
-            </div>
-        </div>
-    </div><!-- end of header_toolbar_wrap -->
-  
+			</div>
+		</div>
+	</div>
+	<!-- end of header_toolbar_wrap -->
+
 </div>
 <!-- end toolbar-->
 
-<h1 class="header-text">Book tours, things to do &amp; day trips. 450+ destinations, 100,000+ tour reviews &amp; photos. Trip planning &amp; tour tips from real travelers.</h1>
+<h1 class="header-text">Book tours, things to do &amp; day trips.
+	450+ destinations, 100,000+ tour reviews &amp; photos. Trip planning
+	&amp; tour tips from real travelers.</h1>
 
-<div id="opt_global_header" class="opt_header"> </div>
+<div id="opt_global_header" class="opt_header"></div>
 
 <div class="header page overlay mbm">
-    <div class="line">
-        <a href="http://www.viator.com/" title="Viator | Travel with an insider" class="img-link no-hover">{{ theme:image file="logo_tagline_full.png" alt="Viator | Travel with an insider" }}</a>
-        <div class="home_counter">   
+	<div class="line">
+		<a href="http://www.viator.com/"
+			title="Viator | Travel with an insider" class="img-link no-hover">{{
+			theme:image file="logo_tagline_full.png" alt="Viator | Travel with an
+			insider" }}</a>
+		<div class="home_counter">
 			<div class="line inverse-txt inverse-txt xsmall strong">
-				<div class="unit size1of2">User Reviews &amp; Photos</div> 
-				<div class="unitRight size1of2 txtR">Happy Viator Travelers</div> 
+				<div class="unit size1of2">User Reviews &amp; Photos</div>
+				<div class="unitRight size1of2 txtR">Happy Viator Travelers</div>
 			</div>
 			<div class="clearfix counter_wrap">
-				<div id="userReviews" class="unit numbers"><div value="3" style="display: block; top: -51px;" class="counter-number" id="userReviews_num0"></div><div style="top: -85px;" value="5" class="counter-number" id="userReviews_num1"></div><div style="top: 0px;" value="0" class="counter-number" id="userReviews_num2"></div><div style="top: -170px;" value="," class="counter-number counter-comma" id="userReviews_num3"></div><div style="top: -119px;" value="7" class="counter-number" id="userReviews_num4"></div><div style="top: -119px;" value="7" class="counter-number" id="userReviews_num5"></div><div style="top: -102px;" value="6" class="counter-number" id="userReviews_num6"></div><div class="counter-block" style="top: -187px;"></div><div class="counter-block" style="top: -187px;"></div></div>   
-				<div id="happyTravelers" class="unitRight numbers"><div value="3" style="display: block; top: -51px;" class="counter-number" id="happyTravelers_num0"></div><div style="top: -170px;" value="," class="counter-number counter-comma" id="happyTravelers_num1"></div><div style="top: -68px;" value="4" class="counter-number" id="happyTravelers_num2"></div><div style="top: -17px;" value="1" class="counter-number" id="happyTravelers_num3"></div><div style="top: -51px;" value="3" class="counter-number" id="happyTravelers_num4"></div><div style="top: -170px;" value="," class="counter-number counter-comma" id="happyTravelers_num5"></div><div style="top: -102px;" value="6" class="counter-number" id="happyTravelers_num6"></div><div style="top: -136px;" value="8" class="counter-number" id="happyTravelers_num7"></div><div style="top: -153px;" value="9" class="counter-number" id="happyTravelers_num8"></div></div>
+				<div id="userReviews" class="unit numbers">
+					<div value="3" style="display: block; top: -51px;"
+						class="counter-number" id="userReviews_num0"></div>
+					<div style="top: -85px;" value="5" class="counter-number"
+						id="userReviews_num1"></div>
+					<div style="top: 0px;" value="0" class="counter-number"
+						id="userReviews_num2"></div>
+					<div style="top: -170px;" value=","
+						class="counter-number counter-comma" id="userReviews_num3"></div>
+					<div style="top: -119px;" value="7" class="counter-number"
+						id="userReviews_num4"></div>
+					<div style="top: -119px;" value="7" class="counter-number"
+						id="userReviews_num5"></div>
+					<div style="top: -102px;" value="6" class="counter-number"
+						id="userReviews_num6"></div>
+					<div class="counter-block" style="top: -187px;"></div>
+					<div class="counter-block" style="top: -187px;"></div>
+				</div>
+				<div id="happyTravelers" class="unitRight numbers">
+					<div value="3" style="display: block; top: -51px;"
+						class="counter-number" id="happyTravelers_num0"></div>
+					<div style="top: -170px;" value=","
+						class="counter-number counter-comma" id="happyTravelers_num1"></div>
+					<div style="top: -68px;" value="4" class="counter-number"
+						id="happyTravelers_num2"></div>
+					<div style="top: -17px;" value="1" class="counter-number"
+						id="happyTravelers_num3"></div>
+					<div style="top: -51px;" value="3" class="counter-number"
+						id="happyTravelers_num4"></div>
+					<div style="top: -170px;" value=","
+						class="counter-number counter-comma" id="happyTravelers_num5"></div>
+					<div style="top: -102px;" value="6" class="counter-number"
+						id="happyTravelers_num6"></div>
+					<div style="top: -136px;" value="8" class="counter-number"
+						id="happyTravelers_num7"></div>
+					<div style="top: -153px;" value="9" class="counter-number"
+						id="happyTravelers_num8"></div>
+				</div>
 			</div>
-		    <h1 class="tagline">Book tours &amp; things to do with the worldwide leader</h1>
+			<h1 class="tagline">Book tours &amp; things to do with the
+				worldwide leader</h1>
 		</div>
-    </div>
+	</div>
 </div>
