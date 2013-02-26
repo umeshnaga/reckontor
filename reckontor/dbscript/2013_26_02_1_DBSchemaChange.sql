@@ -1,0 +1,2 @@
+rename table r_tour_price to r_tour_available_date;
+alter table r_tour_available_date drop column apply_to_date, change apply_from_date available_date datetime   NOT NULL, change tour_price_id tour_available_date_id int (11)  NOT NULL AUTO_INCREMENT ;
