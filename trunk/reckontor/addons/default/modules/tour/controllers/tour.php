@@ -63,7 +63,8 @@ class Tour extends Public_Controller
 				echo '</optgroup>';
 				break;
 			default:
-				$this->template->build('country');
+				$country = $this->admin_m->get_country($cmd);
+				$this->template->set('country', $country)->build('country');
 				break;
 		}
 	}

@@ -25,7 +25,7 @@ $(document).ready(function(){
 	    {
 			window.location="{{ url:site uri='tour/city' }}"+"/"+country;		
 		} 
-	    else if (country != "") 
+	    else if (country != "" && country!="0") 
 	    {
 	    	window.location="{{ url:site uri='tour/country' }}"+"/"+country;
 		} 

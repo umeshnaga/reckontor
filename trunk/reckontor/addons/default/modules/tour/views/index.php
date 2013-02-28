@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
-    	$billboardSlides=  $('#slides').slides({
+    	$('#slides').slides({
             generateNextPrev: true,
             play: 5000,
             hoverPause: true,

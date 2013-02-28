@@ -38,6 +38,11 @@ class Admin_m extends MY_Model {
 		return $this->db->query("SELECT city_id, city_name FROM r_city WHERE country_id='".$country_id."' AND is_city=".$get_cities)->result_array();
 	}
 
+	public function get_country($id)
+	{
+		return $this->db->query("SELECT country_id, country_name FROM r_country WHERE country_id=".$id)->row_array();
+	}
+	
 	public function insert_supplier($data)
 	{
 		return $this->db->insert($this->db->dbprefix('gpsi_suppliers'), $data);
@@ -55,11 +60,7 @@ class Admin_m extends MY_Model {
 		return $this->db->delete($this->db->dbprefix('gpsi_suppliers'));
 	}
 
-	public function get_supplier($id)
-	{
-		$this->db->where('id', $id);
-		return $this->db->get($this->db->dbprefix('gpsi_suppliers'))->row_array();
-	}
+	
 
 	public function get_all_clients()
 	{

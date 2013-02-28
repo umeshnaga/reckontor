@@ -1,770 +1,1617 @@
 <script type="text/javascript">
 $(document).ready(function(){
-    	$billboardSlides=  $('#slides').slides({
-            generateNextPrev: true,
-            play: 5000,
-            hoverPause: true,
-            pause: 500,
-           generatePagination: true
-        });
-    	$('#destImages').slides({
-            play: 4000,
-            fadeSpeed: 0,
-            effect: 'fade',
-            generatePagination: false,
-            hoverPause: false,
-            preload: true
-        });
 });
 </script>
 <div class="line mlm">
-	<div class="home_slider">
-		<div class="sliderBoxWrap">
-			<div class="sliderBox clearfix" style="overflow: visible;">
-				<div id="slides">
-					<div class="slidesContainer" id="billBoard">
-						<div class="slideUnit">
-							<a href="http://m.viator.com/android?aid=se503"
-								title="Download Viator's new Android app today!"
-								class="img-link no-hover"> {{ theme:image
-								file="VIATOR-AndroidApp-Billboard_Final2_26212_1.png"
-								class="slide_img" style="height: 284px; width: 810px;"
-								alt="Download Viator's new Android app today!" title="Download
-								Viator's new Android app today!" }}
-								<div class="slideText">
-									<p class="slideTitle Museo-300">
-										<span></span>
-									</p>
-									<p class="slideCaption inverseTxt"></p>
-								</div> </a>
-						</div>
-						<div class="slideUnit">
-							<a
-								href="http://www.viator.com/Australia-attractions/Save-in-Australia/d22-a7993"
-								title="Save 20% on your 3rd Tour in Australia!"
-								class="img-link no-hover"> {{ theme:image
-								file="australia_hpbillboard_26161_1.jpg" class="slide_img"
-								style="height: 284px; width: 810px;" alt="Save 20% on your 3rd
-								Tour in Australia!" title="Save 20% on your 3rd Tour in
-								Australia!" }}
-								<div class="slideText">
-									<p class="slideTitle Museo-300">
-										<span></span>
-									</p>
-									<p class="slideCaption inverseTxt"></p>
-								</div> </a>
-						</div>
-						<div class="slideUnit">
-							<a
-								href="http://www.viator.com/Hawaii-tours/Dinner-Theater/d278-g6-c79"
-								title="Hawaii" class="img-link no-hover"> {{ theme:image
-								class="slide_img" style="height: 284px; width: 810px;"
-								file="Hawaii_billboard_26045_1.jpg" alt="Hawaii" title="Hawaii"
-								}}
-								<div class="slideText">
-									<p class="slideTitle Museo-300">
-										<span></span>
-									</p>
-									<p class="slideCaption inverseTxt"></p>
-								</div> </a>
-						</div>
-						<div class="slideUnit">
-							<a
-								href="http://www.viator.com/Cairns-and-the-Tropical-North/d754-ttd"
-								title="Cairns" class="img-link no-hover"> {{ theme:image
-								class="slide_img" style="height: 284px; width: 810px;"
-								file="Cairns_billboard2_26046_1.jpg" alt="Cairns" title="Cairns"
-								}}
-								<div class="slideText">
-									<p class="slideTitle Museo-300">
-										<span></span>
-									</p>
-									<p class="slideCaption inverseTxt"></p>
-								</div> </a>
-						</div>
-						<div class="slideUnit">
-							<a
-								href="http://www.viator.com/Kuala-Lumpur-tours/Food-Wine-and-Nightlife/d335-g6"
-								title="Malaysia" class="img-link no-hover"> {{ theme:image
-								class="slide_img" style="height: 284px; width: 810px;"
-								file="malaysia_billboard_25791_1.jpg" alt="Malaysia"
-								title="Malaysia" }}
-								<div class="slideText">
-									<p class="slideTitle Museo-300">
-										<span></span>
-									</p>
-									<p class="slideCaption inverseTxt"></p>
-								</div> </a>
-						</div>
-						<div class="slideUnit">
-							<a
-								href="http://www.viator.com/Los-Angeles-attractions/Universal-Studios-Hollywood-tours-tickets/d645-a1047"
-								title="Universal Hollywood" class="img-link no-hover"> {{
-								theme:image class="slide_img" style="height: 284px; width:
-								810px;" file="transformers_billboard_1_26072_1.jpg"
-								alt="Universal Hollywood" title="Universal Hollywood" }}
-								<div class="slideText">
-									<p class="slideTitle Museo-300">
-										<span></span>
-									</p>
-									<p class="slideCaption inverseTxt"></p>
-								</div> </a>
+	<div class="main-title-bar">
+		<div class="inner tall overlay">
+			<script type="text/javascript">
+    function slidePhotoPrevNextClick(direction)
+    {
+//        $("#loadingStar").css("display", "inline");
+        if(direction=="next")
+        {
+            nextPhoto = true;
+        }
+        if(direction=="prev")
+        {
+            nextPhoto = false;
+        }
+        var currentPhotoId = $("#currentPhotoId").val();
+        var reqURL = "/ajaxPhotoSlide.jspa?currentPhotoId="+currentPhotoId+"&amp;nextPhoto="+nextPhoto;
+        jQuery.get(reqURL, function(data)
+        {
+            $("#slidingPhotos").empty();
+            $("#slidingPhotos").html(data);
+//            $("#loadingStar").css("display", "none");
+            $("#caption").css({'opacity':'0','display':'none'});
+            $('.image').hover(
+            function() {
+                $(this).find('#caption').stop().fadeTo(500, 0.75);
+            },
+            function() {
+                $(this).find('#caption').stop().fadeTo(500, 0);
+            });
+
+        });
+    }
+
+    $(document).ready(function(){
+        current = 1;
+        button = 1;
+        images = 20;
+        width = 208;
+
+        $("a[id='next']").click(function()
+        {
+            slidePhotoPrevNextClick("next");
+            return false;
+        });
+
+        $("a[id='previous']").click(function()
+        {
+            slidePhotoPrevNextClick("prev");
+            return false;
+        });
+
+        $("#caption").css({'opacity':'0','display':'inline'});
+        $('.image').hover(
+        function() {
+            $(this).find('#caption').stop().fadeTo(500, 0.75);
+        },
+        function() {
+            $(this).find('#caption').stop().fadeTo(500, 0);
+        });
+
+
+
+    });   
+
+</script>
+
+			<div class="title-bar-gallery">
+				<div class="gallery overlay">
+
+
+					{{ theme:image style="display: none" file="loading.star.gif"
+					alt="loading star" class="photo_slider_loading" id="loadingStar" }}
+					<div class="photo_slider">
+						<div style="width: 9999px;" class="photo_slider_images"
+							id="slidingPhotos">
+
+
+
+
+
+							<input type="hidden" value="1253263" id="currentPhotoId"> <a
+								title=""
+								href="/photos/Chicago/Adler-Planetarium-and-Astronomy-Museum/d673-1209/1253263"
+								class="image"> <img width="205px" height="140px"
+								title="Adler Planetarium and Astronomy Museum"
+								alt="Photo of Chicago Adler Planetarium and Astronomy Museum "
+								src="http://cache.graphicslib.viator.com/graphicslib/media/8f/chicago-photo_1253263-205x140.jpg#photo_1253263">
+
+								<span id="caption" class="caption"
+								style="opacity: 0; display: inline;"> We walked out to the
+									Planetarium to watch the s...<br>Photo by Kim</span> </a>
+
 						</div>
 					</div>
-					<a href="#" class="prev">Prev</a><a href="#" class="next">Next</a>
-					<ul class="slidesPagination">
-						
+
+
+
+				</div>
+				<div class="gallery-nav line">
+					<div class="unit size1of6">
+						<a class="no-hover" title="previous" href="javascript:void(0);"
+							id="previous"><i class="icon icon-slide-prev unit"></i><span
+							class="hide-txt">Prev</span> </a>
+					</div>
+					<div class="unitRight size1of6">
+						<a class="no-hover" title="next" href="javascript:void(0);"
+							id="next"><i class="icon icon-slide-next mrn unitRight"></i><span
+							class="hide-txt">Next</span> </a>
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+			<div class="mhl inverse-txt">
+
+				<h2 class="man strong ptl h1">
+				<?php echo $country['country_name'];?>
+				</h2>
+
+
+				<h2 class="man strong info-label h6 man">Tours, Sightseeing &amp;
+					Things to do</h2>
+
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="line clearfix ft">
+				<div class="page-tabs tabs unit mtm">
+					<ul class="tab-control">
+
+
+						<li class="current"><a title="Things to Do in USA"><span>Things to
+									Do</span> </a></li>
+
+
+
+
+						<!-- TODO #section == 'deals' or memberOnlyDeals-->
+
+
+						<li><a title="Deals in USA" class="ttd"
+							href="/USA/d77/USA-memberonlydeals"><span>Deals</span> </a>
+						</li>
+
+
+
+
+						<li><a href="/USA/d77" title="USA Attractions"><span>Attractions</span>
+						</a></li>
+
+
+						<li><a href="/USA-recommendations/d77"
+							title="USA Travelers Recommend"><span>Travelers Recommend</span>
+						</a></li>
+
 					</ul>
 				</div>
 			</div>
+
+
+
+
 		</div>
+	</div>
+	<div class="sub-nav tabs mvm clearfix">
+
+		<ul class="tab-control">
+
+
+
+			<li class="mrm current"><a title="All Things to Do in USA"
+				href="/USA/d77-ttd"> <span><i class="icon icon-hands-up-alt unit"></i>All
+						Things to Do</span>
+					<div class="txtC">
+						<i class="icon icon-sub-nav-tail"></i>
+					</div> </a>
+			</li>
+
+
+			<li class="mrm"><a href="/USA/d77/TravelerReviews"
+				title="Featured Photos"> <span><i class="icon icon-camera unit"></i>Featured
+						Photos</span> </a>
+			</li>
+
+
+
+
+
+
+
+
+
+
+			<li class="mrm"><a href="/USA/d77/DestinationVideos"
+				title="Featured Videos"> <span><i class="icon icon-video unit"></i>Featured
+						Videos</span> </a>
+			</li>
+
+
+		</ul>
 	</div>
 	<div class="main-content">
-		<div class="main-col">
 
 
-			<div mmid="9893" layoutcode="HOME_CENTER_WHY_BOOK_HOT_DEALS"
-				position="1">
-				<div class="mod basic viamod viamod-bar-hd mtm man">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd hd-border mhl pvs">
-							<i class="icon icon-why unit mrm"></i>
-							<h2 class="mtm pbs mod-header h1 xxxlarge">Why Viator******</h2>
-							<p class="mhn mtn h3 mod-txt">Oh look. Answers in convenient
-								bullet-point form.</p>
+
+
+
+		<div class="main-col ">
+			<!-- VTC-6292 -->
+
+
+
+
+
+			<!-- VTC-6292 END -->
+
+
+
+			<div class="omniture">
+			</div>
+			<!-- End of Omniture Code-->
+
+
+
+
+
+
+
+			<div class="mod basic shader mhn no-print">
+				<b class="top"><b class="tl"></b><b class="tr"></b> </b>
+				<div class="inner"></div>
+				<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
+			</div>
+
+
+			<div id="SSProdSearchDiv">
+				<div style="display: none;" id="SSFormDiv">
+					<form id="ssform" action="/AJAXSSDestSearchProducts.jspa">
+						SS_G <input value="" name="ss_g"><br> SS_C <input value=""
+							name="ss_c"><br> SS_A <input value="" name="ss_a"><br> SS_TD <input
+							value="" name="ss_td"><br> SS_H <input value="" name="ss_h"><br>
+						SS_K <input value="" name="ss_k"><br> SS_S <input value=""
+							name="ss_s"><br> destinationId <input value="77"
+							name="destinationID"><br> destinationName <input value="USA"
+							name="destinationName"><br> sortBy <input value="SCORE"
+							name="sortBy"><br> section <input value="ttd" name="section"><br>
+						page <input value="1" name="page"><br> topX <input value=""
+							name="topX"><br> reloadedViaAJAX false<br> urlSSHashParam <br>
+					</form>
+				</div>
+
+				<div style="display: none;" id="SSFormClearAllDiv">
+
+
+
+
+
+					<form method="POST" name="clearAllForm" action="/USA/d77-ttd">
+						<input type="hidden" value="true" name="clearAllFilters">
+					</form>
+				</div>
+				<h1 class="strong mbs h2">All 1734 things to do in USA</h1>
+
+
+
+
+
+				<p>The top USA tours and things to do in USA.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="main-border-t">
+					<div class="mam">
+						<form method="get" action="/USA/d77-ttd">
+							<input type="hidden" value="1" name="page"> <input type="hidden"
+								value="all" name="activities"> <label for="sortBy"
+								class="unit mts mrs">Sort by </label> <select
+								onchange="this.form.submit();" name="sortBy">
+
+								<option selected="" value="SCORE">Top sellers</option>
+
+								<option value="REVIEW_AVG_RATING-D">Traveler Rating (high→low)</option>
+								<option value="REVIEW_AVG_RATING-AT">Traveler Rating (low→high)</option>
+
+								<option value="PRICE_FROM">Price (low→high)</option>
+								<option value="PRICE_FROM-D">Price (high→low)</option>
+							</select>
+						</form>
+					</div>
+
+					<div class="line main-border-t main-shader small">
+						<div class="unit size1of3">
+							<p class="mvs mrn">
+								<span class="strong">Results</span> 1-15 of 1734
+							</p>
 						</div>
-						<div class="bd">
-							<ul class="large inverse-txt mhl mbl">
-								<li class="ptxs"><i class="icon icon-list-one"></i><a
-									href="http://www.viator.com/about/our-team"
-									class="inverse-link">Our insiders hand-pick the best things to
-										do in every city.</a></li>
-								<li class="ptxs"><i class="icon icon-list-two"></i><a
-									href="http://www.viator.com/about/about-viator/viator-tours-experiences"
-									class="inverse-link">We offer more experiences than you can
-										stuff into your rollie bag.</a></li>
-								<li class="ptxs"><i class="icon icon-list-three"></i><a
-									href="http://www.viator.com/about/why-book-with-viator/experience-more"
-									class="inverse-link">Reviews and tips from a community of over
-										3 million travelers.</a></li>
-								<li class="ptxs"><i class="icon icon-list-four"></i><a
-									href="http://www.viator.com/about/why-book-with-viator/guaranteed-low-prices"
-									class="inverse-link">Crazy low pricing, guaranteed.</a></li>
-								<li class="ptxs"><i class="icon icon-list-five"></i><a
-									href="http://www.viator.com/customer-care" class="inverse-link">We're
-										here 24/7 for travel support or if you just want to chat.</a>
-								</li>
-							</ul>
+						<div class="unit size2of3">
+
+							<p class="txtR mvs mln">
+								<span class="strong">Page</span> <span class="basic-pipe">|</span>
+								<span class="strong">1</span> <span class="basic-pipe">|</span>
+								<a class="inverse-link"
+									href="/USA/d77-ttd?page=2&amp;topx=16-30">2</a> <span
+									class="basic-pipe">|</span> <a class="inverse-link"
+									href="/USA/d77-ttd?page=3&amp;topx=31-45">3</a> <span
+									class="basic-pipe">|</span> <a class="inverse-link"
+									href="/USA/d77-ttd?page=4&amp;topx=46-60">4</a> <span
+									class="basic-pipe">|</span> <a class="inverse-link"
+									href="/USA/d77-ttd?page=5&amp;topx=61-75">5</a> <span
+									class="basic-pipe">|</span> <a class="inverse-link"
+									href="/USA/d77-ttd?page=2&amp;topx=16-30">Next</a>
+							</p>
+
+
+
 						</div>
 					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 				</div>
-			</div>
-			<div id="mm26119" mmid="26119" layoutcode="CC_VIDEO" position="2">
-				<div class="mod basic viamod standing mtm man">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd">
-							<h2 class="mhl pts mod-header h1 inverse-txt">
-
-								<a
-									href="http://www.viator.com/tours/Rome/Rome-Vespa-Tour-City-Highlights/d511-5603ROME_VESPAGRAND"
-									class="inverse-txt inverse-link hover-alt"
-									title="Video: Rome Vespa Tour">Video: Rome Vespa Tour</a>
+				<!-- end sort_result -->
 
 
-							</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="main-border-t special-curl">
+
+					<div class="size6of7">
+						<h2 class="product-title mtn mrl ptm">
+							<a class="inverse-link"
+								title="Grand Canyon All American Helicopter Tour, Las Vegas, Helicopter Tours"
+								href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT">Grand
+								Canyon All American Helicopter Tour</a>
+						</h2>
+					</div>
+					<div class="special-curl-txt">
+						<div class="txtR inverse-txt leading-s">
+							<a class="inverse-link"
+								href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT"><strong>Special
+									Offer!</strong>
+								<div class="xsmall">Book now</div> </a>
 						</div>
 					</div>
-				</div>
-				<div class="viamod-bar"></div>
-				<!-- ***** this is where the video goes ***** -->
-				<object width="486" height="296" id="playingObject">
-					<param
-						value="https://www.youtube.com/v/Lpa1g-dJY4Q?vq=hd720&amp;controls=1&amp;showinfo=0&amp;version=3"
-						name="movie">
-					<param value="true" name="allowFullScreen">
-					<param value="always" name="allowScriptAccess">
-					<param value="opaque" name="wmode">
-					<embed width="486" height="296" wmode="opaque"
-						allowscriptaccess="always" allowfullscreen="true"
-						type="application/x-shockwave-flash"
-						src="https://www.youtube.com/v/Lpa1g-dJY4Q?vq=hd720&amp;controls=1&amp;showinfo=0&amp;version=3">
-				
-				</object>
-			</div>
-			<div id="mm26051" mmid="26051" layoutcode="CENTER_PHOTO_NARROW"
-				position="3">
-				<div
-					class="mod basic viamod viamod-bar-hd mtm man center-photo-narrow">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd">
-							<h2 class="mhl ptxs pbm mod-header hd-border h1">
-
-								<a
-									href="http://www.viator.com/New-York-City-tours/New-Years-/d687-g7-c26"
-									class="inverse-txt inverse-link hover-alt" title="NYE">Ring in
-									the New Year!</a>
-
-
-							</h2>
-						</div>
-						<div class="bd">
-							<ul class="inverse-txt simple-list mtn">
-								<li><a
-									href="http://www.viator.com/Paris-tours/New-Years-/d479-g7-c26"
-									class="inverse-link">New Year's Eve in Paris</a></li>
-								<li><a
-									href="http://www.viator.com/New-York-City-tours/New-Years-/d687-g7-c26"
-									class="inverse-link">New Year's Eve in New York</a></li>
-								<li><a
-									href="http://www.viator.com/Sydney-tours/New-Years-/d357-g7-c26"
-									class="inverse-link">New Year's Eve in Sydney</a></li>
-							</ul>
-						</div>
-					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b> <a
-						href="http://www.viator.com/New-York-City-tours/New-Years-/d687-g7-c26"
-						title="NYE" class="img-link no-hover"> {{ theme:image
-						file="New_York__Manhattan_iStock_000013513231Small_26051_1.jpg"
-						alt="NYE" class="hero-img" height="170" width="250" }} </a>
-
-				</div>
-			</div>
-			<div id="mm26050" mmid="26050" layoutcode="CW1b_NEW" position="4">
-				<div class="mod basic viamod viamod-bar-hd mtm man">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd">
-							<h2 class="mhl ptxs pbm mod-header hd-border h1">
-
-								<a title="Escape to Southeast Asia"
-									class="inverse-txt inverse-link hover-alt"
-									href="http://www.viator.com/Asia/d2-ttd"> Escape to Southeast
-									Asia </a>
-
-							</h2>
-						</div>
-						<div class="bd">
-							<div class="mhm pbm">
 
 
 
 
+					<p class="mtn">
 
+						<a
+							href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT/TR"
+							recommended""="" highly="" rating:="" star="" 5="" title="title=">
+							{{ theme:image title="5 star rating: Highly Recommended"
+							alt="5 star rating: Highly Recommended"
+							file="16_5.gif" class="unit mrs" }} </a> <a
+							class="inverse-link"
+							title="3011 reviews of Grand Canyon All American Helicopter Tour"
+							href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT/TR"><span
+							class="count">3011</span> </a> <span class="simple-pipe">|</span>
+						<a class="no-hover"
+							href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT#mediaGallery">
+							<i class="icon icon-video mrn"></i> </a> <a class="inverse-link"
+							href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT#mediaGallery">Video</a>
+						<span class="simple-pipe">|</span> <a class="no-hover"
+							onclick="addWSItem('2280AAHT', '');return false;" href="#"><i
+							class="icon icon-wishlist"></i> </a><a class="inverse-link"
+							onclick="addWSItem('2280AAHT', '');return false;" href="#">Add to
+							Wishlist</a>
+					</p>
+					<div class="media man product-summary">
+						<div class="img pbm">
+							<div class="img-product overlay">
+								<a class="img-link no-hover"
+									title="Grand Canyon All American Helicopter Tour, Las Vegas, Helicopter Tours"
+									href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT">
+									<img width="154" height="109"
+									alt="Grand Canyon All American Helicopter Tour, Las Vegas, Helicopter Tours"
+									src="http://cache.graphicslib.viator.com/graphicslib/thumbs154x109/2280/SITours/grand-canyon-all-american-helicopter-tour-in-las-vegas-115053.jpg">
+								</a>
 
-								<p class="mtn large mod-txt">Fresh seafood, balmy evenings,
-									miles of shimmering white sand and the jungliest of jungles.
-									We've fallen in love with this tropical getaway, and you will,
-									too.</p>
-
-
-								<div class="media pbm viamod-border-b">
-
-									<div class="img img-product mln">{{ theme:image
-										file="Thailand_long_boat_and_poda_island_shutterstock_000080203108.jpg"
-										alt="" height="109" width="154" }}</div>
-
-									<div class="bd">
-
-										<p class="mts mbn inverse-txt small">
-											<a href="http://www.viator.com/Thailand/d20-ttd"
-												class="h3 strong inverse-link"> Thailand </a><a
-												href="http://www.viator.com/Thailand/d20-ttd"
-												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-										</p>
-
-
-
-										<p class="mod-txt mvn">After Bangkok's Grand Palace, head to
-											the countryside for elephant rides, river-rafting trips,
-											jungle treks and floating markets. Don't miss Phuket's
-											pearlescent beaches, where the water is so deliciously
-											turquoise you'll want to drink it.</p>
-
+								<div class="mod basic photo-count">
+									<div class="inner">
+										<div class="bd">
+											<p class="mvs">
+												<a class="inverse-link"
+													title="792 Grand Canyon All American Helicopter Tour photos"
+													href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT/photos"><i
+													class="icon icon-camera-alt unit"></i>792 photos</a>
+											</p>
+										</div>
 									</div>
 								</div>
 
-								<div class="media pbm viamod-border-b">
+							</div>
 
-									<div class="img img-product mln">{{ theme:image
-										file="Cambodia_Smiling_Faces_in_the_Temple_of_Bayon_shutterstock_0.jpg"
-										alt="" height="109" width="154" }}</div>
-
-									<div class="bd">
-
-										<p class="mts mbn inverse-txt small">
-											<a href="http://www.viator.com/Cambodia/d12-ttd"
-												class="h3 strong inverse-link"> Cambodia </a><a
-												href="http://www.viator.com/Cambodia/d12-ttd"
-												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-										</p>
+							<p class="txtC mvn mrn">
 
 
+								<a class="no-hover"
+									href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT"
+									title="Likely to Sell Out!"> {{ theme:image class="inline-unit mts"
+									file="likelysellout.gif"
+									alt="Likely to Sell Out!" }} </a>
 
-										<p class="mod-txt mvn">Angkor Wat puts your average temple to
-											shame. But Cambodia has a humble side, too: rural villages
-											dotted with stilted houses, rice paddies and swaying sugar
-											palms, as seen on a sunset cruise along the Mekong River.</p>
+							</p>
 
-									</div>
+						</div>
+						<div class="bd">
+							<div class="line">
+								<div class="unit size3of5">
+									<p class="mvn mrn">
+										Take off from Las Vegas Airport on an exhilarating helicopter
+										flight to the Grand Canyon. You'll enjoy a 45-minute
+										helicopter flight each way, land deep in the&nbsp;...&nbsp; <br>
+										<a class="inverse-link"
+											href="/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT"><i
+											class="icon icon-arrow-link unit mts"></i>Read more</a>
+									</p>
+								</div>
+								<div class="unit size1of2">
+									<ul class="xsmall note mrn mts">
+										<li>
+											<div class="media man">
+												<i title="Location" class="icon icon-location img"></i>
+												<div class="bd">Las Vegas, Nevada</div>
+											</div>
+										</li>
+										<li>
+											<div class="media man">
+												<i title="Duration" class="icon icon-clock img"></i>
+												<div class="bd">3 hours 30 minutes (approx.)</div>
+											</div>
+										</li>
+									</ul>
 								</div>
 
-								<div class="media">
-
-									<div class="img img-product mln">{{ theme:image
-										file="Vietnam_Floating_fishing_village_in_Halong_Bay_shutterstock_.jpg"
-										alt="" height="109" width="154" }}</div>
-
-
-									<div class="bd">
-
-										<p class="mts mbn inverse-txt small">
-											<a href="http://www.viator.com/Vietnam/d21-ttd"
-												class="h3 strong inverse-link"> Vietnam </a><a
-												href="http://www.viator.com/Vietnam/d21-ttd"
-												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-										</p>
+								<div class="product-price txtR line">
+									<span class="price-from">From USD</span> <span
+										class="price-amount"><span class="currency-sign">$</span>299.99<span></span>
+									</span>
 
 
 
-										<p class="mod-txt mvn">Tour charming Hanoi, dip your feet in
-											Halong Bay, or travel back in time through Ho Chi Minh City's
-											Cu Chi Tunnels. Your fuel: a larger-than-life bowl of
-											piping-hot pho for breakfast, lunch and dinner. (It's
-											seriously addictive.)</p>
+									<div class="small leading-s mtxs">
+										<span class="price-was">$363.99</span><br> <span
+											class="price-save">Save $64.00</span>
+									</div>
 
+									<div class="btn btn-alt unitRight size-btn-check-dates mts">
+										<button
+											onclick="window.location.href='/tours/Las-Vegas/Grand-Canyon-All-American-Helicopter-Tour/d684-2280AAHT';"
+											title="Check Dates">
+											<span>Check Dates</span>
+										</button>
 									</div>
 								</div>
 
 							</div>
 						</div>
+						<!-- end bd -->
 					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
+				</div>
+
+				<div class="line main-border-t main-border-b main-shader small">
+					<div class="unit size1of3">
+						<p class="mvs mrn">
+							<span class="strong">Results</span> 1-15 of 1734
+						</p>
+					</div>
+					<div class="unit size2of3">
+
+						<p class="txtR mvs mln">
+							<span class="strong">Page</span> <span class="basic-pipe">|</span>
+							<span class="strong">1</span> <span class="basic-pipe">|</span> <a
+								class="inverse-link" href="/USA/d77-ttd?page=2&amp;topx=16-30">2</a>
+
+
+
+
+							<span class="basic-pipe">|</span> <a class="inverse-link"
+								href="/USA/d77-ttd?page=3&amp;topx=31-45">3</a> <span
+								class="basic-pipe">|</span> <a class="inverse-link"
+								href="/USA/d77-ttd?page=4&amp;topx=46-60">4</a> <span
+								class="basic-pipe">|</span> <a class="inverse-link"
+								href="/USA/d77-ttd?page=5&amp;topx=61-75">5</a> <span
+								class="basic-pipe">|</span> <a class="inverse-link"
+								href="/USA/d77-ttd?page=2&amp;topx=16-30">Next</a>
+						</p>
+
+
+
+					</div>
+				</div>
+
+				<div class="line no-print">
+
+
+					<div class="next_page">
+						<button
+							onclick="document.location.href='/USA/d77-ttd?page=2&amp;topx=16-30';"
+							title="next page">next page</button>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+
+			<div style="display: none;" id="modalLoadingBoxContainer">
+				<div id="modalLoadingBox" class="loading">
+					<h4>Loading</h4>
+					{{ theme:image alt="loading" file="loading.star.gif" }}
+					<p>
+						Guaranteed low prices...<br>staffed by travel experts...<br>24/7
+						customer service...
+					</p>
 				</div>
 			</div>
-			<div id="mm26052" mmid="26052" layoutcode="CENTER_PHOTO_NARROW"
-				position="6">
-				<div
-					class="mod basic viamod viamod-bar-hd mtm man center-photo-narrow">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd">
-							<h2 class="mhl ptxs pbm mod-header hd-border h1">
-
-								<a
-									href="http://www.viator.com/Australia-tours/Dining-Experiences/d22-g6-c20"
-									class="inverse-txt inverse-link hover-alt"
-									title="Aussie Dining Experiences">Aussie Dining Experiences</a>
-
-
-							</h2>
-						</div>
-						<div class="bd">
-							<ul class="inverse-txt simple-list mtn">
-								<li><a
-									href="http://www.viator.com/Melbourne-attractions/Colonial-Tramcar-tours-tickets/d384-a3374"
-									class="inverse-link">Colonial Tramcar in Melbourne</a></li>
-								<li><a
-									href="http://www.viator.com/Ayers-Rock-attractions/Sounds-of-Silence-tours-tickets/d359-a2596"
-									class="inverse-link">Ayers Rock Sounds of Silence </a></li>
-								<li><a
-									href="http://www.viator.com/Sydney-attractions/Sydney-Tower-Restaurant-tours-tickets/d357-a287"
-									class="inverse-link">Sydney Tower Dining</a></li>
-							</ul>
-						</div>
-					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b> <a
-						href="http://www.viator.com/Australia-tours/Dining-Experiences/d22-g6-c20"
-						title="Aussie Dining Experiences" class="img-link no-hover"> {{
-						theme:image
-						file="champagne-at-sunset-sounds-of-silence-restaurant-ayers-rock-.jpg"
-						alt="Aussie Dining Experiences" class="hero-img" height="170"
-						width="250" }} </a>
-
-				</div>
-			</div>
-
-
 		</div>
+		<!-- end main-col -->
+
+
+
 		<div class="right-col">
-			<div layoutcode="">
-				<div
-					class="mod basic viamod viamod-bar-hd hanging mhn destination-list">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div id="destImages">
-							<div class="slidesContainer">
-								{{ theme:image id="slide_img" file="1_002.jpg" alt=""
-								class="hero-img" }}
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="1.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="2.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="3.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="4.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="5.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="6.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="7.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="8.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="9.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="11.jpg" alt="" class="hero-img" }}</div>
-								<div class="slideUnit">{{ theme:image id="slide_img"
-									file="12.jpg" alt="" class="hero-img" }}</div>
+			<div position="1" layoutcode="SHOP_BY_CATEGORY" mmid="4990"
+				id="mm_4990" class="secondary-tab mbm 
+	 smartsearch
+	
+	 ">
+
+				<div class="border_tab line">
+					<ul>
+
+						<li id="mm_4990_tab0" class="on" qsid="smartsearch"><a
+							title="Quick Search" href="/USA/d77-ttd"
+							onclick="sbcTab(0, 4990, 'secondary-tab mbm', 'smartsearch', this); return false; "
+							id="quickSearchLinkTTD"><span>Quick Search</span> </a>
+						</li>
+
+						<li id="mm_4990_tab1" class="" qsid="topttd"><a title="Top Tours"
+							href="javascript:void(0);"
+							onclick="sbcTab(1, 4990, 'secondary-tab mbm', 'toprated');return false;"><span>Top
+									Tours</span> </a>
+						</li>
+
+
+						<li id="mm_4990_tab2" class="" qsid="category"><a
+							title="All Categories" href="javascript:void(0);"
+							onclick="sbcTab(2, 4990, 'secondary-tab mbm', 'category-tab');return false;"><span>All
+									Categories</span> </a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="simple-border pam">
+
+					<!-- Tab 0 smart search -->
+
+					<div id="mm_4990_tablist0" class="" qsid="smartsearch">
 
 
 
 
+						<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $("a[id='qs_view_all']").each(function(){$(this).nm()});
+        
+                        
+    });
+</script>
+
+						<script type="text/javascript">
+    $(document).ready(function() {
+        $("div.hotel_item").hover(
+        function () {
+            $(this).addClass("hotel_item_hover");
+        },
+        function () {
+            $(this).removeClass("hotel_item_hover");
+        });
+        
+        $(".smartsearch div.toggle_head_wrap").hover(
+        function () {
+            $(this).addClass("toggle_head_wrap_hover");
+        },
+        function () {
+            $(this).removeClass("toggle_head_wrap_hover");
+        });
+    });
+</script>
+
+						<div class="toggle_box">
+
+							<div class="toggle">
+								<div class="toggle_head_wrap">
+									<div firstitin="true" class="toggle_head expand"
+										onclick="collapseExpandSSSection(this)" id="categories">
+										<p class="inverse-txt large strong">Things to Do</p>
+									</div>
+								</div>
+								<div class="toggle_body" id="categories">
+
+									<ul class="mtn pts">
 
 
 
+										<li id="ss_grp_li_1" ssgroup="ss_g_1">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_1" id="ss_g_1"
+													value="ss_g=1" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_1">Air, Helicopter &amp; Balloon Tours</label>
+												</div>
+											</div>
 
 
 
+											<ul style="display: none;" ssgroup="ss_g_1">
 
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=1" name="ss_c_1"
+															ssgroup="ss_g_1" id="ss_c_1"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_1">Air Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=121" name="ss_c_121"
+															ssgroup="ss_g_1" id="ss_c_121"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_121">Inter-Island Flights</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=2" name="ss_c_2"
+															ssgroup="ss_g_1" id="ss_c_2"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_2">Helicopter Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=3" name="ss_c_3"
+															ssgroup="ss_g_1" id="ss_c_3"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_3">Balloon Rides</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+
+										<li id="ss_grp_li_3" ssgroup="ss_g_3">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_3" id="ss_g_3"
+													value="ss_g=3" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_3">Cruises, Sailing &amp; Water Tours</label>
+												</div>
+											</div>
+
+
+
+											<ul style="display: none;" ssgroup="ss_g_3">
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=10" name="ss_c_10"
+															ssgroup="ss_g_3" id="ss_c_10"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_10">Sailing Trips</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=67" name="ss_c_67"
+															ssgroup="ss_g_3" id="ss_c_67"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_67">Submarine Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=7" name="ss_c_7"
+															ssgroup="ss_g_3" id="ss_c_7"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_7">Day Cruises</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=76" name="ss_c_76"
+															ssgroup="ss_g_3" id="ss_c_76"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_76">Duck Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=77" name="ss_c_77"
+															ssgroup="ss_g_3" id="ss_c_77"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_77">Dolphin &amp; Whale Watching</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=9" name="ss_c_9"
+															ssgroup="ss_g_3" id="ss_c_9"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_9">Night Cruises</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+
+										<li id="ss_grp_li_5" ssgroup="ss_g_5">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_5" id="ss_g_5"
+													value="ss_g=5" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_5">Day Trips &amp; Excursions</label>
+												</div>
+											</div>
+
+
+
+											<ul style="display: none;" ssgroup="ss_g_5">
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=15" name="ss_c_15"
+															ssgroup="ss_g_5" id="ss_c_15"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_15">Day Trips</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=17" name="ss_c_17"
+															ssgroup="ss_g_5" id="ss_c_17"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_17">Rail Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=74" name="ss_c_74"
+															ssgroup="ss_g_5" id="ss_c_74"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_74">Private Day Trips</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+
+										<li id="ss_grp_li_20" ssgroup="ss_g_20">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_20" id="ss_g_20"
+													value="ss_g=20" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_20">Multi-day &amp; Extended Tours</label>
+												</div>
+											</div>
+
+
+
+											<ul style="display: none;" ssgroup="ss_g_20">
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=84" name="ss_c_84"
+															ssgroup="ss_g_20" id="ss_c_84"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_84">Overnight Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=85" name="ss_c_85"
+															ssgroup="ss_g_20" id="ss_c_85"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_85">Multi-day Tours</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+
+										<li id="ss_grp_li_9" ssgroup="ss_g_9">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_9" id="ss_g_9"
+													value="ss_g=9" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_9">Outdoor Activities</label>
+												</div>
+											</div>
+
+
+
+											<ul style="display: none;" ssgroup="ss_g_9">
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=119" name="ss_c_119"
+															ssgroup="ss_g_9" id="ss_c_119"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_119">Eco Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=32" name="ss_c_32"
+															ssgroup="ss_g_9" id="ss_c_32"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_32">4WD, ATV &amp; Off-Road Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=33" name="ss_c_33"
+															ssgroup="ss_g_9" id="ss_c_33"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_33">Fishing Charters &amp; Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=34" name="ss_c_34"
+															ssgroup="ss_g_9" id="ss_c_34"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_34">Golf Tours &amp; Tee Times</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=35" name="ss_c_35"
+															ssgroup="ss_g_9" id="ss_c_35"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_35">Hiking &amp; Camping</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=36" name="ss_c_36"
+															ssgroup="ss_g_9" id="ss_c_36"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_36">Nature &amp; Wildlife</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=37" name="ss_c_37"
+															ssgroup="ss_g_9" id="ss_c_37"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_37">Safaris</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=38" name="ss_c_38"
+															ssgroup="ss_g_9" id="ss_c_38"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_38">Ski &amp; Snow</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=87" name="ss_c_87"
+															ssgroup="ss_g_9" id="ss_c_87"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_87">Adrenaline &amp; Extreme</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+
+										<li id="ss_grp_li_8" ssgroup="ss_g_8">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_8" id="ss_g_8"
+													value="ss_g=8" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_8">Sightseeing Tickets &amp; Passes</label>
+												</div>
+											</div>
+
+
+
+											<ul style="display: none;" ssgroup="ss_g_8">
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=111" name="ss_c_111"
+															ssgroup="ss_g_8" id="ss_c_111"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_111">Nightclub Passes</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=29" name="ss_c_29"
+															ssgroup="ss_g_8" id="ss_c_29"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_29">Attraction Tickets</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=30" name="ss_c_30"
+															ssgroup="ss_g_8" id="ss_c_30"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_30">Sightseeing &amp; City Passes</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=31" name="ss_c_31"
+															ssgroup="ss_g_8" id="ss_c_31"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_31">Museum Tickets &amp; Passes</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=92" name="ss_c_92"
+															ssgroup="ss_g_8" id="ss_c_92"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_92">Sightseeing Packages</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=93" name="ss_c_93"
+															ssgroup="ss_g_8" id="ss_c_93"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_93">Zoo Tickets &amp; Passes</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+
+										<li id="ss_grp_li_12" ssgroup="ss_g_12">
+											<div class="media man">
+												<input type="checkbox" name="ss_g_12" id="ss_g_12"
+													value="ss_g=12" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_g_12">Tours &amp; Sightseeing</label>
+												</div>
+											</div>
+
+
+
+											<ul style="display: none;" ssgroup="ss_g_12">
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=120" name="ss_c_120"
+															ssgroup="ss_g_12" id="ss_c_120"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_120">Vespa, Scooter &amp; Moped Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=45" name="ss_c_45"
+															ssgroup="ss_g_12" id="ss_c_45"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_45">Self-guided Tours &amp; Rentals</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=46" name="ss_c_46"
+															ssgroup="ss_g_12" id="ss_c_46"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_46">Segway Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=75" name="ss_c_75"
+															ssgroup="ss_g_12" id="ss_c_75"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_75">Private Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=94" name="ss_c_94"
+															ssgroup="ss_g_12" id="ss_c_94"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_94">Full-day Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=95" name="ss_c_95"
+															ssgroup="ss_g_12" id="ss_c_95"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_95">Half-day Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=96" name="ss_c_96"
+															ssgroup="ss_g_12" id="ss_c_96"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_96">Night Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=97" name="ss_c_97"
+															ssgroup="ss_g_12" id="ss_c_97"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_97">Hop-on Hop-off Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=98" name="ss_c_98"
+															ssgroup="ss_g_12" id="ss_c_98"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_98">Bus &amp; Minivan Tours</label>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="media man">
+														<input type="checkbox" checked="checked"
+															class="checkbox img" value="ss_c=99" name="ss_c_99"
+															ssgroup="ss_g_12" id="ss_c_99"
+															onclick="addRemoveSSParameter(this, true);">
+														<div class="bd">
+															<label for="ss_c_99">City Packages</label>
+														</div>
+													</div>
+												</li>
+
+											</ul>
+										</li>
+
+
+									</ul>
+
+									<p class="txtR mtn">
+										<a
+											href="/AJAXquickSearchViewAll.jspa?destinationID=77&amp;showAllTab=thingsToDo"
+											title="Show all »" class="inverse-link small"
+											id="qs_view_all">Show all »</a>
+									</p>
+
+
+								</div>
 							</div>
-						</div>
+							<!--end of toggle-->
 
-						<div class="hd">
-							<div class="line hd-border mhm">
-								<div class="mtm mod-header media mhn mbs h1">
-									<i class="icon icon-hands-up-l img"></i>
-									<div class="bd pbs">
-										Let the <br>Activities Begin
+
+
+							<div class="toggle">
+								<div class="toggle_head_wrap">
+									<div firstitin="true" class="toggle_head expand"
+										onclick="collapseExpandSSSection(this)" id="attractions">
+										<p class="inverse-txt large strong">Top Attractions</p>
+									</div>
+								</div>
+								<div class="toggle_body" id="attractions">
+									<ul class="mtn pts">
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_1115" id="ss_a_1115"
+													value="ss_a=1115" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_1115">Everglades National Park</label>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_2074" id="ss_a_2074"
+													value="ss_a=2074" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_2074">French Quarter</label>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_1063" id="ss_a_1063"
+													value="ss_a=1063" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_1063">Golden Gate Bridge</label>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_1594" id="ss_a_1594"
+													value="ss_a=1594" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_1594">Grand Canyon West Rim</label>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_1053" id="ss_a_1053"
+													value="ss_a=1053" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_1053">Hollywood</label>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_11" id="ss_a_11"
+													value="ss_a=11" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_11">Hoover Dam</label>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="media man">
+												<input type="checkbox" name="ss_a_16" id="ss_a_16"
+													value="ss_a=16" class="checkbox img"
+													onclick="addRemoveSSParameter(this, true);">
+												<div class="bd">
+													<label for="ss_a_16">Statue of Liberty</label>
+												</div>
+											</div>
+										</li>
+
+									</ul>
+
+									<p class="txtR mtn">
+										<a
+											href="/AJAXquickSearchViewAll.jspa?destinationID=77&amp;showAllTab=attractions"
+											title="Show all »" class="inverse-link small"
+											id="qs_view_all">Show all »</a>
+									</p>
+
+
+								</div>
+							</div>
+							<!--end of toggle-->
+
+							<div class="toggle traveldate">
+								<div class="toggle_head_wrap">
+									<div firstitin="true" class="toggle_head expand"
+										onclick="collapseExpandSSSection(this)" id="travelDate">
+										<p class="inverse-txt large strong">Travel Date</p>
+									</div>
+								</div>
+								<div class="toggle_body" id="travelDate">
+									<div class="pam">
+										<div class="line" id="calendarPopupWrapper">
+
+
+
+											<input type="text" onclick="popupCalendar('77','')"
+												readonly="true" value="" class="unit input-long"
+												id="qsDateInput"> <a class="unit no-hover mls"
+												onclick="popupCalendar('77','');" href="javascript:void(0);"
+												title=""> <i class="icon icon-calendar"><span
+													class="hide-txt">Select date</span> </i> </a>
+											<div class="travel-calendar" id="calendarTravelPopup"></div>
+
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+							<!--end of toggle-->
+
+
+
+							<div class="toggle">
+
+								<div class="toggle_head_wrap">
+									<div firstitin="true" class="toggle_head "
+										onclick="collapseExpandSSSection(this)" id="onSale">
+										<p class="inverse-txt large strong">Deals &amp; Special Offers</p>
+									</div>
+								</div>
+								<div style="display: none;" class="toggle_body" id="onSale">
+									<div class="media mtn ptm">
+										<input type="checkbox" name="ss_s" id="ss_s" value="ss_s=true"
+											onclick="addRemoveSSParameter(this, true);"
+											class="checkbox img">
+										<div class="bd">
+											<label for="ss_s">Only show Viator tours currently on sale or
+												featuring special promotions</label>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!--end of toggle-->
+
+
+							<!--end of toggle-->
+
+							<div class="toggle refinekeywords">
+
+								<div class="toggle_head_wrap">
+									<div firstitin="true" class="toggle_head "
+										onclick="collapseExpandSSSection(this)" id="keyWord">
+										<p class="inverse-txt large strong">Refine by Keywords</p>
+									</div>
+								</div>
+								<div style="display: none;" class="toggle_body" id="keyWord">
+									<div class="pam line">
+										<input type="text" name="ssKeyword" value=""
+											placeholder="Enter keywords" class="unit input-large"
+											id="ss_k_id"> <a class="unit no-hover mls"
+											onclick="doKeywords()" href="javascript:void(0);">{{ theme:image
+											file="arrow_blue_right.png" alt="" }} </a>
+
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="bd inverse-txt">
-
-
-
-
-
-
-
-							<div class="mhm viamod-border-b" mmid="2506"
-								layoutcode="FIND_TTD_1a" position="1">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/North-America/d8-vd"
-										class="inverse-link">North America</a><a
-										href="http://www.viator.com/href=" north-america="" d8-vd"=""
-										class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/New-York-City/d687-ttd"
-										class="inverse-link">New York</a>, <a
-										href="http://www.viator.com/Las-Vegas/d684-ttd"
-										class="inverse-link">Las Vegas</a>, <a
-										href="http://www.viator.com/Grand-Canyon-National-Park/d815-ttd"
-										class="inverse-link">Grand Canyon</a>, <a
-										href="http://www.viator.com/San-Francisco/d651-ttd"
-										class="inverse-link">San Francisco</a>, <a
-										href="http://www.viator.com/Los-Angeles/d645-ttd"
-										class="inverse-link">Los Angeles</a>, <a
-										href="http://www.viator.com/Oahu/d672-ttd"
-										class="inverse-link">Oahu</a>, <a
-										href="http://www.viator.com/New-Orleans/d675-ttd"
-										class="inverse-link">New Orleans</a>, <a
-										href="http://www.viator.com/Orlando/d663-ttd"
-										class="inverse-link">Orlando</a>, <a
-										href="http://www.viator.com/Washington-DC/d657-ttd"
-										class="inverse-link">Washington DC</a>, <a
-										href="http://www.viator.com/Vancouver/d616-ttd"
-										class="inverse-link">Vancouver</a>, <a
-										href="http://www.viator.com/Montreal/d625-ttd"
-										class="inverse-link">Montreal</a>, <a
-										href="http://www.viator.com/Cancun/d631-ttd"
-										class="inverse-link">Cancun</a>, <a
-										href="http://www.viator.com/North-America/d8-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
-
-
-
-
-
-
-							<div class="mhm viamod-border-b" mmid="2510"
-								layoutcode="FIND_TTD_1a" position="2">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/Europe/d6-vd"
-										class="inverse-link">Europe</a><a
-										href="http://www.viator.com/href=" europe="" d6-vd"=""
-										class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/Paris/d479-ttd"
-										class="inverse-link">Paris</a>, <a
-										href="http://www.viator.com/London/d737-ttd"
-										class="inverse-link">London</a>, <a
-										href="http://www.viator.com/Rome/d511-ttd"
-										class="inverse-link">Rome</a>, <a
-										href="http://www.viator.com/Rome-attractions/Vatican-tours-tickets/d511-a115"
-										class="inverse-link">Vatican</a>, <a
-										href="http://www.viator.com/Florence/d519-ttd"
-										class="inverse-link">Florence</a>, <a
-										href="http://www.viator.com/Venice/d522-ttd"
-										class="inverse-link">Venice</a>, <a
-										href="http://www.viator.com/Milan/d512-ttd"
-										class="inverse-link">Milan</a>, <a
-										href="http://www.viator.com/Barcelona/d562-ttd"
-										class="inverse-link">Barcelona</a>, <a
-										href="http://www.viator.com/Madrid/d566-ttd"
-										class="inverse-link">Madrid</a>, <a
-										href="http://www.viator.com/Amsterdam/d525-ttd"
-										class="inverse-link">Amsterdam</a>, <a
-										href="http://www.viator.com/Dublin/d503-ttd"
-										class="inverse-link">Dublin</a>, <a
-										href="http://www.viator.com/Edinburgh/d739-ttd"
-										class="inverse-link">Edinburgh</a>, <a
-										href="http://www.viator.com/Munich/d487-ttd"
-										class="inverse-link">Munich</a>, <a
-										href="http://www.viator.com/Vienna/d454-ttd"
-										class="inverse-link">Vienna</a>, <a
-										href="http://www.viator.com/Zurich/d577-ttd"
-										class="inverse-link">Zurich</a>, <a
-										href="http://www.viator.com/Italy/d57-ttd"
-										class="inverse-link">Italy</a>, <a
-										href="http://www.viator.com/Spain/d67-ttd"
-										class="inverse-link">Spain</a>, <a
-										href="http://www.viator.com/France/d51-ttd"
-										class="inverse-link">France</a>, <a
-										href="http://www.viator.com/Europe/d6-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
-
-
-
-
-
-
-							<div class="mhm viamod-border-b" mmid="12150"
-								layoutcode="FIND_TTD_1a" position="3">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/Australia-and-Pacific/d3-vd"
-										class="inverse-link">Australia &amp; Pacific</a><a
-										href="http://www.viator.com/href=" australia-and-pacific=""
-										d3-vd"="" class="no-hover"><i class="icon icon-arrow-east mls"></i>
-									</a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/Sydney/d357-ttd"
-										class="inverse-link">Sydney</a>, <a
-										href="http://www.viator.com/Melbourne/d384-ttd"
-										class="inverse-link">Melbourne</a>, <a
-										href="http://www.viator.com/Cairns-and-the-Tropical-North/d754-ttd"
-										class="inverse-link">Cairns</a>, <a
-										href="http://www.viator.com/Ayers-Rock/d359-ttd"
-										class="inverse-link">Ayers Rock</a>, <a
-										href="http://www.viator.com/Perth/d389-ttd"
-										class="inverse-link">Perth</a>, <a
-										href="http://www.viator.com/Australia/d22-ttd"
-										class="inverse-link">Australia</a>, <a
-										href="http://www.viator.com/Queenstown/d407-ttd"
-										class="inverse-link">Queenstown</a>, <a
-										href="http://www.viator.com/Auckland/d391-ttd"
-										class="inverse-link">Auckland</a>, <a
-										href="http://www.viator.com/New-Zealand/d24-ttd"
-										class="inverse-link">New Zealand</a>, <a
-										href="http://www.viator.com/Australia-and-Pacific/d3-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
-
-
-
-
-
-
-							<div class="mhm viamod-border-b" mmid="2513"
-								layoutcode="FIND_TTD_1a" position="4">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/Asia/d2-vd" class="inverse-link">Asia</a><a
-										href="http://www.viator.com/href=" asia="" d2-vd"=""
-										class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/Tokyo/d334-ttd"
-										class="inverse-link">Tokyo</a>, <a
-										href="http://www.viator.com/Japan/d16-ttd"
-										class="inverse-link">Japan</a>, <a
-										href="http://www.viator.com/Singapore/d18-ttd"
-										class="inverse-link">Singapore</a>, <a
-										href="http://www.viator.com/Hong-Kong/d14-ttd"
-										class="inverse-link">Hong Kong</a>, <a
-										href="http://www.viator.com/Beijing/d321-ttd"
-										class="inverse-link">Beijing</a>, <a
-										href="http://www.viator.com/Shanghai/d325-ttd"
-										class="inverse-link">Shanghai</a>, <a
-										href="http://www.viator.com/Bangkok/d343-ttd"
-										class="inverse-link">Bangkok</a>, <a
-										href="http://www.viator.com/Phuket/d349-ttd"
-										class="inverse-link">Phuket</a>, <a
-										href="http://www.viator.com/Kuala-Lumpur/d335-ttd"
-										class="inverse-link">Kuala Lumpur</a>, <a
-										href="http://www.viator.com/Vietnam/d21-ttd"
-										class="inverse-link">Vietnam</a>, <a
-										href="http://www.viator.com/Asia/d2-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
-
-
-
-
-
-
-							<div class="mhm viamod-border-b" mmid="2515"
-								layoutcode="FIND_TTD_1a" position="5">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/Middle-East-and-Africa/d1-vd"
-										class="inverse-link">Middle East &amp; Africa</a><a
-										href="http://www.viator.com/href=" middle-east-and-africa=""
-										d1-vd"="" class="no-hover"><i class="icon icon-arrow-east mls"></i>
-									</a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/Dubai/d828-ttd"
-										class="inverse-link">Dubai</a>, <a
-										href="http://www.viator.com/Cairo/d782-ttd"
-										class="inverse-link">Cairo</a>, <a
-										href="http://www.viator.com/Egypt/d722-ttd"
-										class="inverse-link">Egypt</a>, <a
-										href="http://www.viator.com/Jerusalem/d921-ttd"
-										class="inverse-link">Jerusalem</a>, <a
-										href="http://www.viator.com/Tel-Aviv/d920-ttd"
-										class="inverse-link">Tel Aviv</a>, <a
-										href="http://www.viator.com/Israel/d919-ttd"
-										class="inverse-link">Israel</a>, <a
-										href="http://www.viator.com/Beirut/d4215-ttd"
-										class="inverse-link">Beirut</a>, <a
-										href="http://www.viator.com/Jordan/d744-ttd"
-										class="inverse-link">Jordan</a>, <a
-										href="http://www.viator.com/Johannesburg/d314-ttd"
-										class="inverse-link">Johannesburg</a>, <a
-										href="http://www.viator.com/South-Africa/d11-ttd"
-										class="inverse-link">South Africa</a>, <a
-										href="http://www.viator.com/Morocco/d825-ttd"
-										class="inverse-link">Morocco</a>, <a
-										href="http://www.viator.com/Middle-East-and-Africa/d1-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
-
-
-
-
-
-
-							<div class="mhm viamod-border-b" mmid="2508"
-								layoutcode="FIND_TTD_1a" position="6">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/Caribbean/d4-vd"
-										class="inverse-link">Caribbean</a><a
-										href="http://www.viator.com/href=" caribbean="" d4-vd"=""
-										class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/Montego-Bay/d432-ttd"
-										class="inverse-link">Montego Bay</a>, <a
-										href="http://www.viator.com/Jamaica/d34-ttd"
-										class="inverse-link">Jamaica</a>, <a
-										href="http://www.viator.com/Nassau/d420-ttd"
-										class="inverse-link">Nassau</a>, <a
-										href="http://www.viator.com/Bahamas/d29-ttd"
-										class="inverse-link">Bahamas</a>, <a
-										href="http://www.viator.com/Aruba/d28-ttd"
-										class="inverse-link">Aruba</a>, <a
-										href="http://www.viator.com/Puerto-Rico/d36-ttd"
-										class="inverse-link">Puerto Rico</a>, <a
-										href="http://www.viator.com/Punta-Cana/d794-ttd"
-										class="inverse-link">Punta Cana</a>, <a
-										href="http://www.viator.com/Dominican-Republic/d32-ttd"
-										class="inverse-link">Dominican Republic</a>, <a
-										href="http://www.viator.com/St-Kitts/d930-ttd"
-										class="inverse-link">St Kitts</a>, <a
-										href="http://www.viator.com/Caribbean/d4-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
-
-
-
-
-
-
-							<div class="mhm" mmid="2516" layoutcode="FIND_TTD_1a"
-								position="7">
-
-								<h3 class="info-label strong mbn mhn h5">
-									<a href="http://www.viator.com/Central-and-South-America/d9-vd"
-										class="inverse-link">Central &amp; South America</a><a
-										href="http://www.viator.com/href="
-										central-and-south-america="" d9-vd"="" class="no-hover"><i
-										class="icon icon-arrow-east mls"></i> </a>
-								</h3>
-								<p class="mtn mhn xsmall">
-
-									<a href="http://www.viator.com/Rio-de-Janeiro/d712-ttd"
-										class="inverse-link">Rio de Janeiro</a>, <a
-										href="http://www.viator.com/Buenos-Aires/d901-ttd"
-										class="inverse-link">Buenos Aires</a>, <a
-										href="http://www.viator.com/Cusco/d937-ttd"
-										class="inverse-link">Cusco</a>, <a
-										href="http://www.viator.com/Lima/d928-ttd"
-										class="inverse-link">Lima</a>, <a
-										href="http://www.viator.com/San-Jose/d793-ttd"
-										class="inverse-link">San Jose</a>, <a
-										href="http://www.viator.com/Santiago/d713-ttd"
-										class="inverse-link">Santiago</a>, <a
-										href="http://www.viator.com/Galapagos-Islands/d936-ttd"
-										class="inverse-link">Galapagos Islands</a>, <a
-										href="http://www.viator.com/Panama-City/d950-ttd"
-										class="inverse-link">Panama City</a>, <a
-										href="http://www.viator.com/Central-and-South-America/d9-vd"
-										class="more-link inverse-link">See all &raquo;</a>
-								</p>
-							</div>
-
+							<!--end of toggle-->
 
 						</div>
+
 					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
+
+
 				</div>
+
 			</div>
 
-			<div mmid="4722" layoutcode="HOME_TRAVELLER_PHOTOS" position="8">
+
+
+
+
+
+
+
+			<div class="opt_rh opt_ttd_rh" id="opt_ttd_rh_77">
+				<!--<div class="mk_mod RH1p">
+        <div class="mk_head_wrap">
+            <div class="mk_head">
+                <span>A/B Testing</span>
+            </div>
+        </div>
+        <div class="mk_body">
+            <p>Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me! Test me!</p>
+        </div>
+    </div>-->
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<script type="text/javascript">
+
+    function travellerPhotosMM(reqObj, params) {
+        var theDiv = document.getElementById(params[0]);
+        if (typeof(theDiv) != 'undefined') {
+            if (reqObj.readyState == 4) {
+                if (reqObj.status == 200) {
+                    theDiv.innerHTML = reqObj.responseText;
+                }
+            }
+        }
+    }
+
+    function selectThumbnail(link) {
+        $(link).closest("div")
+            .addClass("selected").siblings().removeClass("selected");
+    }    
+</script>
+
+			<div position="4" layoutcode="FEATURE_TRAVELLER_PHOTOS" mmid="4687">
 				<div class="mod basic viamod mtn mhn">
 					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
 					<div class="inner phm">
@@ -772,7 +1619,7 @@ $(document).ready(function(){
 							<div class="line hd-border mbm">
 								<div class="mtl pbm mod-header media mhn mbn h3">
 									<i class="icon icon-camera-l img"></i>
-									<div class="bd">Featured Traveler Photos</div>
+									<div class="bd">Traveler Photos We Envy in USA</div>
 								</div>
 							</div>
 						</div>
@@ -805,24 +1652,22 @@ $(document).ready(function(){
 
 
 
-								<div id="tile_detail_img_container" mmid="4722"
-									layoutcode="HOME_TRAVELLER_PHOTOS" position="8">
-									<a
-										href="http://www.viator.com/tours/Toronto/Toronto-CityPass/d623-2640YYZ_TR/photof-996999"
-										id="tile_detail_link" class="img-link no-hover mtm"> {{ theme:image
-										style="min-height: 0px; min-width: 0px;"
-										file="toronto-cn-tower-photo_996999-260tall.jpg"
-										title="Photo of Toronto Toronto CityPass Toronto CN Tower"
-										id="tile_detail_img" class="imgC img-border" }} </a>
+								<div position="4" layoutcode="FEATURE_TRAVELLER_PHOTOS"
+									mmid="4687" id="tile_detail_img_container">
+									<a class="img-link no-hover mtm" id="tile_detail_link"
+										href="/tours/San-Francisco/San-Francisco-Hop-on-Hop-off-Ticket-and-Alcatraz-Tour/d651-2660HOHOTRAZ/photof-995646">
+										<img class="imgC img-border" id="tile_detail_img"
+										title="Photo of USA San Francisco Hop-on Hop-off Ticket and Alcatraz Tour Golden Gate Bridge"
+										src="http://cache.graphicslib.viator.com/graphicslib/media/3e/golden-gate-bridge-photo_995646-260tall.jpg"
+										style="min-height: 0px; min-width: 0px;"> </a>
 								</div>
 
 								<p class="mhn mbs">
-									<a
-										href="http://www.viator.com/tours/Toronto/Toronto-CityPass/d623-2640YYZ_TR/photof-996999"
+									<a class="inverse-txt strong large inverse-link"
+										title="Photo of USA San Francisco Hop-on Hop-off Ticket and Alcatraz Tour Golden Gate Bridge"
 										id="product_name_link"
-										title="Photo of Toronto Toronto CityPass Toronto CN Tower"
-										class="inverse-txt strong large inverse-link">Toronto CN Tower</a>
-
+										href="/tours/San-Francisco/San-Francisco-Hop-on-Hop-off-Ticket-and-Alcatraz-Tour/d651-2660HOHOTRAZ/photof-995646">Golden
+										Gate Bridge</a>
 
 
 
@@ -883,323 +1728,306 @@ $(document).ready(function(){
 								</p>
 								<p class="mhn mts mod-txt xsmall">
 									Photo by: <span class="inverse-txt inverse-link"><a
-										title="ATHANASIOS M"
-										href="http://www.viator.com/profile/279738/ATHANASIOS+M">ATHANASIOS
-											M</a> </span>, Greece <br> Doing what: <a
-										href="http://www.viator.com/tours/Toronto/Toronto-CityPass/d623-2640YYZ_TR"
-										title="Photo of Toronto Toronto CityPass Toronto CN Tower"
-										class="inverse-txt inverse-link">Toronto CityPass</a>
+										href="/profile/99744/Brooke+W" title="Brooke W">Brooke W</a> </span>,
+									USA <br> Doing what: <a class="inverse-txt inverse-link"
+										title="Photo of USA San Francisco Hop-on Hop-off Ticket and Alcatraz Tour Golden Gate Bridge"
+										href="/tours/San-Francisco/San-Francisco-Hop-on-Hop-off-Ticket-and-Alcatraz-Tour/d651-2660HOHOTRAZ">San
+										Francisco Hop-on Hop-off Ticket and Alcatraz Tour</a>
 								</p>
 
+
+								<script language="Javascript">
+		document.getElementById("tile_detail_img").style.minHeight = 0;
+		document.getElementById("tile_detail_img").style.minWidth = 0;
+	</script>
+
 							</div>
-							<div class="gallery-thumbs pbm mvm">
-								<div id="tile_img_container" style="width: 1669px;">
+							<div class="gallery-thumbs pbs mvm">
+								<div style="width: 1669px;" id="tile_img_container">
 									<!-- NOTE: the width has to be dynamic. It depends on how many photos there are width=72 multiplied by n minus 3 -->
 
+									<div class="img-thumb img-thumb-alt unit selected">
+										<a class="img-link no-hover"
+											title="Golden Gate Bridge San Francisco Hop-on Hop-off Ticket and Alcatraz Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=995646&amp;destinationName=USA&amp;productCode=2660HOHOTRAZ&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA San Francisco Hop-on Hop-off Ticket and Alcatraz Tour Golden Gate Bridge"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/3e/golden-gate-bridge-photo_995646-69sq.jpg">
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											title="Photo of Toronto Toronto CityPass Toronto CN Tower"
-											class="img-link no-hover"> {{ theme:image
-											file="toronto-cn-tower-photo_996999-69sq.jpg"
-											title="Photo of Toronto Toronto CityPass Toronto CN Tower" }}</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Victoria Butchart Gardens Tour from Victoria Welcome to Butchart Garden"
-											class="img-link no-hover"> {{ theme:image
-											file="welcome-to-butchart-garden-photo_1596164-69sq.jpg"
-											title="Photo of Victoria Butchart Gardens Tour from Victoria Welcome to Butchart Garden" }}
 
 
 										</a>
 									</div>
 
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="July 13, 2009 - US Capitol Washington DC Segway Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=997075&amp;destinationName=USA&amp;productCode=3707SEGWAY&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Washington DC Segway Tour July 13, 2009 - US Capitol"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/d3/july-13-2009-us-capitol-photo_997075-69sq.jpg">
 
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Costa del Sol Tangier, Morocco Day Trip from Costa del Sol The Strait of Gibraltar"
-											class="img-link no-hover"> {{ theme:image
-											file="the-strait-of-gibraltar-photo_2242817-69sq.jpg"
-											title="Photo of Costa del Sol Tangier, Morocco Day Trip from Costa del Sol The Strait of Gibraltar" }}
 
 
 										</a>
 									</div>
 
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover" title="Starfish Seattle CityPass"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=992587&amp;destinationName=USA&amp;productCode=2640SEA_TR&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Seattle CityPass Starfish"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/4b/starfish-photo_992587-69sq.jpg">
 
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Montreal Quebec City and Montmorency Falls Day Trip from Montreal Montreal,QC 2010 137"
-											class="img-link no-hover"> {{ theme:image
-											file="montreal-qc-2010-137-photo_1124913-69sq.jpg"
-											title="Photo of Montreal Quebec City and Montmorency Falls Day Trip from Montreal Montreal,QC 2010 137" }}
 
 
 										</a>
 									</div>
 
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Me distracting Ben Romance Package at The Venetian Hotel"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=995344&amp;destinationName=USA&amp;productCode=3593RP&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Romance Package at The Venetian Hotel Me distracting Ben"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/10/me-distracting-ben-photo_995344-69sq.jpg">
 
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Reykjavik Viking Horse-Riding Tour and Blue Lagoon from Reykjavik Hardy beasts, Viking horse riding trip"
-											class="img-link no-hover"> {{ theme:image
-											file="hardy-beasts-photo_1001463-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/f7/hardy-beasts-photo_1001463-69sq.jpg"
-											title="Photo of Reykjavik Viking Horse-Riding Tour and Blue Lagoon from Reykjavik Hardy beasts, Viking horse riding trip" }}
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Cairo Private Tour: Giza Pyramids, Sphinx, Memphis, Sakkara Memphis"
-											class="img-link no-hover"> {{ theme:image
-											file="memphis-photo_1072436-69sq.JPG"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/34/memphis-photo_1072436-69sq.JPG"
-											title="Photo of Cairo Private Tour: Giza Pyramids, Sphinx, Memphis, Sakkara Memphis" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Johannesburg Johannesburg Half-Day Sightseeing Tour Johannesburg from Carlton Centre"
-											class="img-link no-hover"> {{ theme:image
-											file="johannesburg-from-carlton-centre-photo_1377257-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/e9/johannesburg-from-carlton-centre-photo_1377257-69sq.jpg"
-											title="Photo of Johannesburg Johannesburg Half-Day Sightseeing Tour Johannesburg from Carlton Centre" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Red Rock Grand Canyon Helicopter and Ground Tour From Phoenix"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=991484&amp;destinationName=USA&amp;productCode=3002CAC&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Grand Canyon Helicopter and Ground Tour From Phoenix Red Rock"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/fc/red-rock-photo_991484-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/fc/red-rock-photo_991484-69sq.jpg">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Barcelona Pyrenees Mountains Small Group Day Trip from Barcelona Vall de Nuria"
-											class="img-link no-hover"> {{ theme:image
-											file="vall-de-nuria-photo_1105070-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/ae/vall-de-nuria-photo_1105070-69sq.jpg"
-											title="Photo of Barcelona Pyrenees Mountains Small Group Day Trip from Barcelona Vall de Nuria" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Shanghai Experience Shanghai: Small-Group Tea Ceremony My turn at serving tea!"
-											class="img-link no-hover"> {{ theme:image
-											file="my-turn-at-serving-tea-photo_4647632-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/d0/my-turn-at-serving-tea-photo_4647632-69sq.jpg"
-											title="Photo of Shanghai Experience Shanghai: Small-Group Tea Ceremony My turn at serving tea!" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Hoover Dam Tour from Las Vegas Ultimate Hoover Dam Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=990963&amp;destinationName=USA&amp;productCode=3431UHDT&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Ultimate Hoover Dam Tour Hoover Dam Tour from Las Vegas"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/f3/hoover-dam-tour-from-las-vegas-photo_990963-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/f3/hoover-dam-tour-from-las-vegas-photo_990963-69sq.jpg">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Edinburgh Stirling Castle and Loch Lomond Small Group Day Trip from Edinburgh Loch Lomond"
-											class="img-link no-hover"> {{ theme:image
-											file="loch-lomond-photo_993290-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/0a/loch-lomond-photo_993290-69sq.jpg"
-											title="Photo of Edinburgh Stirling Castle and Loch Lomond Small Group Day Trip from Edinburgh Loch Lomond" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Edinburgh Loch Ness, Glencoe and the Highlands Small Group Day Trip from Edinburgh Bagpipes at Glencoe"
-											class="img-link no-hover"> {{ theme:image
-											file="bagpipes-at-glencoe-photo_986611-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/f3/bagpipes-at-glencoe-photo_986611-69sq.jpg"
-											title="Photo of Edinburgh Loch Ness, Glencoe and the Highlands Small Group Day Trip from Edinburgh Bagpipes at Glencoe" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="coachella valley Palm Springs Aerial Tramway"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=1361370&amp;destinationName=USA&amp;productCode=3238PSTRAM&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Palm Springs Aerial Tramway coachella valley"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/da/coachella-valley-photo_1361370-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/da/coachella-valley-photo_1361370-69sq.jpg">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											title="Photo of Franz Josef &amp; Fox Glacier Small-Group Franz Josef Glacier Walk holding the pick axe"
-											class="img-link no-hover"> {{ theme:image
-											file="holding-the-pick-axe-photo_995353-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/19/holding-the-pick-axe-photo_995353-69sq.jpg"
-											title="Photo of Franz Josef &amp; Fox Glacier Small-Group Franz Josef Glacier Walk holding the pick axe" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of San Jose Arenal Volcano and Hot Springs Day Trip from San Jose Hot Springs at Arenol Volcano"
-											class="img-link no-hover"> {{ theme:image
-											file="hot-springs-at-arenol-volcano-photo_992137-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/89/hot-springs-at-arenol-volcano-photo_992137-69sq.jpg"
-											title="Photo of San Jose Arenal Volcano and Hot Springs Day Trip from San Jose Hot Springs at Arenol Volcano" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Hoover Dam Grand Canyon All American Helicopter Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=1005235&amp;destinationName=USA&amp;productCode=2280AAHT&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Grand Canyon All American Helicopter Tour Hoover Dam"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/b3/hoover-dam-photo_1005235-69sq.JPG"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/b3/hoover-dam-photo_1005235-69sq.JPG">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Florence Chianti Region Wine Tasting Half-Day Trip from Florence Welcome to Chianti"
-											class="img-link no-hover"> {{ theme:image
-											file="welcome-to-chianti-photo_989807-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/6f/welcome-to-chianti-photo_989807-69sq.jpg"
-											title="Photo of Florence Chianti Region Wine Tasting Half-Day Trip from Florence Welcome to Chianti" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Brussels Brussels Night Walking Tour: Gourmet Belgian Food Antione Frites"
-											class="img-link no-hover"> {{ theme:image
-											file="antione-frites-photo_1396024-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/38/antione-frites-photo_1396024-69sq.jpg"
-											title="Photo of Brussels Brussels Night Walking Tour: Gourmet Belgian Food Antione Frites" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="The limo awaits for our return to the hotel. Ultimate Grand Canyon 4-in-1 Helicopter Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=994588&amp;destinationName=USA&amp;productCode=2280LI_5H&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Ultimate Grand Canyon 4-in-1 Helicopter Tour The limo awaits for our return to the hotel."
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/1c/the-limo-awaits-for-our-return-to-the-hotel-photo_994588-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/1c/the-limo-awaits-for-our-return-to-the-hotel-photo_994588-69sq.jpg">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of San Francisco San Francisco Golden Gate Bridge Bike Tour Golden Gate Bike Tour"
-											class="img-link no-hover"> {{ theme:image
-											file="golden-gate-bike-tour-photo_1297581-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/ad/golden-gate-bike-tour-photo_1297581-69sq.jpg"
-											title="Photo of San Francisco San Francisco Golden Gate Bridge Bike Tour Golden Gate Bike Tour" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Shanghai Round-trip Transfer by High-Speed Maglev Train: Shanghai Pudong International Airport So fast!"
-											class="img-link no-hover"> {{ theme:image
-											file="so-fast-photo_4299403-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/8b/so-fast-photo_4299403-69sq.jpg"
-											title="Photo of Shanghai Round-trip Transfer by High-Speed Maglev Train: Shanghai Pudong International Airport So fast!" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Key West Key West Day Trip"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=1378199&amp;destinationName=USA&amp;productCode=5221KEYWEST&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Key West Day Trip Key West"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/97/key-west-photo_1378199-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/97/key-west-photo_1378199-69sq.jpg">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Las Vegas Grand Canyon South Rim Air and Ground Tour Lake Mead from the plane"
-											class="img-link no-hover"> {{ theme:image
-											file="lake-mead-from-the-plane-photo_987916-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/0c/lake-mead-from-the-plane-photo_987916-69sq.jpg"
-											title="Photo of Las Vegas Grand Canyon South Rim Air and Ground Tour Lake Mead from the plane" }}
-
-
-										</a>
-									</div>
-
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of Cairo Private Tour: Giza Pyramids, Sphinx, Egyptian Museum, Khan el-Khalili Bazaar A Panoramic View of the Pyramids of Giza"
-											class="img-link no-hover"> {{ theme:image
-											file="a-panoramic-view-of-the-pyramids-of-giza-photo_996384-69sq.jpg"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/20/a-panoramic-view-of-the-pyramids-of-giza-photo_996384-69sq.jpg"
-											title="Photo of Cairo Private Tour: Giza Pyramids, Sphinx, Egyptian Museum, Khan el-Khalili Bazaar A Panoramic View of the Pyramids of Giza" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Seattle Whale Spotting Whale Watching from Friday Harbor"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=1355985&amp;destinationName=USA&amp;productCode=3053WHALE_F&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Whale Watching from Friday Harbor Seattle Whale Spotting"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/d1/seattle-whale-spotting-photo_1355985-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/d1/seattle-whale-spotting-photo_1355985-69sq.jpg">
 
 
 										</a>
 									</div>
 
-
-
-									<div class="img-thumb img-thumb-alt unit">
-										<a href="#"
-											
-											title="Photo of London Stonehenge, Windsor Castle and Bath Day Trip from London Windsor Castle"
-											class="img-link no-hover"> {{ theme:image
-											file="windsor-castle-photo_1004073-69sq.JPG"
-											img_src="//cache.graphicslib.viator.com/graphicslib/media/29/windsor-castle-photo_1004073-69sq.JPG"
-											title="Photo of London Stonehenge, Windsor Castle and Bath Day Trip from London Windsor Castle" }}
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="West rim Grand Canyon West Rim Day Trip by Coach, Helicopter and Boat with Optional Skywalk"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=1004104&amp;destinationName=USA&amp;productCode=3951HELIBOAT&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Grand Canyon West Rim Day Trip by Coach, Helicopter and Boat with Optional Skywalk West rim"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/48/west-rim-photo_1004104-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/48/west-rim-photo_1004104-69sq.jpg">
 
 
 										</a>
 									</div>
 
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Space Center Kennedy Space Center Day Trip with Transport from Orlando"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=992946&amp;destinationName=USA&amp;productCode=2855KENNEDY&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Kennedy Space Center Day Trip with Transport from Orlando Space Center"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/b2/space-center-photo_992946-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/b2/space-center-photo_992946-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Storehouse Props, Universal Studios VIP Experience at Universal Studios Hollywood"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=999328&amp;destinationName=USA&amp;productCode=2030VIP&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA VIP Experience at Universal Studios Hollywood Storehouse Props, Universal Studios"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/a0/storehouse-photo_999328-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/a0/storehouse-photo_999328-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Hoover Dam Grand Canyon West Rim VIP Helicopter Tour from Las Vegas"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=994976&amp;destinationName=USA&amp;productCode=3422_G02&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Grand Canyon West Rim VIP Helicopter Tour from Las Vegas Hoover Dam"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/a0/hoover-dam-photo_994976-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/a0/hoover-dam-photo_994976-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Start speading the news New York in One Day Sightseeing Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=995758&amp;destinationName=USA&amp;productCode=2312NYC6HR&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA New York in One Day Sightseeing Tour Start speading the news"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/ae/start-speading-the-news-photo_995758-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/ae/start-speading-the-news-photo_995758-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Gran cañon-usa 023 Grand Canyon and Hoover Dam Day Trip from Las Vegas with Optional Skywalk"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=4317631&amp;destinationName=USA&amp;productCode=3951WESTDLX&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Grand Canyon and Hoover Dam Day Trip from Las Vegas with Optional Skywalk Gran cañon-usa 023"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/bf/gran-ca-on-usa-023-photo_4317631-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/bf/gran-ca-on-usa-023-photo_4317631-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Champagne lunch in the Grand Canyon Grand Canyon All American Helicopter Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=994443&amp;destinationName=USA&amp;productCode=2280AAHT&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Grand Canyon All American Helicopter Tour Champagne lunch in the Grand Canyon"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/8b/champagne-lunch-in-the-grand-canyon-photo_994443-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/8b/champagne-lunch-in-the-grand-canyon-photo_994443-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Poached Sole Fillet and Chanterelles Gourmet Seattle Walking Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=1356182&amp;destinationName=USA&amp;productCode=2956GOURMET&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Gourmet Seattle Walking Tour Poached Sole Fillet and Chanterelles"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/96/poached-sole-fillet-and-chanterelles-photo_1356182-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/96/poached-sole-fillet-and-chanterelles-photo_1356182-69sq.jpg">
+
+
+										</a>
+									</div>
+
+									<div class="img-thumb img-thumb-alt unit ">
+										<a class="img-link no-hover"
+											title="Las Vegas Night Strip Helicopter Tour Las Vegas Night Strip Helicopter Tour"
+											onclick="selectThumbnail(this);getXML('/MarketingModuleTravellerPhotos.jspa?photoID=5766941&amp;destinationName=USA&amp;productCode=3422_N02&amp;productUserId=1010&amp;formatName=260tall', true, travellerPhotosMM, ['tile_detail_container']);return false;"
+											href="#"> <img width="69" height="69"
+											title="Photo of USA Las Vegas Night Strip Helicopter Tour Las Vegas Night Strip Helicopter Tour"
+											img_src="http://cache.graphicslib.viator.com/graphicslib/media/1d/las-vegas-night-strip-helicopter-tour-photo_5766941-69sq.jpg"
+											src="http://cache.graphicslib.viator.com/graphicslib/media/1d/las-vegas-night-strip-helicopter-tour-photo_5766941-69sq.jpg">
+
+
+										</a>
+									</div>
 
 									<div class="img-thumb img-thumb-alt unit last">
-										{{ theme:image img_src="/images/general/icon_last_photo.gif"
+										{{ theme:image width="69" height="69"
 											file="icon_last_photo.gif" }}
 									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
 		</div>
+		<!-- end right-col -->
+
 	</div>
 </div>
