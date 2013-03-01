@@ -22,7 +22,7 @@
 <div class="line">
 	<div class="unit size2of3">
 		<form onsubmit="ua_postForm('/content/account/ajax-signIn.jspa', '#ua_signInForm'); return false" action="" id="ua_signInForm">
-			<p class="h3 strong">Sign in to your Viator.com account</p>
+			<!-- p class="h3 strong">Sign in to your Viator.com account</p>
 			
 			<div class="line">
 				<h4 class="mbn"><label class="strong">Have a Facebook account? </label><span class="note">(Recommended)</span></h4>
@@ -34,7 +34,7 @@
 
 			<div class="light-border-b mbl">
 				<p class="txtC floating-border mtn"><span class="strong pam page-bg">OR</span></p>
-			</div>
+			</div-->
 			
 			<div id="fieldErrors"></div>
 			<p class="h3 strong">Log in to your Viator account</p>
