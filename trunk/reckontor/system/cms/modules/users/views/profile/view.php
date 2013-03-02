@@ -1,26 +1,3 @@
-<div class="main users  ">
-	<div class="mlm line">
-		<div class="main-title-bar">
-			<div class="inner tall overlay">
-				<div class="mhl inverse-txt">
-					<h1 class="man strong ptl"><?php echo lang('profile_display_name'); ?></h1>
-					
-					<h2 class="man strong info-label h6">My Profile</h2>
-				</div>
-
-				<div class="line clearfix ft">
-					<div class="page-tabs tabs unit mtm">
-						<ul class="tab-control">
-							<li class="current"><a href="javascript:;" id="profileLink"><span>My Profile</span></a></li>
-							<li class=""><a title="My Wishlist" href="javascript:;"><span>My Wishlist</span></a></li>
-							<li class=""><a title="My Bookings" href="javascript:;"><span>My Bookings</span></a></li>
-							<li class=""><a title="My Tour Reviews &amp;amp; Photos" href="javascript:;"><span>My Tour Reviews &amp; Photos</span></a></li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-		</div>
 		<div class="main-content">
             <div class="main-col">
 				<div class="line mid-border-b">
@@ -77,5 +54,3 @@
              </div> <!-- end right col --> 
                              
           </div><!-- end main-content -->
-	</div>
-</div>

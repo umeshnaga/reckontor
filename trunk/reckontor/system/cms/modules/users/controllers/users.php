@@ -23,6 +23,7 @@ class Users extends Public_Controller
 		$this->load->helper('user');
 		$this->lang->load('user');
 		$this->load->library('form_validation');
+		$this->template->set_layout('user/user.html');
 	}
 
 	/**
@@ -51,9 +52,9 @@ class Users extends Public_Controller
 
 		// No user? Show a 404 error. Easy way for now, instead should show a custom error message
 		$user or show_404();
-
+		
 		$this->template->build('profile/view', array(
-			'_user' => $user,
+			'_user' => $user, 'display_name' => $user->display_name
 		));
 	}
 
@@ -139,7 +140,7 @@ class Users extends Public_Controller
 			exit(json_encode(array('status' => false, 'message' => validation_errors())));
 		}
 
-		$this->template
+		$this->template->set_layout('user/nosidebar.html')
 			->build('login', array(
 				'_user' => $user,
 				'redirect_to' => $redirect_to,
@@ -414,7 +415,7 @@ class Users extends Public_Controller
 
 		// --------------------------------
 
-		$this->template
+		$this->template->set_layout('user/nosidebar.html')
 			->title(lang('user_register_title'))
 			->set('_user', $user)
 			->build('register');
@@ -568,7 +569,7 @@ class Users extends Public_Controller
 			}
 		}
 
-		$this->template->build('reset_pass');
+		$this->template->set_layout('user/nosidebar.html')->build('reset_pass');
 	}
 
 	/**
