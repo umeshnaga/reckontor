@@ -42,7 +42,7 @@ class Tour extends Public_Controller
 
 		$this->template->build('index');
 	}
-
+	
 	public function country($cmd) {
 		switch($cmd) {
 			case 'get-cities':
@@ -67,5 +67,17 @@ class Tour extends Public_Controller
 				$this->template->set('country', $country)->build('country');
 				break;
 		}
+	}
+	
+	function detail() {
+		$this->template->build('detail');
+	}
+	
+	function cart() {
+		$this->template->build('cart');
+	}
+	
+	function checkout() {
+		$this->template->build('checkout');
 	}
 }
