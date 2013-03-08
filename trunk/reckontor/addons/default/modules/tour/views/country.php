@@ -5,114 +5,20 @@ $(document).ready(function(){
 <div class="line mlm">
 	<div class="main-title-bar">
 		<div class="inner tall overlay">
-			<script type="text/javascript">
-    function slidePhotoPrevNextClick(direction)
-    {
-//        $("#loadingStar").css("display", "inline");
-        if(direction=="next")
-        {
-            nextPhoto = true;
-        }
-        if(direction=="prev")
-        {
-            nextPhoto = false;
-        }
-        var currentPhotoId = $("#currentPhotoId").val();
-        var reqURL = "/ajaxPhotoSlide.jspa?currentPhotoId="+currentPhotoId+"&amp;nextPhoto="+nextPhoto;
-        jQuery.get(reqURL, function(data)
-        {
-            $("#slidingPhotos").empty();
-            $("#slidingPhotos").html(data);
-//            $("#loadingStar").css("display", "none");
-            $("#caption").css({'opacity':'0','display':'none'});
-            $('.image').hover(
-            function() {
-                $(this).find('#caption').stop().fadeTo(500, 0.75);
-            },
-            function() {
-                $(this).find('#caption').stop().fadeTo(500, 0);
-            });
-
-        });
-    }
-
-    $(document).ready(function(){
-        current = 1;
-        button = 1;
-        images = 20;
-        width = 208;
-
-        $("a[id='next']").click(function()
-        {
-            slidePhotoPrevNextClick("next");
-            return false;
-        });
-
-        $("a[id='previous']").click(function()
-        {
-            slidePhotoPrevNextClick("prev");
-            return false;
-        });
-
-        $("#caption").css({'opacity':'0','display':'inline'});
-        $('.image').hover(
-        function() {
-            $(this).find('#caption').stop().fadeTo(500, 0.75);
-        },
-        function() {
-            $(this).find('#caption').stop().fadeTo(500, 0);
-        });
-
-
-
-    });   
-
-</script>
-
 			<div class="title-bar-gallery">
 				<div class="gallery overlay">
-
-
-					{{ theme:image style="display: none" file="loading.star.gif"
-					alt="loading star" class="photo_slider_loading" id="loadingStar" }}
 					<div class="photo_slider">
 						<div style="width: 9999px;" class="photo_slider_images"
 							id="slidingPhotos">
-
-
-
-
-
-							<input type="hidden" value="1253263" id="currentPhotoId"> <a
-								title=""
-								href="/photos/Chicago/Adler-Planetarium-and-Astronomy-Museum/d673-1209/1253263"
-								class="image"> <img width="205px" height="140px"
-								title="Adler Planetarium and Astronomy Museum"
-								alt="Photo of Chicago Adler Planetarium and Astronomy Museum "
-								src="http://cache.graphicslib.viator.com/graphicslib/media/8f/chicago-photo_1253263-205x140.jpg#photo_1253263">
+<img title="" src="<?php echo $country['photo_path']; ?>" />
 
 								<span id="caption" class="caption"
-								style="opacity: 0; display: inline;"> We walked out to the
-									Planetarium to watch the s...<br>Photo by Kim</span> </a>
+								style="opacity: 0; display: inline;"><?php echo $country['short_photo_comment']; ?><br>Photo by <?php echo $country['username']; ?></span> </a>
 
 						</div>
 					</div>
-
-
-
 				</div>
-				<div class="gallery-nav line">
-					<div class="unit size1of6">
-						<a class="no-hover" title="previous" href="javascript:void(0);"
-							id="previous"><i class="icon icon-slide-prev unit"></i><span
-							class="hide-txt">Prev</span> </a>
-					</div>
-					<div class="unitRight size1of6">
-						<a class="no-hover" title="next" href="javascript:void(0);"
-							id="next"><i class="icon icon-slide-next mrn unitRight"></i><span
-							class="hide-txt">Next</span> </a>
-					</div>
-				</div>
+				
 
 			</div>
 
@@ -679,39 +585,6 @@ $(document).ready(function(){
 					<!-- Tab 0 smart search -->
 
 					<div id="mm_4990_tablist0" class="" qsid="smartsearch">
-
-
-
-
-						<script type="text/javascript">
-    $(document).ready(function()
-    {
-        $("a[id='qs_view_all']").each(function(){$(this).nm()});
-        
-                        
-    });
-</script>
-
-						<script type="text/javascript">
-    $(document).ready(function() {
-        $("div.hotel_item").hover(
-        function () {
-            $(this).addClass("hotel_item_hover");
-        },
-        function () {
-            $(this).removeClass("hotel_item_hover");
-        });
-        
-        $(".smartsearch div.toggle_head_wrap").hover(
-        function () {
-            $(this).addClass("toggle_head_wrap_hover");
-        },
-        function () {
-            $(this).removeClass("toggle_head_wrap_hover");
-        });
-    });
-</script>
-
 						<div class="toggle_box">
 
 							<div class="toggle">
@@ -1563,54 +1436,6 @@ $(document).ready(function(){
     </div>-->
 			</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<script type="text/javascript">
-
-    function travellerPhotosMM(reqObj, params) {
-        var theDiv = document.getElementById(params[0]);
-        if (typeof(theDiv) != 'undefined') {
-            if (reqObj.readyState == 4) {
-                if (reqObj.status == 200) {
-                    theDiv.innerHTML = reqObj.responseText;
-                }
-            }
-        }
-    }
-
-    function selectThumbnail(link) {
-        $(link).closest("div")
-            .addClass("selected").siblings().removeClass("selected");
-    }    
-</script>
-
 			<div position="4" layoutcode="FEATURE_TRAVELLER_PHOTOS" mmid="4687">
 				<div class="mod basic viamod mtn mhn">
 					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
@@ -1734,13 +1559,6 @@ $(document).ready(function(){
 										href="/tours/San-Francisco/San-Francisco-Hop-on-Hop-off-Ticket-and-Alcatraz-Tour/d651-2660HOHOTRAZ">San
 										Francisco Hop-on Hop-off Ticket and Alcatraz Tour</a>
 								</p>
-
-
-								<script language="Javascript">
-		document.getElementById("tile_detail_img").style.minHeight = 0;
-		document.getElementById("tile_detail_img").style.minWidth = 0;
-	</script>
-
 							</div>
 							<div class="gallery-thumbs pbs mvm">
 								<div style="width: 1669px;" id="tile_img_container">

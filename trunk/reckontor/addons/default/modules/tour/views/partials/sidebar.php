@@ -53,9 +53,17 @@ $(document).ready(function(){
 						<select class="mbs input-full no-border" id="countryDropdown">
 							<option selected="selected" value="">Select a country</option>
 							<?php
+							$selectedCountryId="";
+							if(isset($country)){
+								$selectedCountryId=$country['country_id'];
+							}
 							foreach ($_SESSION['countries'] as $row)
 							{
-								echo '<option value="'.$row['country_id'].'">'.$row['country_name'].'</option>';
+								if($selectedCountryId==$row['country_id']){
+									echo '<option selected="selected" value="'.$row['country_id'].'">'.$row['country_name'].'</option>';
+								}else{
+									echo '<option value="'.$row['country_id'].'">'.$row['country_name'].'</option>';
+								}
 							}
 							?>
 						</select>

@@ -63,6 +63,11 @@ class Tour extends Public_Controller
 				echo '</optgroup>';
 				break;
 			default:
+				if(!isset($_SESSION['countries'])) {
+					$countries = $this->admin_m->get_all_countries();
+					$_SESSION['countries']=$countries;
+				}
+				
 				$country = $this->admin_m->get_country($cmd);
 				$this->template->set('country', $country)->build('country');
 				break;
