@@ -964,7 +964,7 @@ text-align:center;
 ================================================================*/
 .smartsearch .mk_body { margin-top: -1px; padding: 10px; }
 .smartsearch .toggle_box { border: 0 none; margin: 0; }
-.smartsearch .toggle_head_wrap { background: url("../wayfinder/css/skin/mod_gradient.png") no-repeat scroll -10px 0 #00759a; border-top: 1px solid #00759a; border-bottom: 1px solid #fff;}
+.smartsearch .toggle_head_wrap { background: url("../img/mod_gradient.png") no-repeat scroll -10px 0 #00759a; border-top: 1px solid #00759a; border-bottom: 1px solid #fff;}
 .smartsearch .toggle label, .smartsearch .toggle input, .smartsearch .toggle select { cursor: pointer; }
 .smartsearch .toggle ul li { padding: 1px 0; }
 .smartsearch .toggle .toggle_head { background: url("../img/arrowright.png") no-repeat scroll 8px 8px transparent; border-bottom: 0 none; }
