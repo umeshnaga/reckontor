@@ -1,3 +1,5 @@
  1. Convention to named dbscript files
     yyyy_mm_dd_[SequenceNumber]_name.sql
+ 2. Config database:
+    Change properties in /reckontor/system/cms/config/database.php
 	
