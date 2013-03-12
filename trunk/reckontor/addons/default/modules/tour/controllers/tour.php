@@ -74,9 +74,41 @@ class Tour extends Public_Controller
 		}
 	}
 	
-	function detail() {
-		$this->template->build('detail');
+	function detail($tour_id) {
+		$this->template->set("tour_id", $tour_id)->build('detail');
 	}
+	
+	function add_to_cart () {
+		//$this->load->helper(array('form', 'url'));
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('tour_id', 'Tour', 'required|greater_than[0]');
+		$this->form_validation->set_rules('day', 'Day', 'required|greater_than[0]');
+		$this->form_validation->set_rules('monthyear', 'Month/Year', 'required');
+		$this->form_validation->set_rules('adult_count', 'Adult', 'required|greater_than[0]');
+		
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->template->set("tour_id", $this->input->post('tour_id'))->build('detail');
+		}
+		else
+		{
+			if(!isset($_SESSION['cart'])) {
+				$_SESSION['cart']=array();
+			}
+			$booking = new stdClass();
+			$booking->tour_id =  $this->input->post('tour_id');
+			$booking->day = $this->input->post('day');
+			$booking->monthyear = $this->input->post('monthyear');
+			$booking->adult_count = $this->input->post('adult_count');
+			$booking->children_count = $this->input->post('children_count');
+			
+			$_SESSION['cart'][] = $booking;
+			
+			redirect('/tour/cart');
+		}
+	}
+	
 	
 	function cart() {
 		$this->template->build('cart');
