@@ -48,28 +48,5 @@ class Admin_m extends MY_Model {
 		return $this->db->query("SELECT t.*,td.*,c.city_name FROM r_tour t INNER JOIN r_tour_detail td ON t.tour_id=td.tour_id INNER JOIN r_city c ON t.city_id=c.city_id INNER JOIN r_country cc ON c.country_id=cc.country_id WHERE cc.country_id=".$id)->row_array();
 	}
 	
-	public function insert_supplier($data)
-	{
-		return $this->db->insert($this->db->dbprefix('gpsi_suppliers'), $data);
-	}
-
-	public function update_supplier($id, $data)
-	{
-		$this->db->where('id', $id);
-		return $this->db->update($this->db->dbprefix('gpsi_suppliers'), $data);
-	}
-
-	public function delete_supplier($id)
-	{
-		$this->db->where('id', $id);
-		return $this->db->delete($this->db->dbprefix('gpsi_suppliers'));
-	}
-
-	
-
-	public function get_all_clients()
-	{
-		return $this->db->get($this->db->dbprefix('gpsi_clients'))->result_array();
-	}
 
 }
