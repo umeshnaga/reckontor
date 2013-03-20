@@ -38,7 +38,7 @@
                          <b class="top"><b class="tl"></b><b class="tr"></b></b>
                          <div class="inner">
                                 <div class="hd">
-                                       <h3 class="mod-header">Viator Customer Support</h3>
+                                       <h3 class="mod-header">Ongoasia Customer Support</h3>
                                 </div>
                                 <div class="bd page-bg">
                                         <div class="simple-border ptm bdr-tn">

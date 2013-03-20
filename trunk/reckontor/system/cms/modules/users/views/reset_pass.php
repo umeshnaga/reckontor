@@ -51,7 +51,7 @@
 					<div class="large strong mhm mtm">Not a member yet?</div>
 				</div>
 				<div class="bd">
-					<p class="mts">It's free and allows you to publish reviews, ratings and photos on Viator.com. You'll also have access to members-only promotions and deals.</p>
+					<p class="mts">It's free and allows you to publish reviews, ratings and photos on ongoasia.com. You'll also have access to members-only promotions and deals.</p>
 					<div class="line">						
 						<div class="btn btn-light-shader unitRight size-btn-join mrm mbm">
 							<a href = "{{ url:site uri='register' }}"><span>Join</span></a>

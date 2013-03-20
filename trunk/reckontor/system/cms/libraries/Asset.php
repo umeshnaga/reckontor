@@ -649,11 +649,13 @@ class Asset {
 		$files = array($script, $script_min);
 
 		// If a path key has not been specified, add $default_path_key
+		
 		foreach ($files as &$file)
 		{
 			if ($file != false && strpos($file, '::') === false)
 			{
 				$file = self::$default_path_key . '::' . $file;
+				
 			}
 		}
 

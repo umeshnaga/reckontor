@@ -20,7 +20,7 @@
 				</p>
 
 				<p>
-					Are you a returning Viator.com customer? If so, an account may already have been created for you, with all of your reviews and photos grouped together in one convenient place. <a href="{{ url:site uri='users/reset_pass' }}">Click here to claim your account</a> and create a new password.
+					Are you a returning ongoasia.com customer? If so, an account may already have been created for you, with all of your reviews and photos grouped together in one convenient place. <a href="{{ url:site uri='users/reset_pass' }}">Click here to claim your account</a> and create a new password.
 				</p>
 				
 				<div class="line">
@@ -38,7 +38,7 @@
 
 				<?php echo form_open('register', array('id' => 'register')); ?>
 					<div class="clearfix overlay">
-						<p class="h3 strong">Create a Viator.com account</p>
+						<p class="h3 strong">Create a ongoasia.com account</p>
 						<div class="line">
 							<div class="unit size1of2">									
 								<p><label for="emailAddress" id="emailAddressLabel">Email</label><br>
@@ -60,7 +60,7 @@
 					</div>                   
 					
 					 <p>
-					 	By creating an account you agree to Viator's
+					 	By creating an account you agree to Ongoasia's
 						<a target="_blank" title="privacy policy" href="javascript:;">privacy policy</a> and
 						<a target="_blank" title="terms &amp; conditions" href="javascript:;">terms &amp; conditions</a>.
 					</p>

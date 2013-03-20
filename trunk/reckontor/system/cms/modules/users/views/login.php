@@ -22,7 +22,7 @@
 <div class="line">
 	<div class="unit size2of3">
 		<form onsubmit="ua_postForm('/content/account/ajax-signIn.jspa', '#ua_signInForm'); return false" action="" id="ua_signInForm">
-			<!-- p class="h3 strong">Sign in to your Viator.com account</p>
+			<!-- p class="h3 strong">Sign in to your ongoasia.com account</p>
 			
 			<div class="line">
 				<h4 class="mbn"><label class="strong">Have a Facebook account? </label><span class="note">(Recommended)</span></h4>
@@ -37,7 +37,7 @@
 			</div-->
 			
 			<div id="fieldErrors"></div>
-			<p class="h3 strong">Log in to your Viator account</p>
+			<p class="h3 strong">Log in to your Ongoasia account</p>
 			<p>
 				<label for="emailAddress" id="emailAddressLabel">Email</label><br>
                                 <input type="email" class="input-xlarge" value="" name="email" id="email">
@@ -78,7 +78,7 @@
 						<div class="large strong mhm mtm">Not a member yet?</div>
 					</div>
 					<div class="bd">
-						<p class="mts">It's free and allows you to publish reviews, ratings and photos on Viator.com. You'll also have access to members-only promotions and deals.</p>
+						<p class="mts">It's free and allows you to publish reviews, ratings and photos on ongoasia.com. You'll also have access to members-only promotions and deals.</p>
 						<div class="line">							
 							<div class="btn btn-light-shader unitRight size-btn-join mrm mbm">
 								<a href = "{{ url:site uri='register' }}"><span>Join</span></a>
