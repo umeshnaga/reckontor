@@ -9,9 +9,21 @@
 	<div class="page">
 		<div class="body">
 			<div class="main">
-			{{ template:body }}
+				<div class="line mlm">
+		
+					<div class="main-content">
+						{{ template:partial name="home_slider" }}
+						<div class="main-col">
+							{{ template:body }}
+						</div>
+						<div class="right-col">
+							{{ template:partial name="right_sidebar" }}
+						</div>
+					</div>
+					
+				</div>
 			</div>
-			{{ theme:partial name="sidebar" }}
+			{{ template:partial name="left_sidebar" }}
 		</div>
 		{{ theme:partial name="footer" }}
 	</div>	
