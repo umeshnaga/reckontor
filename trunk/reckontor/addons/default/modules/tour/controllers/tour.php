@@ -26,8 +26,13 @@ class Tour extends Public_Controller
 		$this->load->model('region_m');
 		$this->lang->load('tour');
 		$this->load->helper('html');
-		$this->template->set_layout('sidebar.html')->set_partial('sidebar', 'partials/sidebar');
 		$this->template->append_js('module::ajax.js');
+		
+		$countries = $this->region_m->get_all_countries();
+		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
+		$this->template
+			 ->set('hot_cities', $hot_cities)
+			 ->set('countries', $countries);
 	}
 
 	/**
@@ -38,48 +43,35 @@ class Tour extends Public_Controller
 	 */
 	public function index()
 	{
-		if(!isset($_SESSION['countries'])) {
-			$countries = $this->admin_m->get_all_countries();
-			$_SESSION['countries']=$countries;
-		}
-
-		$this->template->build('index');
+		$countries = $this->region_m->get_all_countries();
+		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
+		
+		$this->template->set_layout('three_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar')
+			   ->set_partial('right_sidebar', 'partials/right_sidebar')
+			   ->set_partial('home_slider', 'partials/home_slider');
+			   
+		$this->template
+			 ->build('index');
 	}
 	
-	public function country($cmd) {
-		switch($cmd) {
-			case 'get-cities':
-				$country_id = $this->input->post('country_id');
-				$cities = $this->admin_m->get_all_cities($country_id,1);
-				echo '<option selected="selected" value="">Select region/city</option><optgroup label="- Browse by city -">';
-				foreach ($cities as $row)
-				{
-					echo '<option value="'.$row['city_id'].'">'.$row['city_name'].'</option>';
-				}
-				echo '</optgroup>';
-				$regions = $this->admin_m->get_all_cities($country_id,0);
-				echo '<optgroup label="- Browse by region -">';
-				foreach ($regions as $row)
-				{
-					echo '<option value="'.$row['city_id'].'">'.$row['city_name'].'</option>';
-				}
-				echo '</optgroup>';
-				break;
-			default:
-				if(!isset($_SESSION['countries'])) {
-					$countries = $this->admin_m->get_all_countries();
-					$_SESSION['countries']=$countries;
-				}
-				
-				$country = $this->admin_m->get_country($cmd);
-				$this->template->set('country', $country)->build('country');
-				break;
-		}
+	public function search($country_id, $city_id = "") {
+		
+		
+		$this->template->set_layout('three_cols.html')
+					   ->set_partial('left_sidebar', 'partials/left_sidebar')
+					   ->set_partial('right_sidebar', 'partials/right_sidebar');
+					   
+		$this->template
+			 ->build('list_tour');
 	}
 	
 	function detail($tour_id) {
 		$tour = $this->tour_m->get_tour_by_id($tour_id);
-		var_dump($tour);
+		
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+			   
 		$this->template->set("tour", $tour)->build('detail');
 	}
 	
@@ -92,6 +84,9 @@ class Tour extends Public_Controller
 		//FIXME check `r_tour_available_date` here
 		if ($this->form_validation->run() == FALSE)
 		{
+			$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+			   
 			$this->template->set("tour_id", $this->input->post('tour_id'))->build('detail');
 		}
 		else
@@ -133,6 +128,10 @@ class Tour extends Public_Controller
 			$total_fee = $total_fee + $booking_details[$i]->total_fee;
 		}
 		$booking_count = sizeof($bookings);
+		
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+			   
 		$this->template->set('booking_count', $booking_count)
 					   ->set('traveler_count', $traveler_count)
 					   ->set('total_fee', $total_fee)
@@ -163,6 +162,10 @@ class Tour extends Public_Controller
 		$booking_count = sizeof($bookings);
 		
 		$countries = $this->region_m->get_all_countries();
+		
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+			   
 		$this->template->set('booking_count', $booking_count)
 					   ->set('traveler_count', $traveler_count)
 					   ->set('total_fee', $total_fee)
@@ -171,14 +174,15 @@ class Tour extends Public_Controller
 					   ->build('checkout');
 	}
 	
-/**
-	 * 
+	/**
+	 * For Ajax call
 	 * @return void
 	 */
 	public function cities_by_country($country_id)
 	{
 		$country_cities_mapping = $this->region_m->get_country_cities_mapping();
-		//var_dump($country_cities_mapping[$country_id]);
 		return $this->template->build_json($country_cities_mapping[$country_id]);
 	}
+	
+	 
 }
