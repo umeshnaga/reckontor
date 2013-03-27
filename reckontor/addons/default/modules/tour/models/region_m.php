@@ -34,7 +34,7 @@ class Region_m extends MY_Model {
 			return $_SERVER['ALL_COUNTRIES'];
 		}
 		
-		$sql = "SELECT * FROM r_country ORDER BY country_name"; 
+		$sql = "SELECT DISTINCT r_country.* FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) ORDER BY country_name"; 
 		$countries = $this->db->query($sql)->result_object();
 		
 		$_SERVER['ALL_COUNTRIES'] = $countries;
@@ -65,10 +65,20 @@ class Region_m extends MY_Model {
 			return $_SERVER[$key];
 		}
 		
-		$sql = "SELECT * FROM r_city WHERE country_id = ? ORDER BY city_name"; 
+		$sql = "SELECT DISTINCT r_city.* 
+		        FROM r_city INNER JOIN r_tour USING (city_id)
+		        WHERE country_id = ? ORDER BY city_name"; 
 		$cities = $this->db->query($sql, array($country_id))->result_object();
 		
 		$_SERVER[$key] = $cities;
 		return $_SERVER[$key];
+	}
+	
+	function get_cities_by_highlight_level($highlight_level) {
+		$sql = "SELECT DISTINCT r_city.* 
+		        FROM r_city INNER JOIN r_tour USING (city_id)
+		        WHERE highlight_level = ? ORDER BY city_name";
+		$cities = $this->db->query($sql, array($highlight_level))->result_object();
+		return $cities;
 	}
 }

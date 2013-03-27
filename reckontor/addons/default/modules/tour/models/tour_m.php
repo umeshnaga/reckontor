@@ -49,12 +49,10 @@ class Tour_m extends MY_Model {
 		$month = $parts[0];
 		$year = $parts[1];
 		
-		$sql = "SELECT * FROM r_tour_available_date WHERE tour_id = ? AND DAY(available_date) = ? AND MONTH(available_date) = ? AND YEAR(available_date) = ?"; 
+		$sql = "SELECT * FROM r_tour_available_date WHERE tour_id = ? AND STR_TO_DATE(?,'%d %m %Y') BETWEEN `available_from_date` AND `available_to_date`;"; 
 		
 		$price_info = $this->db->query($sql, array($tour_id, 
-											 $day,
-											 $month,
-											 $year))->row();
+											 $day.' '.$monthyear))->row();
 		if (sizeof($price_info) > 0) {
 			return $price_info;
 		}
