@@ -35,7 +35,7 @@
 $db[PYRO_DEVELOPMENT] = array(
 	'hostname'		=> 	'localhost',
 	'username'		=> 	'root',
-	'password'		=> 	'',
+	'password'		=> 	'drmcmtr',
 	'database'		=> 	'reckontor',
 	'dbdriver' 		=> 	'mysql',
 	'dbprefix' 		=>	'',
@@ -73,7 +73,7 @@ $db[PYRO_STAGING] = array(
 $db[PYRO_PRODUCTION] = array(
 	'hostname'		=> 	'localhost',
 	'username'		=> 	'root',
-	'password'		=> 	'',
+	'password'		=> 	'drmcmtr',
 	'database'		=> 	'reckontor',
 	'dbdriver' 		=> 	'mysql',
 	'active_r' 		=>	TRUE,
