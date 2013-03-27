@@ -60,4 +60,15 @@ class Tour_m extends MY_Model {
 		return null;
 	}
 
+	public function get_tours_by_country_id($country_id, $page)
+	{
+		$sql = "SELECT r_tour.tour_id, title, CONCAT(SUBSTRING(introduction,1,150),' ...') AS introduction, country_name, city_name, duration_hours, common_adult_price FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail USING (tour_id) WHERE r_country.country_id = ? LIMIT ?,?"; 
+		return $this->db->query($sql, array($country_id, ($page-1)*RECORD_PER_PAGE, RECORD_PER_PAGE))->result_object();
+	}
+	
+	public function get_tours_count_by_country_id($country_id)
+	{
+		$sql = "SELECT COUNT(*) AS count FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail USING (tour_id) WHERE r_country.country_id = ?"; 
+		return $this->db->query($sql, array($country_id))->row()->count;
+	}
 }

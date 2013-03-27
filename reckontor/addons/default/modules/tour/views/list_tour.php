@@ -1,10 +1,11 @@
 		        <div id="SSProdSearchDiv">
-					<h1 class="strong mbs h2">All 97 things to do in Malaysia</h1>
-	                <p>The top Malaysia tours and things to do in Malaysia.</p>
+					<h1 class="strong mbs h2">All <?php echo $tour_count;?> things to do in <?php echo $country_info->country_name;?></h1>
+	                <p>The top <?php echo $country_info->country_name;?> tours and things to do in <?php echo $country_info->country_name;?>.</p>
+			        <?php foreach ($tours as $tour) {?>
 			        <div class="main-border-t">
-			            <h2 class="product-title mtn ptm"><a class="inverse-link" title="3-Day Tour from Sabah: Sandakan Sightseeing and Wildlife Experience in Sepilok and Selingan, Kota&nbsp;...&nbsp;" href="/tours/Kota-Kinabalu/3-Day-Tour-from-Sabah-Sandakan-Sightseeing-and-Wildlife-Experience-in-Sepilok-and-Selingan/d4171-3705KK60">3-Day Tour from Sabah: Sandakan Sightseeing and Wildlife Experience in Sepilok and Selingan</a></h2>
+			            <h2 class="product-title mtn ptm"><a class="inverse-link" href="{{ url:site uri='tour/detail' }}/<?php echo $tour->tour_id;?>"><?php echo $tour->title;?></a></h2>
 			            <p class="mtn">
-							<a class="no-hover" onclick="addWSItem('3705KK60', '');return false;" href="#"><i class="icon icon-wishlist"></i></a><a class="inverse-link" onclick="addWSItem('3705KK60', '');return false;" href="#">Add to Wishlist</a>
+							<a class="no-hover" onclick="return false;" href="#"><i class="icon icon-wishlist"></i></a><a class="inverse-link" onclick="return false;" href="#">Add to Wishlist</a>
 						</p>
 			            <div class="media man product-summary">
 			                <div class="img pbm">
@@ -17,8 +18,8 @@
 							<div class="bd">
 								<div class="line">
 									<div class="unit size3of5">
-										<p class="mvn mrn">Get up close to Malaysia’s nature and wildlife on this 3-day tour to Sandakan from Sabah. At two animal conversation facilities, watch turtles lay eggs on the&nbsp;...&nbsp; <br>
-										<a class="inverse-link" href="/tours/Kota-Kinabalu/3-Day-Tour-from-Sabah-Sandakan-Sightseeing-and-Wildlife-Experience-in-Sepilok-and-Selingan/d4171-3705KK60"><i class="icon icon-arrow-link unit mts"></i>Read more</a></p>
+										<p class="mvn mrn"><?php echo $tour->introduction;?><br>
+										<a class="inverse-link" href="{{ url:site uri='tour/detail' }}/<?php echo $tour->tour_id;?>"><i class="icon icon-arrow-link unit mts"></i>Read more</a></p>
 									</div>
 									<div class="unit size1of2">
 										<ul class="xsmall note mrn mts">
@@ -26,14 +27,14 @@
 												<div class="media man">
 													<i title="Location" class="icon icon-location img"></i>
 													<div class="bd">
-															Sabah, Malaysia
+															<?php echo $tour->city_name;?>, <?php echo $tour->country_name;?>
 													</div>
 												</div>
 											</li>
 											<li>
 												<div class="media man">
 													<i title="Duration" class="icon icon-clock img"></i>
-													<div class="bd"> 3 days, 2 nights</div>
+													<div class="bd"><?php echo $tour->duration_hours;?></div>
 												</div>
 											</li>
 										</ul>
@@ -41,7 +42,7 @@
 									
 									<div class="product-price txtR line">
 										<span class="price-from">From USD</span>
-										<span class="price-amount"><span class="currency-sign">$</span>799.99<span></span></span>
+										<span class="price-amount"><span class="currency-sign">$</span><?php echo $tour->common_adult_price;?><span></span></span>
 										<div class="btn btn-alt unitRight size-btn-check-dates mts">
 											<button onclick="window.location.href='/tours/Kota-Kinabalu/3-Day-Tour-from-Sabah-Sandakan-Sightseeing-and-Wildlife-Experience-in-Sepilok-and-Selingan/d4171-3705KK60';" title="Check Dates"><span>Check Dates</span></button>
 										</div>
@@ -51,10 +52,10 @@
 							</div><!-- end bd -->
 						</div>
 					</div>
-			
+					<?php }?>
 					<div class="line main-border-t main-border-b main-shader small">
 						<div class="unit size1of3">
-							<p class="mvs mrn"><span class="strong">Results</span> 1-15 of 97</p>
+							<p class="mvs mrn"><span class="strong">Results</span> <?php echo ($page-1)*RECORD_PER_PAGE+1;?>-<?php echo count($tours);?> of <?php echo $tour_count;?></p>
 						</div>
 						<div class="unit size2of3">
 							<p class="txtR mvs mln"><span class="strong">Page</span>
