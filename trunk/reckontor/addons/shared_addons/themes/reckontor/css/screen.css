@@ -79,7 +79,7 @@ body { _text-align: center; }
 /* ====== Columns ====== */
 .left-col { float: left; width: 250px; _margin-right: -3px; }
 
-.right-col { float: right; width: 300px; _margin-left: -3px; }
+.right-col { float: right; width: 314px; _margin-left: -3px; }
 
 /* extend columns to allow for common column widths */
 .gMail { width: 160px; }
@@ -101,8 +101,6 @@ body { _text-align: center; }
 .main-col-tour-options { width: 610px; }
 
 .main-col-order-summary { width: 620px; }
-
-.right-col { width: 314px; }
 
 .right-col-tour-options { width: 190px; }
 

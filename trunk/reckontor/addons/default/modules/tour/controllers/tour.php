@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+define('RECORD_PER_PAGE', 3);
 /**
  *
  * Module template
@@ -21,7 +22,6 @@ class Tour extends Public_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_m');
 		$this->load->model('tour_m');
 		$this->load->model('region_m');
 		$this->lang->load('tour');
@@ -55,15 +55,20 @@ class Tour extends Public_Controller
 			 ->build('index');
 	}
 	
-	public function search($country_id, $city_id = "") {
-		
+	public function search($country_id, $city_id = "", $page = 1) {
+		$tour_count = $this->tour_m->get_tours_count_by_country_id($country_id);
+		$tours = $this->tour_m->get_tours_by_country_id($country_id, $page);
+		$country = $this->region_m->get_country_by_id($country_id);
 		
 		$this->template->set_layout('three_cols.html')
 					   ->set_partial('left_sidebar', 'partials/left_sidebar')
 					   ->set_partial('right_sidebar', 'partials/right_sidebar');
-					   
 		$this->template
-			 ->build('list_tour');
+			->set('page',$page)
+			->set('tour_count',$tour_count)
+			->set('country_info', $country)
+			->set('tours', $tours)
+			->build('list_tour');
 	}
 	
 	function detail($tour_id) {
