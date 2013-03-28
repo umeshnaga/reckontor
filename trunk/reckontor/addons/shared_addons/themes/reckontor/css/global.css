@@ -214,4 +214,7 @@ label.validation { background-color: transparent; color: #ce2b1a; }
 #learnMore .button_container { float:right;width:15%;padding:4px 0; }
 #learnMore .button_container .close { background:url("../img/cross_circle.png") no-repeat scroll 0 50% transparent;display:inline-block;padding:3% 2% 2% 18%; }
 
-/* EOF */
+.img-product > a > img {
+	width: 154px!important;
+	height: 109px!important;
+}

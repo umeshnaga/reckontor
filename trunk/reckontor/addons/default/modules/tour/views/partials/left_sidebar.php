@@ -1,22 +1,4 @@
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#goButton').click(function(){
-		var city = $("#cityDropdown").val();
-	    var country = $("#countryDropdown").val();
-	    if (city != "" || country != "")  {
-		    search_url = "{{ url:site uri='tour/search' }}" + "/1/" + country;
-		    if (city != "") {
-		    	search_url = search_url + "/" + city;
-		    }
-			window.location = search_url;		
-		}  else  {
-			alert("You must select a country to search");
-		}
-	});
-});
-</script>
 <div class="left-col sidebar">
-	<div id="DEBUG_DIV"></div>
 	<div class="mod basic viamod-alt mhn mtn">
 		<b class="top"><b class="tl"></b><b class="tr"></b>
 		</b>
@@ -29,13 +11,9 @@ $(document).ready(function(){
 						<select class="mbs input-full no-border country_box" with_city_box="#cityDropdown" id="countryDropdown">
 							<option selected="selected" value="">Select a country</option>
 							<?php
-							$selectedCountryId="";
-							if(isset($country)){
-								$selectedCountryId=$country->country_id;
-							}
 							foreach ($countries as $row)
 							{
-								if($selectedCountryId==$row->country_id){
+								if($selected_country_id==$row->country_id){
 									echo '<option selected="selected" value="'.$row->country_id.'">'.$row->country_name.'</option>';
 								}else{
 									echo '<option value="'.$row->country_id.'">'.$row->country_name.'</option>';
@@ -45,7 +23,7 @@ $(document).ready(function(){
 						</select>
 
 						<select class="input-full no-border" id="cityDropdown"
-							disabled="true">
+							disabled="true" selected-value="<?php echo $selected_city_id;?>">
 							<option selected="selected" value="">Select region/city</option>
 						</select>
 					</div>
@@ -119,3 +97,23 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#goButton').click(function(){
+		var city = $("#cityDropdown").val();
+	    var country = $("#countryDropdown").val();
+	    if (city != "" || country != "")  {
+		    search_url = "{{ url:site uri='tour/search' }}" + "/1/" + country;
+		    if (city != "") {
+		    	search_url = search_url + "/" + city;
+		    }
+			window.location = search_url;		
+		}  else  {
+			alert("You must select a country to search");
+		}
+	});
+	<?php if(isset($selected_country_id)){?>
+	$("#countryDropdown").trigger("change");
+	<?php }?>
+});
+</script>

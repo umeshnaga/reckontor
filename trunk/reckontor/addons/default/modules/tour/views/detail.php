@@ -10,7 +10,7 @@
         <div class="media man plm">
             <div class="img img-product overlay">                   
 				<a href="#" title="0 Photos of <?php echo $tour->title;?>">
-					<img width="154" height="109" title="<?php echo $tour->title;?>" alt="<?php echo $tour->title;?>" src="http://cache.graphicslib.ongoasia.com/graphicslib/thumbs154x109/5573/SITours/day-trip-to-denali-national-park-from-anchorage-including-scenic-in-anchorage-111338.jpg" class="product-display-header">
+					{{ theme:image file="<?php echo $tour->photo_path;?>" title="<?php echo $tour->title;?>" alt="<?php echo $tour->title;?>" class="product-display-header" }}
 				</a>
             </div>
             <div class="bd">
@@ -25,7 +25,7 @@
                             <i class="icon icon-location-alt img mtxs"></i>
                             <div class="bd">
                                 <span class="info-label strong">Location:</span> 
-                                <span class="large">Anchorage, Alaska</span>
+                                <span class="large"><?php echo $tour->city_name;?>, <?php echo $tour->country_name;?></span>
                             </div>                                                
                         </div>
                         <div class="media man">
@@ -163,6 +163,12 @@
 		            <div class="pam tab-content" id="tab1">
 		                <div class="cms-content mhm mtm"><?php echo $tour->description;?></div>
 		            </div>
+		            <div class="pam tab-content hidden" id="tab2">
+		                <div class="cms-content mhm mtm"><?php echo $tour->scheduler;?></div>
+		            </div>
+		            <div class="pam tab-content hidden" id="tab3">
+		                <div class="cms-content mhm mtm"><?php echo $tour->additional_info;?></div>
+		            </div>
 		        </div>
 		    </div>
 		</div>
@@ -246,15 +252,13 @@
 					        	<option value="30">30</option>
 					        </select>
 					        <select class="input-small" name="monthyear">
-					            <option value="6 2013">Jun 2013</option>
-					            <option value="7 2013">Jul 2013</option>
-					            <option value="8 2013">Jul 2013</option>
-					            <option value="9 2013">Jul 2013</option>
+					        	<?php 
+					        	foreach ($tour->tour_dates as $tour_date) {
+					        	?>
+					            <option value="<?php echo $tour_date["value"]?>"><?php echo $tour_date["text"];?></option>
+					            <?php 
+					        	}?>
 					        </select>
-					        
-					        <a class="no-hover" href="javascript:void(0);">
-					            <i id="calRealButton" class="icon icon-calendar"></i>
-					        </a><br>
 					        <div class="travel-calendar" id="calendarPopup"></div>
 					    </div>
 					    <p>

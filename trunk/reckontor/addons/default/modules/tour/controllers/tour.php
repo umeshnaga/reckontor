@@ -1,6 +1,4 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-define('RECORD_PER_PAGE', 15);
-define('MAX_PAGE_DISPLAYED', 5);
 /**
  *
  * Module template
@@ -23,11 +21,13 @@ class Tour extends Public_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('common_m');
 		$this->load->model('tour_m');
 		$this->load->model('region_m');
 		$this->lang->load('tour');
 		$this->load->helper('html');
 		$this->template->append_js('module::ajax.js');
+		$this->template->append_js('module::script.js');
 		
 		$countries = $this->region_m->get_all_countries();
 		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
@@ -57,19 +57,30 @@ class Tour extends Public_Controller
 	}
 	
 	public function search($page = 1, $country_id, $city_id = "") {
-		$tour_count = $this->tour_m->get_tours_count_by_country_id($country_id);
+		if($city_id==""){
+			$tour_count = $this->tour_m->get_tours_count_by_country_id($country_id);
+			
+			$tours = $this->tour_m->get_tours_by_country_id($country_id, $page);
+			$info = $this->region_m->get_country_by_id($country_id);
+		}else {
+			$tour_count = $this->tour_m->get_tours_count_by_city_id($city_id);			
+			
+			$tours = $this->tour_m->get_tours_by_city_id($city_id, $page);
+			$info = $this->region_m->get_city_by_id($city_id);
+		}
 		$page_count = ceil($tour_count/RECORD_PER_PAGE);
-		$tours = $this->tour_m->get_tours_by_country_id($country_id, $page);
-		$country = $this->region_m->get_country_by_id($country_id);
+		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
 		
 		$this->template->set_layout('three_cols.html')
 					   ->set_partial('left_sidebar', 'partials/left_sidebar')
 					   ->set_partial('right_sidebar', 'partials/right_sidebar');
 		$this->template
-			->set('page',$page)
-			->set('page_count',$page_count)
-			->set('tour_count',$tour_count)
-			->set('country', $country)
+			->set('page_nav',$page_nav)
+			->set('selected_country_id', $country_id)
+			->set('selected_city_id', $city_id)
+			->set('country_id', $country_id)
+			->set('city_id', $city_id)
+			->set('location_info', $info)
 			->set('tours', $tours)
 			->build('list_tour');
 	}
@@ -80,7 +91,10 @@ class Tour extends Public_Controller
 		$this->template->set_layout('two_cols.html')
 			   ->set_partial('left_sidebar', 'partials/left_sidebar');
 			   
-		$this->template->set("tour", $tour)->build('detail');
+		$this->template
+			->set('selected_country_id',$tour->country_id)
+			->set('selected_city_id',$tour->city_id)
+			->set("tour", $tour)->build('detail');
 	}
 	
 	function add_to_cart () {
