@@ -1,5 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 define('RECORD_PER_PAGE', 15);
+define('MAX_PAGE_DISPLAYED', 5);
 /**
  *
  * Module template

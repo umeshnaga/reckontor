@@ -60,9 +60,12 @@
 						<div class="unit size2of3">
 							<p class="txtR mvs mln"><span class="strong">Page</span>
 								<?php 
-								$i=0;
-								while($i<$page_count){
-									$i++;
+								$i=max(1,$page-2);
+								$page_displayed=min($i+MAX_PAGE_DISPLAYED-1,$page_count);
+								if($page_displayed-$i+1-MAX_PAGE_DISPLAYED<0){
+									$i= max(1,$page_displayed+1-MAX_PAGE_DISPLAYED);
+								}
+								while($i<=$page_displayed){
 									if($i==$page){
 								?>
 								<span class="basic-pipe">|</span> <span class="strong"><?php echo $i;?></span>
@@ -71,12 +74,10 @@
 								<span class="basic-pipe">|</span> <a class="inverse-link" href="{{ url:site uri='tour/search' }}/<?php echo $i;?>/<?php echo $country->country_id;?>"><?php echo $i;?></a>
 								<?php 
 									}
+									$i++;
 								}
 								$next_page=$page+1;
-								if ($next_page<=$page_count){
 								?>
-								<span class="basic-pipe">|</span> <a class="inverse-link" href="{{ url:site uri='tour/search' }}/<?php echo $next_page;?>/<?php echo $country->country_id;?>">Next</a>
-								<?php }?>
 							</p>
 						</div>
 					</div>
