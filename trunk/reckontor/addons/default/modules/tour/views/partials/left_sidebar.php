@@ -4,7 +4,7 @@ $(document).ready(function(){
 		var city = $("#cityDropdown").val();
 	    var country = $("#countryDropdown").val();
 	    if (city != "" || country != "")  {
-		    search_url = "{{ url:site uri='tour/search' }}" + "/" + country;
+		    search_url = "{{ url:site uri='tour/search' }}" + "/1/" + country;
 		    if (city != "") {
 		    	search_url = search_url + "/" + city;
 		    }
@@ -31,7 +31,7 @@ $(document).ready(function(){
 							<?php
 							$selectedCountryId="";
 							if(isset($country)){
-								$selectedCountryId=$country['country_id'];
+								$selectedCountryId=$country->country_id;
 							}
 							foreach ($countries as $row)
 							{

@@ -85,7 +85,6 @@ label.validation { background-color: transparent; color: #ce2b1a; }
 
 /* Button module
 -------------------------------------------------------------- */
-.next_page { padding: 10px 0; float: right; width: 135px; height: 55px; background: transparent url(../img/btn_nextpage.gif) no-repeat left center; }
 .next_page button { background-color: transparent; width: 120px; height: 50px; border: 0 none; color: #fff; font-weight: bold; }
 
 .prev_page { margin-left: 5px; padding: 10px 0; float: left; width: 155px; height: 55px; background: transparent url(../img/btn_prevpage.gif) no-repeat left center; }

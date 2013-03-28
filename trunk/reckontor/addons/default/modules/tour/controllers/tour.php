@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-define('RECORD_PER_PAGE', 3);
+define('RECORD_PER_PAGE', 15);
 /**
  *
  * Module template
@@ -55,8 +55,9 @@ class Tour extends Public_Controller
 			 ->build('index');
 	}
 	
-	public function search($country_id, $city_id = "", $page = 1) {
+	public function search($page = 1, $country_id, $city_id = "") {
 		$tour_count = $this->tour_m->get_tours_count_by_country_id($country_id);
+		$page_count = ceil($tour_count/RECORD_PER_PAGE);
 		$tours = $this->tour_m->get_tours_by_country_id($country_id, $page);
 		$country = $this->region_m->get_country_by_id($country_id);
 		
@@ -65,8 +66,9 @@ class Tour extends Public_Controller
 					   ->set_partial('right_sidebar', 'partials/right_sidebar');
 		$this->template
 			->set('page',$page)
+			->set('page_count',$page_count)
 			->set('tour_count',$tour_count)
-			->set('country_info', $country)
+			->set('country', $country)
 			->set('tours', $tours)
 			->build('list_tour');
 	}

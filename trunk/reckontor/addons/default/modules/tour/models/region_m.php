@@ -84,7 +84,7 @@ class Region_m extends MY_Model {
 	
 	public function get_country_by_id($country_id)
 	{
-		$sql = "SELECT country_name FROM r_country WHERE country_id = ?"; 
+		$sql = "SELECT country_id,country_name FROM r_country WHERE country_id = ?"; 
 		return $this->db->query($sql, array($country_id))->row();
 	}
 }
