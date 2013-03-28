@@ -1037,7 +1037,7 @@ ul.simple-list .no-list { list-style-type: none; }
 
 .price-amount-l { font-size: 46px; letter-spacing: -0.025em; }
 
-.currency-sign, .cents { font-size: 0.6em; vertical-align: 0.4em; font-weight: normal; }
+.currency-sign, .cents { font-size: 0.6em; vertical-align: 0.4em; font-weight: normal;}
 
 .price-was { color: #666; text-decoration: line-through; }
 
@@ -1378,7 +1378,7 @@ xs,s,m,l,n = extra small(3px),small(5px),medium(10px),large(20px),none(0px)
 
 .mls-neg { margin-left: -5px !important; }
 
-.mrs-neg { margin-right: -5px !important; }
+.mrs-neg { margin-right: -5px !important; padding-right:5px;}
 
 /* footer margin right */
 .fmr { margin-right: 4px; }

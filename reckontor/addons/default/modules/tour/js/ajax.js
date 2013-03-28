@@ -21,11 +21,17 @@ $(document).ready(function() {
 				}
 				$city_box.html(option_html);
 				$city_box.attr("disabled", "");
+				selected_value=$city_box.attr("selected-value");
+				if(selected_value!=""){
+					$city_box.find("option").filter(function() {
+					    return $(this).val() == selected_value; 
+					}).attr('selected', true);
+					$city_box.attr("selected-value","");
+				}
 			} else {
 				$city_box.html('<option value="">Select region/city</option>');
 				$city_box.attr("disabled", "true");
 			}
 		}
 	});
-	
 });	
