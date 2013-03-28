@@ -676,7 +676,9 @@ text-align:center;
 
 /* Top attractions
 ================================================================*/
-.next_page { width: 120px; height: 55px; text-transform: uppercase; background: transparent url(../img/btn_nextpage.gif) no-repeat scroll left center; }
+.next_page { width: 120px; height: 55px; text-transform: uppercase; background: transparent url(../img/btn_nextpage.gif) no-repeat scroll left center; float:right;padding:10px 0;}
+.next_page a {  font-weight: bold;display: block;color:#fff;padding: 19px 20px;text-decoration: none;}
+.next_page a:hover,a:active {text-decoration: none;}
 .next_page button { height: 55px; padding-right: 20px; }
 .prev_page { width: 135px; height: 55px; text-transform: uppercase; background: transparent url(../img/btn_prevpage.gif) no-repeat scroll left center; }
 .prev_page button { height: 55px; padding-left: 20px; }

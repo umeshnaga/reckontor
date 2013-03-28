@@ -1,6 +1,6 @@
 		        <div id="SSProdSearchDiv">
-					<h1 class="strong mbs h2">All <?php echo $tour_count;?> things to do in <?php echo $country_info->country_name;?></h1>
-	                <p>The top <?php echo $country_info->country_name;?> tours and things to do in <?php echo $country_info->country_name;?>.</p>
+					<h1 class="strong mbs h2">All <?php echo $tour_count;?> things to do in <?php echo $country->country_name;?></h1>
+	                <p>The top <?php echo $country->country_name;?> tours and things to do in <?php echo $country->country_name;?>.</p>
 			        <?php foreach ($tours as $tour) {?>
 			        <div class="main-border-t">
 			            <h2 class="product-title mtn ptm"><a class="inverse-link" href="{{ url:site uri='tour/detail' }}/<?php echo $tour->tour_id;?>"><?php echo $tour->title;?></a></h2>
@@ -55,20 +55,38 @@
 					<?php }?>
 					<div class="line main-border-t main-border-b main-shader small">
 						<div class="unit size1of3">
-							<p class="mvs mrn"><span class="strong">Results</span> <?php echo ($page-1)*RECORD_PER_PAGE+1;?>-<?php echo count($tours);?> of <?php echo $tour_count;?></p>
+							<p class="mvs mrn"><span class="strong">Results</span> <?php $start_record=($page-1)*RECORD_PER_PAGE+1;echo $start_record;?>-<?php echo $start_record+count($tours)-1;?> of <?php echo $tour_count;?></p>
 						</div>
 						<div class="unit size2of3">
 							<p class="txtR mvs mln"><span class="strong">Page</span>
-								<span class="basic-pipe">|</span> <span class="strong">1</span>
-								<span class="basic-pipe">|</span> <a class="inverse-link" href="/Malaysia/d17-ttd?page=2&amp;topx=16-30">2</a>
-								<span class="basic-pipe">|</span> <a class="inverse-link" href="/Malaysia/d17-ttd?page=3&amp;topx=31-45">3</a>
-								<span class="basic-pipe">|</span> <a class="inverse-link" href="/Malaysia/d17-ttd?page=4&amp;topx=46-60">4</a>
-								<span class="basic-pipe">|</span> <a class="inverse-link" href="/Malaysia/d17-ttd?page=5&amp;topx=61-75">5</a>
-						 		<span class="basic-pipe">|</span> <a class="inverse-link" href="/Malaysia/d17-ttd?page=2&amp;topx=16-30">Next</a>
+								<?php 
+								$i=0;
+								while($i<$page_count){
+									$i++;
+									if($i==$page){
+								?>
+								<span class="basic-pipe">|</span> <span class="strong"><?php echo $i;?></span>
+								<?php 
+									}else {?>
+								<span class="basic-pipe">|</span> <a class="inverse-link" href="{{ url:site uri='tour/search' }}/<?php echo $i;?>/<?php echo $country->country_id;?>"><?php echo $i;?></a>
+								<?php 
+									}
+								}
+								$next_page=$page+1;
+								if ($next_page<=$page_count){
+								?>
+								<span class="basic-pipe">|</span> <a class="inverse-link" href="{{ url:site uri='tour/search' }}/<?php echo $next_page;?>/<?php echo $country->country_id;?>">Next</a>
+								<?php }?>
 							</p>
 						</div>
 					</div>
 					<div class="line no-print">
-						<div class="next_page"><button onclick="document.location.href='/Malaysia/d17-ttd?page=2&amp;topx=16-30';" title="next page">next page</button></div>
+						<?php 						
+						if ($next_page<=$page_count){
+						?>
+						<div class="next_page">
+							<a href="{{ url:site uri='tour/search' }}/<?php echo $next_page;?>/<?php echo $country->country_id;?>">NEXT PAGE</a>
+						</div>
+						<?php }?>
 					</div>
 		        </div>
