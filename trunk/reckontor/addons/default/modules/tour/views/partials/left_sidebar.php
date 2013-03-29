@@ -81,11 +81,11 @@
 				<div class="bd">
 					<p class="inverse-txt xlarge mvn">
 
-						<a class="inverse-link" href="javascript:void(0);"
+						<a class="inverse-link" href="javascript:;"
 							onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;">
 
 							Click Here</a><span class="inverse-txt"> or Call</span> <a
-							href="javascript:void(0);"
+							href="javascript:;"
 							onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;"
 							class="inverse-link"> +1(702) 648-5873 </a>
 					</p>

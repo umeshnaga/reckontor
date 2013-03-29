@@ -21,18 +21,18 @@
 									class="inverse-link">Our insiders hand-pick the best things to
 										do in every city.</a></li>
 								<li class="ptxs"><i class="icon icon-list-two"></i><a
-									href="http://www.ongoasia.com/about/about-ongoasia/ongoasia-tours-experiences"
+									href="javascript:;"
 									class="inverse-link">We offer more experiences than you can
 										stuff into your rollie bag.</a></li>
 								<li class="ptxs"><i class="icon icon-list-three"></i><a
-									href="http://www.ongoasia.com/about/why-book-with-ongoasia/experience-more"
+									href="javascript:;"
 									class="inverse-link">Reviews and tips from a community of over
 										3 million travelers.</a></li>
 								<li class="ptxs"><i class="icon icon-list-four"></i><a
-									href="http://www.ongoasia.com/about/why-book-with-ongoasia/guaranteed-low-prices"
+									href="javascript:;"
 									class="inverse-link">Crazy low pricing, guaranteed.</a></li>
 								<li class="ptxs"><i class="icon icon-list-five"></i><a
-									href="http://www.ongoasia.com/customer-care" class="inverse-link">We're
+									href="javascript:;" class="inverse-link">We're
 										here 24/7 for travel support or if you just want to chat.</a>
 								</li>
 							</ul>
@@ -49,7 +49,7 @@
 							<h2 class="mhl pts mod-header h1 inverse-txt">
 
 								<a
-									href="http://www.ongoasia.com/tours/Rome/Rome-Vespa-Tour-City-Highlights/d511-5603ROME_VESPAGRAND"
+									href="javascript:;"
 									class="inverse-txt inverse-link hover-alt"
 									title="Video: Rome Vespa Tour">Video: Rome Vespa Tour</a>
 
@@ -74,8 +74,7 @@
 				
 				</object>
 			</div>
-			<div id="mm26051" mmid="26051" layoutcode="CENTER_PHOTO_NARROW"
-				position="3">
+			<div id="mm26051">
 				<div
 					class="mod basic viamod viamod-bar-hd mtm man center-photo-narrow">
 					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
@@ -84,7 +83,7 @@
 							<h2 class="mhl ptxs pbm mod-header hd-border h1">
 
 								<a
-									href="http://www.ongoasia.com/New-York-City-tours/New-Years-/d687-g7-c26"
+									href="javascript:;"
 									class="inverse-txt inverse-link hover-alt" title="NYE">Ring in
 									the New Year!</a>
 
@@ -94,13 +93,13 @@
 						<div class="bd">
 							<ul class="inverse-txt simple-list mtn">
 								<li><a
-									href="http://www.ongoasia.com/Paris-tours/New-Years-/d479-g7-c26"
+									href="javascript:;"
 									class="inverse-link">New Year's Eve in Paris</a></li>
 								<li><a
-									href="http://www.ongoasia.com/New-York-City-tours/New-Years-/d687-g7-c26"
+									href="javascript:;"
 									class="inverse-link">New Year's Eve in New York</a></li>
 								<li><a
-									href="http://www.ongoasia.com/Sydney-tours/New-Years-/d357-g7-c26"
+									href="javascript:;"
 									class="inverse-link">New Year's Eve in Sydney</a></li>
 							</ul>
 						</div>
@@ -113,7 +112,7 @@
 
 				</div>
 			</div>
-			<div id="mm26050" mmid="26050" layoutcode="CW1b_NEW" position="4">
+			<div id="mm26050">
 				<div class="mod basic viamod viamod-bar-hd mtm man">
 					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
 					<div class="inner">
@@ -150,15 +149,11 @@
 												href="javascript:;"
 												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
 										</p>
-
-
-
 										<p class="mod-txt mvn">After Bangkok's Grand Palace, head to
 											the countryside for elephant rides, river-rafting trips,
 											jungle treks and floating markets. Don't miss Phuket's
 											pearlescent beaches, where the water is so deliciously
 											turquoise you'll want to drink it.</p>
-
 									</div>
 								</div>
 
@@ -169,7 +164,6 @@
 										alt="" height="109" width="154" }}</div>
 
 									<div class="bd">
-
 										<p class="mts mbn inverse-txt small">
 											<a href="javascript:;"
 												class="h3 strong inverse-link"> Cambodia </a><a
@@ -186,14 +180,10 @@
 								</div>
 
 								<div class="media">
-
 									<div class="img img-product mln">{{ theme:image
 										file="Vietnam_Floating_fishing_village_in_Halong_Bay_shutterstock_.jpg"
 										alt="" height="109" width="154" }}</div>
-
-
 									<div class="bd">
-
 										<p class="mts mbn inverse-txt small">
 											<a href="javascript:;"
 												class="h3 strong inverse-link"> Vietnam </a><a
