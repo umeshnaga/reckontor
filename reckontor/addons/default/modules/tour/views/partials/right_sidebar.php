@@ -57,13 +57,12 @@ $(document).ready(function(){
 			</div>
 			<div class="bd inverse-txt">
 
-				<div class="mhm viamod-border-b" mmid="2506"
-					layoutcode="FIND_TTD_1a" position="1">
+				<div class="mhm viamod-border-b">
 
 					<h3 class="info-label strong mbn mhn h5">
-						<a href="http://www.ongoasia.com/North-America/d8-vd"
+						<a href="javascript:;"
 							class="inverse-link">North America</a><a
-							href="http://www.ongoasia.com/href=" north-america="" d8-vd"=""
+							href="javascript:;" 
 							class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
 					</h3>
 					<p class="mtn mhn xsmall">
@@ -100,13 +99,12 @@ $(document).ready(function(){
 					layoutcode="FIND_TTD_1a" position="2">
 
 					<h3 class="info-label strong mbn mhn h5">
-						<a href="http://www.ongoasia.com/Europe/d6-vd"
+						<a href="javascript:;"
 							class="inverse-link">Europe</a><a
-							href="http://www.ongoasia.com/href=" europe="" d6-vd"=""
+							href="javascript:;"
 							class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
 					</h3>
 					<p class="mtn mhn xsmall">
-
 						<a href="javascript:;"
 							class="inverse-link">Paris</a>, <a
 							href="javascript:;"
@@ -132,14 +130,12 @@ $(document).ready(function(){
 					</p>
 				</div>
 
-				<div class="mhm viamod-border-b" mmid="12150"
-					layoutcode="FIND_TTD_1a" position="3">
+				<div class="mhm viamod-border-b">
 
 					<h3 class="info-label strong mbn mhn h5">
-						<a href="http://www.ongoasia.com/Australia-and-Pacific/d3-vd"
+						<a href="javascript:;"
 							class="inverse-link">Australia &amp; Pacific</a><a
-							href="http://www.ongoasia.com/href=" australia-and-pacific=""
-							d3-vd"="" class="no-hover"><i class="icon icon-arrow-east mls"></i>
+							href="javascript:;" class="no-hover"><i class="icon icon-arrow-east mls"></i>
 						</a>
 					</h3>
 					<p class="mtn mhn xsmall">
@@ -187,10 +183,8 @@ $(document).ready(function(){
 			<div class="bd">
 				<div id="tile_detail_container">
 
-					<div id="tile_detail_img_container" mmid="4722"
-						layoutcode="HOME_TRAVELLER_PHOTOS" position="8">
-						<a
-							href="http://www.ongoasia.com/tours/Toronto/Toronto-CityPass/d623-2640YYZ_TR/photof-996999"
+					<div id="tile_detail_img_container">
+						<a href="javascript:;"
 							id="tile_detail_link" class="img-link no-hover mtm"> {{ theme:image
 							style="min-height: 0px; min-width: 0px;"
 							file="toronto-cn-tower-photo_996999-260tall.jpg"
@@ -200,7 +194,7 @@ $(document).ready(function(){
 
 					<p class="mhn mbs">
 						<a
-							href="http://www.ongoasia.com/tours/Toronto/Toronto-CityPass/d623-2640YYZ_TR/photof-996999"
+							href="javascript:;"
 							id="product_name_link"
 							title="Photo of Toronto Toronto CityPass Toronto CN Tower"
 							class="inverse-txt strong large inverse-link">Toronto CN Tower</a>
@@ -209,9 +203,9 @@ $(document).ready(function(){
 					<p class="mhn mts mod-txt xsmall">
 						Photo by: <span class="inverse-txt inverse-link"><a
 							title="ATHANASIOS M"
-							href="http://www.ongoasia.com/profile/279738/ATHANASIOS+M">ATHANASIOS
+							href="javascript:;">ATHANASIOS
 								M</a> </span>, Greece <br> Doing what: <a
-							href="http://www.ongoasia.com/tours/Toronto/Toronto-CityPass/d623-2640YYZ_TR"
+							href="javascript:;"
 							title="Photo of Toronto Toronto CityPass Toronto CN Tower"
 							class="inverse-txt inverse-link">Toronto CityPass</a>
 					</p>
@@ -222,7 +216,7 @@ $(document).ready(function(){
 						<!-- NOTE: the width has to be dynamic. It depends on how many photos there are width=72 multiplied by n minus 3 -->
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								title="Photo of Toronto Toronto CityPass Toronto CN Tower"
 								class="img-link no-hover"> {{ theme:image
 								file="toronto-cn-tower-photo_996999-69sq.jpg"
@@ -230,8 +224,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Victoria Butchart Gardens Tour from Victoria Welcome to Butchart Garden"
 								class="img-link no-hover"> {{ theme:image
 								file="welcome-to-butchart-garden-photo_1596164-69sq.jpg"
@@ -242,8 +235,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Costa del Sol Tangier, Morocco Day Trip from Costa del Sol The Strait of Gibraltar"
 								class="img-link no-hover"> {{ theme:image
 								file="the-strait-of-gibraltar-photo_2242817-69sq.jpg"
@@ -254,8 +246,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Montreal Quebec City and Montmorency Falls Day Trip from Montreal Montreal,QC 2010 137"
 								class="img-link no-hover"> {{ theme:image
 								file="montreal-qc-2010-137-photo_1124913-69sq.jpg"
@@ -266,20 +257,17 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Reykjavik Viking Horse-Riding Tour and Blue Lagoon from Reykjavik Hardy beasts, Viking horse riding trip"
 								class="img-link no-hover"> {{ theme:image
 								file="hardy-beasts-photo_1001463-69sq.jpg"
 								img_src="//cache.graphicslib.ongoasia.com/graphicslib/media/f7/hardy-beasts-photo_1001463-69sq.jpg"
 								title="Photo of Reykjavik Viking Horse-Riding Tour and Blue Lagoon from Reykjavik Hardy beasts, Viking horse riding trip" }}
-
-
 							</a>
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								
 								title="Photo of Cairo Private Tour: Giza Pyramids, Sphinx, Memphis, Sakkara Memphis"
 								class="img-link no-hover"> {{ theme:image
@@ -292,7 +280,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								
 								title="Photo of Johannesburg Johannesburg Half-Day Sightseeing Tour Johannesburg from Carlton Centre"
 								class="img-link no-hover"> {{ theme:image
@@ -305,7 +293,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								
 								title="Photo of Barcelona Pyrenees Mountains Small Group Day Trip from Barcelona Vall de Nuria"
 								class="img-link no-hover"> {{ theme:image
@@ -318,7 +306,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								
 								title="Photo of Shanghai Experience Shanghai: Small-Group Tea Ceremony My turn at serving tea!"
 								class="img-link no-hover"> {{ theme:image
@@ -329,8 +317,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Edinburgh Stirling Castle and Loch Lomond Small Group Day Trip from Edinburgh Loch Lomond"
 								class="img-link no-hover"> {{ theme:image
 								file="loch-lomond-photo_993290-69sq.jpg"
@@ -341,20 +328,17 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Edinburgh Loch Ness, Glencoe and the Highlands Small Group Day Trip from Edinburgh Bagpipes at Glencoe"
 								class="img-link no-hover"> {{ theme:image
 								file="bagpipes-at-glencoe-photo_986611-69sq.jpg"
 								img_src="//cache.graphicslib.ongoasia.com/graphicslib/media/f3/bagpipes-at-glencoe-photo_986611-69sq.jpg"
 								title="Photo of Edinburgh Loch Ness, Glencoe and the Highlands Small Group Day Trip from Edinburgh Bagpipes at Glencoe" }}
-
-
 							</a>
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								title="Photo of Franz Josef &amp; Fox Glacier Small-Group Franz Josef Glacier Walk holding the pick axe"
 								class="img-link no-hover"> {{ theme:image
 								file="holding-the-pick-axe-photo_995353-69sq.jpg"
@@ -364,7 +348,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								
 								title="Photo of San Jose Arenal Volcano and Hot Springs Day Trip from San Jose Hot Springs at Arenol Volcano"
 								class="img-link no-hover"> {{ theme:image
@@ -375,7 +359,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								title="Photo of Florence Chianti Region Wine Tasting Half-Day Trip from Florence Welcome to Chianti"
 								class="img-link no-hover"> {{ theme:image
 								file="welcome-to-chianti-photo_989807-69sq.jpg"
@@ -384,8 +368,7 @@ $(document).ready(function(){
 							</a>
 						</div>
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Brussels Brussels Night Walking Tour: Gourmet Belgian Food Antione Frites"
 								class="img-link no-hover"> {{ theme:image
 								file="antione-frites-photo_1396024-69sq.jpg"
@@ -394,8 +377,7 @@ $(document).ready(function(){
 							</a>
 						</div>
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of San Francisco San Francisco Golden Gate Bridge Bike Tour Golden Gate Bike Tour"
 								class="img-link no-hover"> {{ theme:image
 								file="golden-gate-bike-tour-photo_1297581-69sq.jpg"
@@ -405,8 +387,7 @@ $(document).ready(function(){
 						</div>
 
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Shanghai Round-trip Transfer by High-Speed Maglev Train: Shanghai Pudong International Airport So fast!"
 								class="img-link no-hover"> {{ theme:image
 								file="so-fast-photo_4299403-69sq.jpg"
@@ -415,8 +396,7 @@ $(document).ready(function(){
 							</a>
 						</div>
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of Las Vegas Grand Canyon South Rim Air and Ground Tour Lake Mead from the plane"
 								class="img-link no-hover"> {{ theme:image
 								file="lake-mead-from-the-plane-photo_987916-69sq.jpg"
@@ -425,7 +405,7 @@ $(document).ready(function(){
 							</a>
 						</div>
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
+							<a href="javascript:;"
 								title="Photo of Cairo Private Tour: Giza Pyramids, Sphinx, Egyptian Museum, Khan el-Khalili Bazaar A Panoramic View of the Pyramids of Giza"
 								class="img-link no-hover"> {{ theme:image
 								file="a-panoramic-view-of-the-pyramids-of-giza-photo_996384-69sq.jpg"
@@ -434,18 +414,14 @@ $(document).ready(function(){
 							</a>
 						</div>
 						<div class="img-thumb img-thumb-alt unit">
-							<a href="#"
-								
+							<a href="javascript:;"
 								title="Photo of London Stonehenge, Windsor Castle and Bath Day Trip from London Windsor Castle"
 								class="img-link no-hover"> {{ theme:image
 								file="windsor-castle-photo_1004073-69sq.JPG"
 								img_src="//cache.graphicslib.ongoasia.com/graphicslib/media/29/windsor-castle-photo_1004073-69sq.JPG"
 								title="Photo of London Stonehenge, Windsor Castle and Bath Day Trip from London Windsor Castle" }}
-
-
 							</a>
 						</div>
-
 
 						<div class="img-thumb img-thumb-alt unit last">
 							{{ theme:image img_src="/images/general/icon_last_photo.gif"

@@ -5,7 +5,7 @@
 				<div class="line">
 					<div class="unit size1of2">
 						<h1 class="man strong ptl">Secure Checkout</h1>
-						<p class="mhn mbn mts xlarge">You have <a title="View itinerary" onclick="window.open('/popup/itineraryPopup.jspa','popupwindow','scrollbars=1,resizable=1,width=655,height=555'); return false;" href="#">2 items in your current itinerary</a></p>
+						<p class="mhn mbn mts xlarge">You have <a title="View itinerary" onclick="window.open('/popup/itineraryPopup.jspa','popupwindow','scrollbars=1,resizable=1,width=655,height=555'); return false;" href="javascript:;">2 items in your current itinerary</a></p>
 						<div class="xlarge pbl">
 							<p class="man">Total Price for <?php echo $traveler_count;?> Travelers: USD $<?php echo $total_fee;?></p>
 						</div>

@@ -44,7 +44,7 @@
                         </div>
                         </div>
                         <p class="mhn mtl mbn no-print">
-                            <a class="inverse-link small" href="/Anchorage-Tours/Tours-and-Sightseeing/d4152-g12">
+                            <a class="inverse-link small" href="javascript:;">
                                 <i class="icon icon-arrow-link-alt mts unit"></i>
                                 View similar tours &amp; things to do
                             </a>
@@ -86,9 +86,9 @@
 		            <div class="unit size2of3"></div>
 		            <div class="unit size1of3">
 				    <div class="media unitRight size-print mvn mrn">
-				    	<a class="no-hover img" title="Print this page" onclick="window.print();return false;" href="#"><i class="icon icon-print unit mrxs"></i></a>
+				    	<a class="no-hover img" title="Print this page" href="javascript:;"><i class="icon icon-print unit mrxs"></i></a>
 				        <div class="bd">
-							<a class="inverse-link xsmall" onclick="window.print();return false;" href="#">Print</a>
+							<a class="inverse-link xsmall" href="javascript:;">Print</a>
 				        </div>
 				    </div>
 		
@@ -139,19 +139,19 @@
 		                <div class="hd">
 		                    <ul class="tab-control" id="topTabs">
 		                        <li class="current">
-		                            <a href="#tab1">
+		                            <a href="javascript:;">
 		                                <span>
 		                                    <strong>Description</strong>
 		                                </span>
 		                            </a>
 		                        </li>
 		                        <li>
-		                            <a href="#tab2">
+		                            <a href="javascript:;">
 		                                <span>Schedule &amp; Pricing</span>
 		                            </a>
 		                        </li>
 		                        <li>
-		                            <a href="#tab3">
+		                            <a href="javascript:;">
 		                                <span>Additional Info</span>
 		                            </a>
 		                        </li>
@@ -203,10 +203,10 @@
                     
                 </div>
                 <p class="txtC">
-                    <a target="_blank" class="no-hover" href="/about/why-book-with-ongoasia/guaranteed-low-prices">
+                    <a target="_blank" class="no-hover" href="javascript:;">
                         <i class="icon icon-low-price"></i>
                     </a>
-                    <a class="inverse-txt info-label inverse-link strong small" target="_blank" href="/about/why-book-with-ongoasia/guaranteed-low-prices">Low Price Guarantee</a>
+                    <a class="inverse-txt info-label inverse-link strong small" target="_blank" href="javascript:;">Low Price Guarantee</a>
                 </p>
                 <div class="mhl mtl ptl mid-border-b">
                 	<?php echo validation_errors(); ?>
@@ -328,7 +328,7 @@
 						    </div>						                    
 						</div>
                             <p>
-                                <a class="action-link inverse-link" onclick="window.open('/whatis/whatsThisKnownTravellers-popup.jsp','whatiswindow','scrollbars=1,resizable=1,width=650,height=450'); return false;" href="#">
+                                <a class="action-link inverse-link"  href="javascript:;">
                                     <i class="icon icon-arrow-link mts unit"></i>
                                     What's this, and can I change it?
                                 </a>

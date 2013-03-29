@@ -15,7 +15,7 @@ $(document).ready(function(){
 				<div id="slides">
 					<div class="slidesContainer" id="billBoard">
 						<div class="slideUnit">
-							<a href="http://m.ongoasia.com/android?aid=se503"
+							<a href="javascript:;"
 								title="Download Ongoasia's new Android app today!"
 								class="img-link no-hover"> {{ theme:image
 								file="VIATOR-AndroidApp-Billboard_Final2_26212_1.png"
@@ -102,7 +102,7 @@ $(document).ready(function(){
 								</div> </a>
 						</div>
 					</div>
-					<a href="#" class="prev">Prev</a><a href="#" class="next">Next</a>
+					<a href="javascript:;" class="prev">Prev</a><a href="javascript:;" class="next">Next</a>
 					<ul class="slidesPagination">
 						
 					</ul>
