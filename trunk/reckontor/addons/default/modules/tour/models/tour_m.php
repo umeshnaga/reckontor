@@ -42,11 +42,43 @@ class Tour_m extends MY_Model {
 			$to_date=strtotime($tour_date_range->available_to_date);
 			
 		    while( $from_date <= $to_date ) {
-		    	$m_y_array[]= array("value"=>date(DATE_VALUE_PATTERN , $from_date),"text"=>date(DATE_TEXT_PATTERN, $from_date));
+		    	$m_y_value = date(DATE_VALUE_PATTERN , $from_date);
+		    	$m_y_text = date(DATE_TEXT_PATTERN, $from_date);
+		    	$need_add = true;
+		    	if (isset($m_y_array)) {
+			    	foreach ($m_y_array as $added_m_y) {
+			    		if($added_m_y["value"] == $m_y_value) {
+			    			$need_add = false;
+			    			break;
+			    		}
+			    	}
+		    	}
+		    	if ($need_add) {
+		    		$m_y_array[date(DATE_VALUE_PATTERN , $from_date)]= array("value"=>date(DATE_VALUE_PATTERN , $from_date),"text"=>date(DATE_TEXT_PATTERN, $from_date));
+		    	}
 		        $from_date = strtotime("+1 month", $from_date);
 		    }
 		}
 		if(isset($m_y_array)){
+			/**
+			 * check if date is available in month 
+			 */
+			foreach ($m_y_array as $key => $avaliable_m_y) {
+				$avaliable_dates = array();
+				for ($i = 1; $i < 31; $i++) {
+					$checking_date = strtotime($i . '-' . $avaliable_m_y["text"]);
+					foreach ($tour_date_ranges as $tour_date_range) {
+						
+						$from_date=strtotime($tour_date_range->available_from_date);
+						$to_date=strtotime($tour_date_range->available_to_date);
+						if ($checking_date >= strtotime("-1 day", $from_date) && $checking_date <= $to_date) {
+							$avaliable_dates[] = $i;
+							break;
+						}
+					}
+				}
+				$m_y_array[$key]["available_dates"] = $avaliable_dates;
+			}
 			$tour->tour_dates=$m_y_array;
 		}
 		return $tour;
@@ -58,7 +90,7 @@ class Tour_m extends MY_Model {
 		$month = $parts[0];
 		$year = $parts[1];
 		
-		$sql = "SELECT * FROM r_tour_available_date WHERE tour_id = ? AND STR_TO_DATE(?,'%d %m %Y') BETWEEN `available_from_date` AND `available_to_date`;"; 
+		$sql = "SELECT * FROM r_tour_available_date WHERE tour_id = ? AND STR_TO_DATE(?,'%d %m %Y') BETWEEN ADDDATE(`available_from_date`, -1) AND `available_to_date`;"; 
 		
 		$price_info = $this->db->query($sql, array($tour_id, 
 											 $day.' '.$monthyear))->row();

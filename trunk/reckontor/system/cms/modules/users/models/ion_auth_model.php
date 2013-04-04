@@ -561,7 +561,6 @@ class Ion_auth_model extends CI_Model
 		{
 			$this->db->set($this->ion_auth->_extra_set);
 		}
-
 		$this->db->insert($this->tables['users'], $data);
 
 		// For the profiles tables.

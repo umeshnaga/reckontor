@@ -27,6 +27,10 @@ class Events_Templates {
 
     public function send_email($data = array())
     {
+    	//FIXME: Let enable this function again
+    	if(true) {
+    		return true;
+    	}
         $this->ci =& get_instance();
 
         $slug = $data['slug'];

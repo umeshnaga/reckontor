@@ -19,11 +19,20 @@ class Users extends Public_Controller
 		parent::__construct();
 
 		// Load the required classes
+		$this->load->model('tour/region_m');
 		$this->load->model('user_m');
 		$this->load->helper('user');
 		$this->lang->load('user');
 		$this->load->library('form_validation');
-		$this->template->set_layout('user/user.html');
+		
+		$this->template->set_layout('two_cols.html')
+			 ->set_partial('left_sidebar', 'partials/left_sidebar');
+			 
+		$countries = $this->region_m->get_all_countries();
+		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
+		$this->template
+			 ->set('hot_cities', $hot_cities)
+			 ->set('countries', $countries);
 	}
 
 	/**
@@ -374,11 +383,8 @@ class Users extends Public_Controller
 					}
 					else
 					{
-						$this->ion_auth->deactivate($id);
-
-						/* show that admin needs to activate your account */
-						$this->session->set_flashdata('notice', lang('user_activation_by_admin_notice'));
-						redirect('users/register'); /* bump it to show the flash data */
+						//activate automatically and go to profile page
+						redirect('users');
 					}
 				}
 

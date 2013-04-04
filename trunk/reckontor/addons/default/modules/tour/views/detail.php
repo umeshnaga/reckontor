@@ -218,40 +218,36 @@
 					</div>
 					<div class="mll">
 					    <div class="mam">
-					        
-					        <select class="input-xsmall input-date" id="day" name="day">
-					        	<option value="1">1</option>
-					        	<option value="2">2</option>
-					        	<option value="3">3</option>
-					        	<option value="4">4</option>
-					        	<option value="5">5</option>
-					        	<option value="6">6</option>
-					        	<option value="7">7</option>
-					        	<option value="8">8</option>
-					        	<option value="9">9</option>
-					        	<option value="10">10</option>
-					        	<option value="11">11</option>
-					        	<option value="12">12</option>
-					        	<option value="13">13</option>
-					        	<option value="14">14</option>
-					        	<option value="15">15</option>
-					        	<option value="16">16</option>
-					        	<option value="17">17</option>
-					        	<option value="18">18</option>
-					        	<option value="19">19</option>
-					        	<option value="20">20</option>
-					        	<option value="21">21</option>
-					        	<option value="22">22</option>
-					        	<option value="23">23</option>
-					        	<option value="24">24</option>
-					        	<option value="25">25</option>
-					        	<option value="26">26</option>
-					        	<option value="27">27</option>
-					        	<option value="28">28</option>
-					        	<option value="29">29</option>
-					        	<option value="30">30</option>
-					        </select>
-					        <select class="input-small" name="monthyear">
+					    	<script type="text/javascript">
+					    		function reloadAvailableDay() {
+					    			$("#day").html("");
+						    		var selectedMonthYear = $("#monthyear").val();
+						    		var dates = window.availabeDates[selectedMonthYear];
+						    		var i;
+						    		
+						    		var optionsHtml = "";
+						    		for (i = 0; i < dates.length; i++) {
+						    			optionsHtml = optionsHtml + '<option value="' + dates[i] + '">' + dates[i] + '</option>';
+						    		}
+						    		$("#day").html(optionsHtml);
+					    		}
+					    	</script>
+					    	<select class="input-xsmall input-date" id="day" name="day">
+					    	</select>
+					    	<script  type="text/javascript">
+					        		var availabeDates = new Array();
+					        </script>
+					        <?php 
+					        	foreach ($tour->tour_dates as $m_y => $tour_date) {
+					        	?>
+					        	<script  type="text/javascript">
+					        		availabeDates['<?php echo $m_y;?>'] = <?php echo json_encode($tour_date["available_dates"]);?>;
+					        	</script>
+					        	
+					        	<?php 
+					        	}?>
+					        	
+					        <select class="input-small" name="monthyear" id = "monthyear" onchange="reloadAvailableDay();">
 					        	<?php 
 					        	foreach ($tour->tour_dates as $tour_date) {
 					        	?>
@@ -259,6 +255,9 @@
 					            <?php 
 					        	}?>
 					        </select>
+					        <script type="text/javascript">
+					        	reloadAvailableDay();
+					        </script>
 					        <div class="travel-calendar" id="calendarPopup"></div>
 					    </div>
 					    <p>

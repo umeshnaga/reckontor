@@ -22,11 +22,10 @@
 
 		</div><!-- End of Omniture Code-->
 
-		<form enctype="" name="shop-cart" id="shop-cart" method="get" action="{{url:site uri='tour/checkout'}}" class="clearfix">
+		<form enctype="" name="shop-cart" id="shop-cart" method="post" action="{{url:site uri='tour/checkout'}}" class="clearfix">
 		    
 			<p><a class="inverse-link large strong" href="javascript:;"><i class="icon icon-arrow-west unit mts"></i>Continue Shopping</a></p>
 			<?php foreach ($booking_details as $i => $booking_detail) { ?>
-			
 			<div class="line main-border-t cart-row">
 				<div class="unit size3of5">
 			        <h2 class="product-title mtn ptm">
