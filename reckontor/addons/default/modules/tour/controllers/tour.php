@@ -24,8 +24,10 @@ class Tour extends Public_Controller
 		$this->load->model('common_m');
 		$this->load->model('tour_m');
 		$this->load->model('region_m');
+		$this->load->model('booking_m');
 		$this->lang->load('tour');
-		$this->load->helper('html');
+		$this->load->helper('html');	
+		$this->load->helper('user');
 		$this->template->append_js('module::ajax.js');
 		$this->template->append_js('module::script.js');
 		
@@ -44,9 +46,6 @@ class Tour extends Public_Controller
 	 */
 	public function index()
 	{
-		$countries = $this->region_m->get_all_countries();
-		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
-		
 		$this->template->set_layout('three_cols.html')
 			   ->set_partial('left_sidebar', 'partials/left_sidebar')
 			   ->set_partial('right_sidebar', 'partials/right_sidebar')
@@ -108,8 +107,9 @@ class Tour extends Public_Controller
 		{
 			$this->template->set_layout('two_cols.html')
 			   ->set_partial('left_sidebar', 'partials/left_sidebar');
-			   
-			$this->template->set("tour_id", $this->input->post('tour_id'))->build('detail');
+			$tour_id = $this->input->post('tour_id');
+			$tour = $this->tour_m->get_tour_by_id($tour_id); 
+			$this->template->set("tour", $tour)->set("tour_id", $tour_id)->build('detail');
 		}
 		else
 		{
@@ -194,6 +194,23 @@ class Tour extends Public_Controller
 					   ->set('booking_details', $booking_details)
 					   ->set('countries', $countries)
 					   ->build('checkout');
+	}
+	
+	function complete_checkout() {
+		$phone_area_code = $_POST['contact_area_code'];
+		$phone_number = $_POST['contact_phone_number'];
+		$email = $_POST['contact_email'];
+		$book_by_id = $this->current_user->id;
+		$booking_id = $this->booking_m->create_booking($phone_area_code, $phone_number, $email, $book_by_id);
+		$travellers_of_tours = $_POST['travelers'];
+		foreach ($travellers_of_tours as $tour_id => $travellers) {
+			$travel_date = $_POST['travel_dates'][$tour_id];
+			$booking_tour_id = $this->booking_m->create_booking_tour($tour_id, $booking_id, $travel_date);
+			foreach ($travellers as $i => $traveller) {
+				$this->booking_m->add_traveler($booking_tour_id, $traveller);
+			}
+		}
+		
 	}
 	
 	/**

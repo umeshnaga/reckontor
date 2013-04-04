@@ -27,10 +27,9 @@
 		<div class="omniture">
 
 		</div><!-- End of Omniture Code-->
-		<form method="post" action="{{url:site uri='tour/payment'}}" name="mainform">
-			
-			    
+		<form method="post" action="{{url:site uri='tour/complete_checkout'}}" name="mainform">
 			<?php foreach ($booking_details as $i => $booking_detail) { ?>
+			<input type="hidden" value="<?php echo $booking_detail->day . ' ' . $booking_detail->monthyear;?>" name="travel_dates[<?php echo $booking_detail->tour->tour_id;?>]">
 			<div class="main-border-b pvl">
 				<h2 class="strong mvn">Traveler Details For [<?php echo $booking_detail->tour->title;?>] Tour</h2>
 			    <div class="line mbs">
@@ -54,25 +53,27 @@
 			    </div>
 
 			    <div class="traveler_list">
-			    	<?php for ($i = 0; $i < $booking_detail->adult_count; $i++) { ?>
+			    	<?php for ($j = 0; $j < $booking_detail->adult_count; $j++) { ?>
 					<div class="line mbm">
+						<input type="hidden"  value="1" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][is_adult]" maxlength="15" class="input-full">
+						
 						<div class="unit size1of3">
 							<div class="line">
 								<div class="unit size2of3">
 									<div class="mhm mts">
 										<label class="" for="traveler_firstname1">
-											<span class="required">*</span> Traveler <?php echo ($i + 1);?> <span class="small note">(Adult)</span>
+											<span class="required">*</span> Traveler <?php echo ($j + 1);?> <span class="small note">(Adult)</span>
 										</label>
 									</div>
 						    	</div>
 						    	<div class="unit size1of3 txtC">
-									<input type="radio" value="1" class="radio imgC mtm" name="leadTravellerIndex" id="traveler_index1">
+									<input type="radio" value="1" class="radio imgC mtm" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][is_lead]">
 						    	</div>
 						    </div>
 						</div>
 						<div class="unit size1of9 txtC">
 							<div class="input-full-wrap mls">
-								<select class="input-full" name="traveler_adult_title">
+								<select class="input-full" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][title]">
 									<option value="Mr">Mr</option>
 									<option value="Mrs">Mrs</option>
 									<option value="Ms">Ms</option>
@@ -85,20 +86,21 @@
 
 						<div class="unit size5of9">
 							<div class="line">
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="traveler_adult_firstname" maxlength="15" class="input-full"></div></div>
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="traveler_adult_lastName" maxlength="35" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][firstname]" maxlength="15" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][lastName]" maxlength="35" class="input-full"></div></div>
 							</div>
 						</div>
 					</div>
 					<?php }?>
-					<?php for ($i = 0; $i < $booking_detail->children_count; $i++) { ?>
+					<?php for ($j = 0; $j < $booking_detail->children_count; $j++) { ?>
 					<div class="line mbm">
+						<input type="hidden"  name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][is_adult]" value="0">
 						<div class="unit size1of3">
 							<div class="line">
 								<div class="unit size2of3">
 									<div class="mhm mts">
 										<label class="" for="traveler_firstname">
-											<span class="required">*</span> Traveler <?php echo $booking_detail->adult_count + $i + 1;?> <span class="small note">(Children)</span>
+											<span class="required">*</span> Traveler <?php echo $booking_detail->adult_count + $j + 1;?> <span class="small note">(Children)</span>
 										</label>
 									</div>
 						    	</div>
@@ -106,7 +108,7 @@
 						</div>
 						<div class="unit size1of9 txtC">
 							<div class="input-full-wrap mls">
-								<select class="input-full" name="traveler_children_title">
+								<select class="input-full" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][title]">
 									<option value="Mr">Mr</option>
 									<option value="Mrs">Mrs</option>
 									<option value="Ms">Ms</option>
@@ -119,8 +121,8 @@
 
 						<div class="unit size5of9">
 							<div class="line">
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="traveler_children_firstName" maxlength="15" class="input-full"></div></div>
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="traveler_children_lastName" maxlength="35" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][firstName]" maxlength="15" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][lastName]" maxlength="35" class="input-full"></div></div>
 							</div>
 						</div>
 					</div>
@@ -186,7 +188,7 @@
 								<div class="mhm mts txtR"><label class="verify_email_address" for="verify_email_address"><span class="required">*</span> Verify email address</label></div>
 							</div>
 							<div class="unit size3of5">
-								<div class="input-full-wrap mls"><input type="email" value="" name="email1" class="input-full" id="verify_contact_email"></div>
+								<div class="input-full-wrap mls"><input type="email" value="" name="verify_contact_email" class="input-full" id="verify_contact_email"></div>
 							</div>
 						</div>
 					</div>
