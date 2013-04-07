@@ -183,8 +183,6 @@ class Tour extends Public_Controller
 		}
 		$booking_count = sizeof($bookings);
 		
-		$countries = $this->region_m->get_all_countries();
-		
 		$this->template->set_layout('two_cols.html')
 			   ->set_partial('left_sidebar', 'partials/left_sidebar');
 			   
@@ -192,7 +190,6 @@ class Tour extends Public_Controller
 					   ->set('traveler_count', $traveler_count)
 					   ->set('total_fee', $total_fee)
 					   ->set('booking_details', $booking_details)
-					   ->set('countries', $countries)
 					   ->build('checkout');
 	}
 	
@@ -210,7 +207,51 @@ class Tour extends Public_Controller
 				$this->booking_m->add_traveler($booking_tour_id, $traveller);
 			}
 		}
+		unset($_SESSION['cart']);
+		redirect('/tour/success_checkout/'. $booking_id);
 		
+	}
+	
+	function success_checkout($booking_id) {
+		$booking_infos = $this->booking_m->get_booking_info_by_booking_id($booking_id);
+		
+		$booking = new stdClass();
+		$booking->contact = new stdClass();
+		$booking->contact->phone_area_code = $booking_infos[0]->phone_area_code;
+		$booking->contact->phone_number = $booking_infos[0]->phone_number;
+		$booking->contact->email = $booking_infos[0]->email;
+		
+		$booking_tours = array();
+		foreach ($booking_infos as $i => $booking_info) {
+			if (!isset($booking_tours[$booking_info->booking_tour_id])) {
+				$booking_tour_obj = new stdClass();
+				$booking_tours[$booking_info->booking_tour_id] = $booking_tour_obj;
+			} else {
+				$booking_tour_obj = $booking_tours[$booking_info->booking_tour_id];
+			}
+			
+			$booking_tour_obj->tour_id = $booking_info->tour_id;
+			$booking_tour_obj->tour_title = $booking_info->tour_title;
+			$booking_tour_obj->travel_date = $booking_info->travel_date;
+			if (!isset($booking_tour_obj->travelers)) {
+				$booking_tour_obj->travelers = array();
+			}
+			
+			$traveler_obj = new stdClass();
+			$booking_tour_obj->travelers[$booking_info->traveler_id] = $traveler_obj;
+			$traveler_obj->title = $booking_info->traveler_title;
+			$traveler_obj->first_name = $booking_info->traveler_first_name;
+			$traveler_obj->last_name = $booking_info->traveler_last_name;
+			$traveler_obj->is_children = $booking_info->traveler_is_children;
+			$traveler_obj->is_leader = $booking_info->traveler_is_leader;
+		}
+		
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+			   
+		$booking->booking_tours = $booking_tours;
+		$this->template->set('booking', $booking)
+			 ->build('success_checkout');
 	}
 	
 	/**
