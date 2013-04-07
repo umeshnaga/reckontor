@@ -27,6 +27,7 @@ class Booking_m extends MY_Model {
 			default:
 				$this->db->db_debug = FALSE;
 		}
+		$this->load->model('tour_m');
 	}
 	
 	public function create_booking($phone_area_code, $phone_number, $email, $book_by_id) {
@@ -56,6 +57,46 @@ class Booking_m extends MY_Model {
 	}
 	
 	public function add_traveler($booking_tour_id, $traveler) {
-		var_dump($traveler);
+		$is_children = $traveler['is_children'];
+		$is_lead = isset($traveler['is_lead']) ? $traveler['is_lead'] : 0;
+  		$title = $traveler['title'];
+  		$first_name = $traveler['first_name'];
+  	    $last_name = $traveler['last_name'];
+		
+		$this->db->dbprefix = 'r_';
+		$result = $this->db->insert('traveler', array(
+			'booking_tour_id' => $booking_tour_id,
+			'title'	  => $title,
+			'first_name'	  => $first_name,
+			'last_name'	  => $last_name,
+			'is_children'	  => $is_children,
+			'is_leader'	  => $is_lead,
+		));
+		return $this->db->insert_id();
+	}
+	
+	public function get_booking_info_by_booking_id($booking_id) {
+		$sql = "SELECT 
+					   b.phone_area_code as phone_area_code,
+					   b.phone_number as phone_number,
+					   b.email as email,
+					   t.tour_id as tour_id, 
+					   bt.booking_tour_id as booking_tour_id, 
+					   bt.travel_date as travel_date,
+					   td.title as tour_title,
+					   traveler.traveler_id as traveler_id,
+					   traveler.title as traveler_title,
+					   traveler.first_name as traveler_first_name,
+					   traveler.last_name as traveler_last_name,
+					   traveler.is_children as traveler_is_children,
+					   traveler.is_leader as traveler_is_leader
+			    FROM r_booking  b
+			    	 INNER JOIN r_booking_tour bt USING (booking_id)
+			    	 INNER JOIN r_tour t USING (tour_id)
+			    	 INNER JOIN r_tour_detail td USING (tour_id)
+			         INNER JOIN r_traveler traveler ON traveler.booking_tour_id =  bt.booking_tour_id
+			    WHERE b.booking_id = ? ORDER BY booking_tour_id, traveler_id";
+		$booking_infos = $this->db->query($sql, array($booking_id))->result_object();
+		return $booking_infos;
 	}
 }

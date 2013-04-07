@@ -5,7 +5,7 @@
 				<div class="line">
 					<div class="unit size1of2">
 						<h1 class="man strong ptl">Secure Checkout</h1>
-						<p class="mhn mbn mts xlarge">You have <a title="View itinerary" onclick="window.open('/popup/itineraryPopup.jspa','popupwindow','scrollbars=1,resizable=1,width=655,height=555'); return false;" href="javascript:;">2 items in your current itinerary</a></p>
+						<p class="mhn mbn mts xlarge">You have <a title="View itinerary" href="javascript:;"><?php echo sizeof($booking_details);?> items in your current itinerary</a></p>
 						<div class="xlarge pbl">
 							<p class="man">Total Price for <?php echo $traveler_count;?> Travelers: USD $<?php echo $total_fee;?></p>
 						</div>
@@ -55,7 +55,7 @@
 			    <div class="traveler_list">
 			    	<?php for ($j = 0; $j < $booking_detail->adult_count; $j++) { ?>
 					<div class="line mbm">
-						<input type="hidden"  value="1" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][is_adult]" maxlength="15" class="input-full">
+						<input type="hidden"  value="0" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][is_children]" maxlength="15" class="input-full">
 						
 						<div class="unit size1of3">
 							<div class="line">
@@ -86,15 +86,15 @@
 
 						<div class="unit size5of9">
 							<div class="line">
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][firstname]" maxlength="15" class="input-full"></div></div>
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][lastName]" maxlength="35" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][first_name]" maxlength="15" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $j;?>][last_name]" maxlength="35" class="input-full"></div></div>
 							</div>
 						</div>
 					</div>
 					<?php }?>
 					<?php for ($j = 0; $j < $booking_detail->children_count; $j++) { ?>
 					<div class="line mbm">
-						<input type="hidden"  name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][is_adult]" value="0">
+						<input type="hidden"  name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][is_children]" value="1">
 						<div class="unit size1of3">
 							<div class="line">
 								<div class="unit size2of3">
@@ -121,8 +121,8 @@
 
 						<div class="unit size5of9">
 							<div class="line">
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][firstName]" maxlength="15" class="input-full"></div></div>
-								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][lastName]" maxlength="35" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][first_name]" maxlength="15" class="input-full"></div></div>
+								<div class="unit size1of2"><div class="input-full-wrap mls"><input type="text"  value="" name="travelers[<?php echo $booking_detail->tour->tour_id; ?>][<?php echo $booking_detail->adult_count + $j;?>][last_name]" maxlength="35" class="input-full"></div></div>
 							</div>
 						</div>
 					</div>
