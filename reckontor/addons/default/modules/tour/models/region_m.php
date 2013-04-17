@@ -74,14 +74,6 @@ class Region_m extends MY_Model {
 		return $_SERVER[$key];
 	}
 	
-	function get_cities_by_highlight_level($highlight_level) {
-		$sql = "SELECT DISTINCT r_city.* 
-		        FROM r_city INNER JOIN r_tour USING (city_id)
-		        WHERE highlight_level = ? ORDER BY city_name";
-		$cities = $this->db->query($sql, array($highlight_level))->result_object();
-		return $cities;
-	}
-	
 	function get_country_by_id($country_id)
 	{
 		$sql = "SELECT country_name as name FROM r_country WHERE country_id = ?"; 
