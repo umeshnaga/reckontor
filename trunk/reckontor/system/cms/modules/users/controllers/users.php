@@ -29,9 +29,7 @@ class Users extends Public_Controller
 			 ->set_partial('left_sidebar', 'partials/left_sidebar');
 			 
 		$countries = $this->region_m->get_all_countries();
-		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
 		$this->template
-			 ->set('hot_cities', $hot_cities)
 			 ->set('countries', $countries);
 	}
 
