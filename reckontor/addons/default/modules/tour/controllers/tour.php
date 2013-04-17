@@ -34,6 +34,7 @@ class Tour extends Public_Controller
 		$countries = $this->region_m->get_all_countries();
 		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
 		$this->template
+			 ->set('title', "Tours, sightseeing tours, activities &amp; things to do | ".SITE_URL)
 			 ->set('hot_cities', $hot_cities)
 			 ->set('countries', $countries);
 	}
@@ -44,7 +45,7 @@ class Tour extends Public_Controller
 	 * @access public
 	 * @return void
 	 */
-	public function index()
+	function index()
 	{
 		$this->template->set_layout('three_cols.html')
 			   ->set_partial('left_sidebar', 'partials/left_sidebar')
@@ -55,7 +56,7 @@ class Tour extends Public_Controller
 			 ->build('index');
 	}
 	
-	public function search($page = 1, $country_id, $city_id = "") {
+	function search($page = 1, $country_id, $city_id = "") {
 		if($city_id==""){
 			$tour_count = $this->tour_m->get_tours_count_by_country_id($country_id);
 			
@@ -69,11 +70,13 @@ class Tour extends Public_Controller
 		}
 		$page_count = ceil($tour_count/RECORD_PER_PAGE);
 		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
+		$title= $info->name." Tours & Things to Do in ".$info->name." | ".SITE_URL;
 		
 		$this->template->set_layout('three_cols.html')
 					   ->set_partial('left_sidebar', 'partials/left_sidebar')
 					   ->set_partial('right_sidebar', 'partials/right_sidebar');
 		$this->template
+			->set('title',$title)
 			->set('page_nav',$page_nav)
 			->set('selected_country_id', $country_id)
 			->set('selected_city_id', $city_id)
@@ -82,6 +85,31 @@ class Tour extends Public_Controller
 			->set('location_info', $info)
 			->set('tours', $tours)
 			->build('list_tour');
+	}
+	
+	function search_keyword($page = 1, $keyword){
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+		
+		$country_destinations = $this->region_m->get_countries($keyword);
+		$city_destinations = $this->region_m->get_cities($keyword);
+		
+		$tour_count = $this->tour_m->get_tours_count_by_keyword($keyword);
+		$tours = $this->tour_m->get_tours_by_keyword($keyword, $page);
+		
+		$page_count = ceil($tour_count/RECORD_PER_PAGE);
+		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
+		
+		$this->template
+			 ->set('title',"Search Results for ".$keyword." on ".SITE_URL.".")
+			 ->set('keyword',$keyword)
+			 ->set('country_destinations',$country_destinations)
+			 ->set('city_destinations',$city_destinations)
+			 ->set('page_nav',$page_nav)
+			 ->set('tours', $tours)
+			 ->set('search_count', count($country_destinations)+count($city_destinations)+$tour_count)
+			 ->set('tour_count', $tour_count)
+			 ->build('search_keyword');
 	}
 	
 	function detail($tour_id) {
