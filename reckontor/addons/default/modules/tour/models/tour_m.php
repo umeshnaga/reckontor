@@ -100,41 +100,48 @@ class Tour_m extends MY_Model {
 		return null;
 	}
 
-	public function get_tours_by_country_id($country_id, $page)
+	function get_tours_by_country_id($country_id, $page)
 	{
 		$sql = "SELECT r_tour.tour_id, title, CONCAT(SUBSTRING(introduction,1,150),' ...') AS introduction, country_name, city_name, duration_hours, common_adult_price, COALESCE(p.photo_path,'".DEFAULT_TOUR_PHOTO_PATH."') as photo_path FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail USING (tour_id) LEFT JOIN (SELECT tour_id, photo_path FROM r_tour_photo WHERE is_main=1) AS p USING (tour_id) WHERE r_country.country_id = ? LIMIT ?,?"; 
 		return $this->db->query($sql, array($country_id, ($page-1)*RECORD_PER_PAGE, RECORD_PER_PAGE))->result_object();
 	}
 	
-	public function get_tours_by_city_id($city_id, $page)
+	function get_tours_by_city_id($city_id, $page)
 	{
 		$sql = "SELECT r_tour.tour_id, title, CONCAT(SUBSTRING(introduction,1,150),' ...') AS introduction, country_name, city_name, duration_hours, common_adult_price, COALESCE(p.photo_path,'".DEFAULT_TOUR_PHOTO_PATH."') as photo_path FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail USING (tour_id) LEFT JOIN (SELECT tour_id, photo_path FROM r_tour_photo WHERE is_main=1) AS p USING (tour_id) WHERE r_city.city_id = ? LIMIT ?,?"; 
 		return $this->db->query($sql, array($city_id, ($page-1)*RECORD_PER_PAGE, RECORD_PER_PAGE))->result_object();
 	}
 	
-	public function get_tours_count_by_country_id($country_id)
+	function get_tours_count_by_country_id($country_id)
 	{
 		$sql = "SELECT COUNT(*) AS count FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) WHERE r_country.country_id = ?"; 
 		return $this->db->query($sql, array($country_id))->row()->count;
 	}
 	
-	public function get_tours_count_by_city_id($city_id)
+	function get_tours_count_by_city_id($city_id)
 	{
 		$sql = "SELECT COUNT(*) AS count FROM r_city INNER JOIN r_tour USING (city_id) WHERE r_city.city_id = ?"; 
 		return $this->db->query($sql, array($city_id))->row()->count;
 	}
 	
-	public function get_tours_count_by_keyword($keyword)
+	function get_tours_count_by_keyword($keyword)
 	{
 		$like_keyword='%'.$keyword.'%';
 		$sql = "SELECT COUNT(*) AS count FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail td USING (tour_id) WHERE td.title LIKE ? OR td.introduction LIKE ? OR td.highlight LIKE ? OR td.description LIKE ?"; 
 		return $this->db->query($sql, array($like_keyword, $like_keyword, $like_keyword, $like_keyword))->row()->count;
 	}
 	
-	public function get_tours_by_keyword($keyword, $page)
+	function get_tours_by_keyword($keyword, $page)
 	{
 		$like_keyword='%'.$keyword.'%';
 		$sql = "SELECT r_tour.tour_id, title, CONCAT(SUBSTRING(introduction,1,150),' ...') AS introduction, country_name, city_name, duration_hours, common_adult_price, COALESCE(p.photo_path,'".DEFAULT_TOUR_PHOTO_PATH."') as photo_path FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail td USING (tour_id) LEFT JOIN (SELECT tour_id, photo_path FROM r_tour_photo WHERE is_main=1) AS p USING (tour_id) WHERE td.title LIKE ? OR td.introduction LIKE ? OR td.highlight LIKE ? OR td.description LIKE ? LIMIT ?,?"; 
 		return $this->db->query($sql, array($like_keyword, $like_keyword, $like_keyword, $like_keyword, ($page-1)*RECORD_PER_PAGE, RECORD_PER_PAGE))->result_object();
+	}
+	
+	function get_tours_by_keyword_ajax($keyword, $top)
+	{
+		$like_keyword='%'.$keyword.'%';
+		$sql = "SELECT CONCAT('tour/detail/',r_tour.tour_id) as url, title, city_name as dest FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail td USING (tour_id) LEFT JOIN (SELECT tour_id, photo_path FROM r_tour_photo WHERE is_main=1) AS p USING (tour_id) WHERE td.title LIKE ? OR td.introduction LIKE ? OR td.highlight LIKE ? OR td.description LIKE ? LIMIT ?"; 
+		return $this->db->query($sql, array($like_keyword, $like_keyword, $like_keyword, $like_keyword, $top))->result_object();
 	}
 }

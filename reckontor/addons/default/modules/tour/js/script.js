@@ -5,6 +5,7 @@ $(document).ready(function() {
 		$($(this).attr("href")).removeClass("hidden");
 		return false;
 	});
+	Viator.SegmentedSearch.init();
 });
 
 function doFreeTextSearchSubmit(id, url) {

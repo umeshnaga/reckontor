@@ -29,7 +29,8 @@ class Tour extends Public_Controller
 		$this->load->helper('html');	
 		$this->load->helper('user');
 		$this->template->append_js('module::ajax.js');
-		$this->template->append_js('module::script.js');
+		$this->template->append_js('module::SegmentedSearch.js');
+		$this->template->append_js('module::script.js');		
 		
 		$countries = $this->region_m->get_all_countries();
 		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
@@ -88,8 +89,7 @@ class Tour extends Public_Controller
 	}
 	
 	function search_keyword($page = 1, $keyword){
-		$this->template->set_layout('two_cols.html')
-			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+		$keyword=urldecode($keyword);
 		
 		$country_destinations = $this->region_m->get_countries($keyword);
 		$city_destinations = $this->region_m->get_cities($keyword);
@@ -100,6 +100,9 @@ class Tour extends Public_Controller
 		$page_count = ceil($tour_count/RECORD_PER_PAGE);
 		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
 		
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
+			   
 		$this->template
 			 ->set('title',"Search Results for ".$keyword." on ".SITE_URL.".")
 			 ->set('keyword',$keyword)
@@ -156,8 +159,7 @@ class Tour extends Public_Controller
 			redirect('/tour/cart');
 		}
 	}
-	
-	
+		
 	function cart() {
 		$bookings = $_SESSION['cart'];
 		$traveler_count = 0;
@@ -292,5 +294,20 @@ class Tour extends Public_Controller
 		return $this->template->build_json($country_cities_mapping[$country_id]);
 	}
 	
+	function search_keyword_ajax($keyword){
+		$keyword=urldecode($keyword);
+		$response= new stdClass;
+		$response->destinations = $this->region_m->get_countries_ajax($keyword);
+		$city_destinations = $this->region_m->get_cities_ajax($keyword);
+		$response->destinations=array_merge($response->destinations,$city_destinations);
+		$response->products = $this->tour_m->get_tours_by_keyword_ajax($keyword, 5);
+		
+		$response->moreResults=array();
+		$response->moreResults[0]=new stdClass;
+		$response->moreResults[0]->title="Find more results for '".$keyword."'";
+		$response->moreResults[0]->url="tour/search_keyword/1/".$keyword;
+		
+		return $this->template->build_json($response);
+	}
 	 
 }
