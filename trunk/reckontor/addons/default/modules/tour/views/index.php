@@ -144,38 +144,12 @@
 									<div class="bd">
 
 										<p class="mts mbn inverse-txt small">
-											<a href="javascript:;"
+											<a href="{{ url:site uri='tour/search/1/80' }}"
 												class="h3 strong inverse-link"> Thailand </a><a
-												href="javascript:;"
+												href="{{ url:site uri='tour/search/1/80' }}"
 												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
 										</p>
-										<p class="mod-txt mvn">After Bangkok's Grand Palace, head to
-											the countryside for elephant rides, river-rafting trips,
-											jungle treks and floating markets. Don't miss Phuket's
-											pearlescent beaches, where the water is so deliciously
-											turquoise you'll want to drink it.</p>
-									</div>
-								</div>
-
-								<div class="media pbm viamod-border-b">
-
-									<div class="img img-product mln">{{ theme:image
-										file="Cambodia_Smiling_Faces_in_the_Temple_of_Bayon_shutterstock_0.jpg"
-										alt="" height="109" width="154" }}</div>
-
-									<div class="bd">
-										<p class="mts mbn inverse-txt small">
-											<a href="javascript:;"
-												class="h3 strong inverse-link"> Cambodia </a><a
-												href="javascript:;"
-												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
-										</p>
-
-										<p class="mod-txt mvn">Angkor Wat puts your average temple to
-											shame. But Cambodia has a humble side, too: rural villages
-											dotted with stilted houses, rice paddies and swaying sugar
-											palms, as seen on a sunset cruise along the Mekong River.</p>
-
+										<p class="mod-txt mvn">The Kingdom of Thailand draws more visitors than any other country in southeast Asia, with its irresistible combination of natural beauty, inspiring temples, renowned hospitality, robust cuisine and ruins of fabulous ancient kingdoms.</p>
 									</div>
 								</div>
 
@@ -185,17 +159,13 @@
 										alt="" height="109" width="154" }}</div>
 									<div class="bd">
 										<p class="mts mbn inverse-txt small">
-											<a href="javascript:;"
-												class="h3 strong inverse-link"> Vietnam </a><a
-												href="javascript:;"
+											<a href="{{ url:site uri='tour/search/1/50' }}"
+												class="h3 strong inverse-link"> Malaysia </a><a
+												href="{{ url:site uri='tour/search/1/50' }}"
 												class="no-hover"><i class="icon icon-arrow-east mls"></i> </a>
 										</p>
 
-										<p class="mod-txt mvn">Tour charming Hanoi, dip your feet in
-											Halong Bay, or travel back in time through Ho Chi Minh City's
-											Cu Chi Tunnels. Your fuel: a larger-than-life bowl of
-											piping-hot pho for breakfast, lunch and dinner. (It's
-											seriously addictive.)</p>
+										<p class="mod-txt mvn">Malaysia is one of the most pleasant, hassle-free countries to visit in southeast Asia. It's buoyant and wealthy, and has moved towards a pluralist culture based on a vibrant and interesting fusion of Malay, Chinese, Indian and indigenous cultures and customs.</p>
 
 									</div>
 								</div>
@@ -206,7 +176,7 @@
 					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 				</div>
 			</div>
-			<div id="mm26052" mmid="26052" layoutcode="CENTER_PHOTO_NARROW"
+			<!-- div id="mm26052" mmid="26052" layoutcode="CENTER_PHOTO_NARROW"
 				position="6">
 				<div
 					class="mod basic viamod viamod-bar-hd mtm man center-photo-narrow">
@@ -246,7 +216,7 @@
 						width="250" }} </a>
 
 				</div>
-			</div>
+			</div-->
 
 		</div>
 

@@ -74,7 +74,16 @@ class Region_m extends MY_Model {
 		return $_SERVER[$key];
 	}
 	
-	function get_country_by_id($country_id)
+	function get_cities_by_highlight_level($highlight_level) {
+		$sql = "SELECT DISTINCT r_city.*, r_country.*
+		        FROM r_city INNER JOIN r_tour USING (city_id) 
+		        INNER JOIN r_country USING (country_id)
+		        WHERE highlight_level = ? ORDER BY city_name";
+		$cities = $this->db->query($sql, array($highlight_level))->result_object();
+		return $cities;
+	}
+	
+	public function get_country_by_id($country_id)
 	{
 		$sql = "SELECT country_name as name FROM r_country WHERE country_id = ?"; 
 		return $this->db->query($sql, array($country_id))->row();
