@@ -33,7 +33,11 @@ class Tour extends Public_Controller
 		$this->template->append_js('module::script.js');		
 		
 		$countries = $this->region_m->get_all_countries();
+		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
+		
 		$this->template
+			 ->set('hot_cities', $hot_cities)
+			 ->set('countries', $countries)
 			 ->set('title', "Tours, sightseeing tours, activities &amp; things to do | ".SITE_URL)
 			 ->set('countries', $countries);
 	}
