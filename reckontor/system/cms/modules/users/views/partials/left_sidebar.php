@@ -41,6 +41,35 @@
 	</div>
 	<!-- on the LHS -->
 	<div>
+
+		<div class="mod basic viamod-alt mtn mhn">
+			<b class="top"><b class="tl"></b><b class="tr"></b>
+			</b>
+			<div class="inner">
+				<div class="hd">
+					<div class="mam">
+						<i class="icon icon-destinations mbm"></i>
+						<div class="pbs mod-header hd-border h3">Hot Destinations</div>
+					</div>
+				</div>
+				<div class="bd">
+					<ul class="mtn">
+						<?php foreach ($hot_cities as $i => $hot_city) { ?>
+						<li><a href="{{ url:site uri='tour/search/1/<?php echo $hot_city->country_id;?>/<?php echo $hot_city->city_id;?>' }}"
+							class="inverse-txt inverse-link info-label strong"><?php echo $hot_city->city_name;?></a>
+						</li>
+						<?php }?>
+					</ul>
+				</div>
+			</div>
+			<b class="bottom"><b class="bl"></b><b class="br"></b>
+			</b>
+		</div>
+	</div>
+
+
+	<div>
+
 		<div class="mod basic viamod mtn mhn">
 			<b class="top"><b class="tl"></b><b class="tr"></b>
 			</b>
