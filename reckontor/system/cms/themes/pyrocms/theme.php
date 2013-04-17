@@ -55,7 +55,7 @@ class Theme_PyroCMS extends Theme {
 		{
 			// don't bother fetching the data if it's turned off in the theme
 			if ($this->theme_options->pyrocms_analytics_graph == 'yes')		self::get_analytics();
-			if ($this->theme_options->pyrocms_news_feed == 'yes')			self::get_rss_feed();
+			//if ($this->theme_options->pyrocms_news_feed == 'yes')			self::get_rss_feed();
 			if ($this->theme_options->pyrocms_recent_comments == 'yes')		self::get_recent_comments();
 		}
 	}
