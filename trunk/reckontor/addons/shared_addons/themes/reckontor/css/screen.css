@@ -3631,3 +3631,85 @@ ul.number {
 	list-style: decimal;
 	padding-left: 18px;
 }
+
+#segmented-search-container .ui-autocomplete {
+
+	background-color: #ffffff !important;   
+	padding: 10px;  
+	 width:620px  !important;  	
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: 5px solid rgb(100, 100, 100); 
+	border: 5px solid rgba(0, 0, 0, 0.4); 
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding; 
+	background-clip: padding-box; 
+    z-index:1000 !important;/* VTC-6803: 1 higher than billboard pagination elements*/
+}
+
+#segmented-search-container .ui-autocomplete-item{        
+	border:0px;
+	border-bottom:1px;
+	border-style: solid;
+	border-color: #e6e6e6;
+	background-color: #ffffff !important;
+}
+
+#segmented-search-container .ui-autocomplete-category {
+	font-weight: bold;
+	font-size:11px;
+	padding: 5px 10px;
+	line-height: 1.5;
+	background-color: #e6e6e6;
+	color: #666;
+}
+
+#segmented-search-container .ui-autocomplete-item a {
+	display: block;
+	padding: 5px 25px 5px 25px;
+	border: 0;
+	color: #333;
+}    
+  
+#segmented-search-container .ui-autocomplete-item-destination{
+	margin-left:5px; 
+	color: #999;
+	font-size: 11px;
+}
+
+#segmented-search-container .ui-autocomplete-search a,.segmented-search-find-more-item-out {
+	padding: 5px;
+	text-align: center;
+	background: #00759a url('../img/mod_gradient.png') repeat-x top left;
+	color: #fff;
+}
+
+#segmented-search-container .ui-autocomplete-search i{
+	margin-right: 4px;
+}
+
+.segmented-search-item-hover{
+	background-color: #d2e9f1;
+}
+
+.segmented-search-find-more-item-hover{
+   background-color: #03769A;
+	background-image: none !important; 
+    color: #D65656;
+}
+
+.segmented-search-find-more-item-hover{
+   background-color: #03769A;
+	background-image: none; 
+}
+
+.segmented-search-item-hover-out{
+	background-color: #ffffff;
+}
+
+.icon-search-alt {
+    background-position: -650px 0;
+    height: 11px;
+    margin-top: -4px;
+    width: 11px;
+}

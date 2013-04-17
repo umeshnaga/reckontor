@@ -8,28 +8,26 @@
 				<p class="man strong info-label h6">Total Results: <?php echo $search_count;?> Results Found</p>
 				<?php if($search_count>0 && ($search_count-$tour_count>0)){?>
 				<div class="pbl">
-					<div class="pbl">
-						<p class="mbn mhn strong">Destination matches</p>
+					<p class="mbn mhn strong">Destination matches</p>
 
-						<ul class="mts number">
-							<?php foreach ($country_destinations as $destination) {?>
-							<li><a
-								title="<?php echo $destination->country_name;?>" 
-								href="{{ url:site uri='tour/search' }}/1/<?php echo $destination->country_id;?>"><b><?php echo $destination->country_name;?></b> </a>
-							</li>
-							<?php }?>
-							<?php foreach ($city_destinations as $destination) {?>
-							<li><a
-								title="<?php echo $destination->country_name;?>" 
-								href="{{ url:site uri='tour/search' }}/1/<?php echo $destination->country_id;?>"><b><?php echo $destination->country_name;?></b> </a> ,
-								<a
-								title="<?php echo $destination->city_name;?>" 
-								href="{{ url:site uri='tour/search' }}/1/<?php echo $destination->country_id;?>/<?php echo $destination->city_id;?>"><b><?php echo $destination->city_name;?></b> </a>
-							</li>
-							<?php }?>
-						</ul>
+					<ul class="mts number">
+						<?php foreach ($country_destinations as $destination) {?>
+						<li><a
+							title="<?php echo $destination->country_name;?>" 
+							href="{{ url:site uri='tour/search' }}/1/<?php echo $destination->country_id;?>"><b><?php echo $destination->country_name;?></b></a>
+						</li>
+						<?php }?>
+						<?php foreach ($city_destinations as $destination) {?>
+						<li><a
+							title="<?php echo $destination->country_name;?>" 
+							href="{{ url:site uri='tour/search' }}/1/<?php echo $destination->country_id;?>"><b><?php echo $destination->country_name;?></b></a>&nbsp;,
+							<a
+							title="<?php echo $destination->city_name;?>" 
+							href="{{ url:site uri='tour/search' }}/1/<?php echo $destination->country_id;?>/<?php echo $destination->city_id;?>"><b><?php echo $destination->city_name;?></b> </a>
+						</li>
+						<?php }?>
+					</ul>
 
-					</div>
 				</div>
 				<?php }?>
 			</div>
@@ -56,7 +54,7 @@
 					</ul>
 				</div>
 			</div>
-			<?php } else {?>
+			<?php } else if($tour_count>0){?>
 			<div class="line main-border-t main-shader small">
 				<div class="unit size1of3">
 					<p class="mvs mrn">

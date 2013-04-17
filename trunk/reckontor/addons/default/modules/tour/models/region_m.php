@@ -99,6 +99,11 @@ class Region_m extends MY_Model {
 		return $this->db->query($sql, array("%".$keyword."%"))->result_object();		
 	}
 	
+	function get_countries_ajax($keyword) {
+		$sql = "SELECT DISTINCT CONCAT('tour/search/1/',c.country_id) as url, c.country_name as title, '' as dest FROM r_country c INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) WHERE c.country_name LIKE ?"; 
+		return $this->db->query($sql, array("%".$keyword."%"))->result_object();		
+	}
+	
 	function get_cities($keyword) {
 		$sql = "SELECT DISTINCT c.country_id, c.country_name, ct.city_id, ct.city_name FROM r_country c INNER JOIN r_city ct USING (country_id) INNER JOIN r_tour USING (city_id) WHERE ct.city_name LIKE ?"; 
 		$cities = $this->db->query($sql, array("%".$keyword."%"))->result_object();		
@@ -107,5 +112,10 @@ class Region_m extends MY_Model {
 			$cities = $this->db->query($sql, array("%".$keyword."%"))->result_object();		
 		}	*/
 		return $cities;
+	}
+	
+	function get_cities_ajax($keyword) {
+		$sql = "SELECT DISTINCT CONCAT('tour/search/1/',c.country_id,'/',ct.city_id) as url, c.country_name as dest, ct.city_name as title FROM r_country c INNER JOIN r_city ct USING (country_id) INNER JOIN r_tour USING (city_id) WHERE ct.city_name LIKE ?"; 
+		return $this->db->query($sql, array("%".$keyword."%"))->result_object();		
 	}
 }
