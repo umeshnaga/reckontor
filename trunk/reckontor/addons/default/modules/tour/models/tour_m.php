@@ -123,4 +123,18 @@ class Tour_m extends MY_Model {
 		$sql = "SELECT COUNT(*) AS count FROM r_city INNER JOIN r_tour USING (city_id) WHERE r_city.city_id = ?"; 
 		return $this->db->query($sql, array($city_id))->row()->count;
 	}
+	
+	public function get_tours_count_by_keyword($keyword)
+	{
+		$like_keyword='%'.$keyword.'%';
+		$sql = "SELECT COUNT(*) AS count FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail td USING (tour_id) WHERE td.title LIKE ? OR td.introduction LIKE ? OR td.highlight LIKE ? OR td.description LIKE ?"; 
+		return $this->db->query($sql, array($like_keyword, $like_keyword, $like_keyword, $like_keyword))->row()->count;
+	}
+	
+	public function get_tours_by_keyword($keyword, $page)
+	{
+		$like_keyword='%'.$keyword.'%';
+		$sql = "SELECT r_tour.tour_id, title, CONCAT(SUBSTRING(introduction,1,150),' ...') AS introduction, country_name, city_name, duration_hours, common_adult_price, COALESCE(p.photo_path,'".DEFAULT_TOUR_PHOTO_PATH."') as photo_path FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail td USING (tour_id) LEFT JOIN (SELECT tour_id, photo_path FROM r_tour_photo WHERE is_main=1) AS p USING (tour_id) WHERE td.title LIKE ? OR td.introduction LIKE ? OR td.highlight LIKE ? OR td.description LIKE ? LIMIT ?,?"; 
+		return $this->db->query($sql, array($like_keyword, $like_keyword, $like_keyword, $like_keyword, ($page-1)*RECORD_PER_PAGE, RECORD_PER_PAGE))->result_object();
+	}
 }

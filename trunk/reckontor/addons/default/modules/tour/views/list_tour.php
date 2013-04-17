@@ -1,12 +1,32 @@
 		        <div id="SSProdSearchDiv">
 					<h1 class="strong mbs h2">All <?php echo $page_nav['record_count'];?> things to do in <?php echo $location_info->name;?></h1>
 	                <p>The top <?php echo $location_info->name;?> tours and things to do in <?php echo $location_info->name;?>.</p>
+	                <div class="line main-border-t main-shader small">
+						<div class="unit size1of3">
+							<p class="mvs mrn"><span class="strong">Results</span> <?php echo $page_nav['start_record'];?>-<?php echo $page_nav['end_record'];?> of <?php echo $page_nav['record_count'];?></p>
+						</div>
+						<div class="unit size2of3">
+							<p class="txtR mvs mln"><span class="strong">Page</span>
+								<?php 
+								$i=$page_nav['page_start'];
+								while($i<=$page_nav['page_end']){
+									if($i==$page_nav['page']){
+								?>
+								<span class="basic-pipe">|</span> <span class="strong"><?php echo $i;?></span>
+								<?php 
+									}else {?>
+								<span class="basic-pipe">|</span> <a class="inverse-link" href="{{ url:site uri='tour/search' }}/<?php echo $i;?>/<?php echo $country_id;?>"><?php echo $i;?></a>
+								<?php 
+									}
+									$i++;
+								}
+								?>
+							</p>
+						</div>
+					</div>
 			        <?php foreach ($tours as $tour) {?>
 			        <div class="main-border-t">
 			            <h2 class="product-title mtn ptm"><a class="inverse-link" href="{{ url:site uri='tour/detail' }}/<?php echo $tour->tour_id;?>"><?php echo $tour->title;?></a></h2>
-			            <p class="mtn">
-							<a class="no-hover" onclick="return false;" href="#"><i class="icon icon-wishlist"></i></a><a class="inverse-link" onclick="return false;" href="#">Add to Wishlist</a>
-						</p>
 			            <div class="media man product-summary">
 			                <div class="img pbm">
 			                	<div class="img-product overlay">

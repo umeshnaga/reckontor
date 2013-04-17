@@ -82,15 +82,30 @@ class Region_m extends MY_Model {
 		return $cities;
 	}
 	
-	public function get_country_by_id($country_id)
+	function get_country_by_id($country_id)
 	{
 		$sql = "SELECT country_name as name FROM r_country WHERE country_id = ?"; 
 		return $this->db->query($sql, array($country_id))->row();
 	}
 	
-	public function get_city_by_id($city_id)
+	function get_city_by_id($city_id)
 	{
 		$sql = "SELECT city_name as name FROM r_city WHERE city_id = ?";
 		return $this->db->query($sql, array($city_id))->row();
+	}
+	
+	function get_countries($keyword) {
+		$sql = "SELECT DISTINCT c.country_id, c.country_name FROM r_country c INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) WHERE c.country_name LIKE ?"; 
+		return $this->db->query($sql, array("%".$keyword."%"))->result_object();		
+	}
+	
+	function get_cities($keyword) {
+		$sql = "SELECT DISTINCT c.country_id, c.country_name, ct.city_id, ct.city_name FROM r_country c INNER JOIN r_city ct USING (country_id) INNER JOIN r_tour USING (city_id) WHERE ct.city_name LIKE ?"; 
+		$cities = $this->db->query($sql, array("%".$keyword."%"))->result_object();		
+		/*if(count($cities)==0){
+			$sql = "SELECT DISTINCT c.country_id, c.country_name, ct.city_id, ct.city_name FROM r_country c INNER JOIN r_city ct USING (country_id) INNER JOIN r_tour USING (city_id) WHERE c.country_name LIKE ?"; 
+			$cities = $this->db->query($sql, array("%".$keyword."%"))->result_object();		
+		}	*/
+		return $cities;
 	}
 }

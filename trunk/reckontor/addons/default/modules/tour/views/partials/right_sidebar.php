@@ -10,7 +10,7 @@ $(document).ready(function(){
         });
 });
 </script>
-<div style="margin-top:-10px;">
+<div style="margin-top:10px;">
 	<div
 		class="mod basic viamod viamod-bar-hd hanging mhn destination-list">
 		<b class="top"><b class="tl"></b><b class="tr"></b> </b>
