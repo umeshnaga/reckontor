@@ -15,10 +15,6 @@
             </div>
             <div class="bd">
                 <div class="inverse-txt mlm">
-                    <p class="large mtn mhn mbs">
-						<a class="no-hover" title="Add to Wishlist"  href="#"><i class="icon icon-wishlist-alt"></i></a>
-						<a href="#">Add to Wishlist</a>
-                    </p>
                     <div class="size1of2">
                         <div >
                         <div class="media man">
