@@ -25,6 +25,7 @@ class Tour extends Public_Controller
 		$this->load->model('tour_m');
 		$this->load->model('region_m');
 		$this->load->model('booking_m');
+		$this->load->model('instagram_m');
 		$this->lang->load('tour');
 		$this->load->helper('html');	
 		$this->load->helper('user');
@@ -34,12 +35,14 @@ class Tour extends Public_Controller
 		
 		$countries = $this->region_m->get_all_countries();
 		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
-		
+
+		$shots = $this->instagram_m->getUserMedia(array('count'=>20)); //Get the shots from instagram
+                
 		$this->template
 			 ->set('hot_cities', $hot_cities)
 			 ->set('countries', $countries)
-			 ->set('title', "Tours, sightseeing tours, activities &amp; things to do | ".SITE_URL)
-			 ->set('countries', $countries);
+			 ->set('shots', $shots)
+			 ->set('title', "Tours, sightseeing tours, activities &amp; things to do | ".SITE_URL);
 	}
 
 	/**
