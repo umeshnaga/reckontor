@@ -132,8 +132,18 @@ $(document).ready(function(){
 		<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 	</div>
 </div>
-
 <div id="instagram_photos">
+	<div class="mod basic viamod mtn mhn">
+		<b class="top"><b class="tl"></b><b class="tr"></b> </b>
+		<div class="inner phm">
+			<div class="hd">
+				<div class="line hd-border mbm">
+					<div class="mtl pbm mod-header media mhn mbn h3">
+						<i class="icon icon-camera-l img"></i>
+						<div class="bd">Featured Traveler Photos</div>
+					</div>
+				</div>
+			</div>
 <?php
 if(!empty($shots->data)){
 	$firstImage='';
@@ -174,20 +184,7 @@ if(!empty($shots->data)){
 		$shotIndex++;
 	}
 	$instagramWidth=79*$shotIndex+10;
-}
 ?>
-	<div class="mod basic viamod mtn mhn">
-		<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-		<div class="inner phm">
-			<div class="hd">
-				<div class="line hd-border mbm">
-					<div class="mtl pbm mod-header media mhn mbn h3">
-						<i class="icon icon-camera-l img"></i>
-						<div class="bd">Featured Traveler Photos</div>
-					</div>
-				</div>
-			</div>
-
 			<div class="bd">
 				<div id="tile_detail_container">
 				<?php echo $firstImage;?>
@@ -198,6 +195,15 @@ if(!empty($shots->data)){
 					</div>
 				</div>
 			</div>
+<?php } else { ?>
+			<div class="bd">
+				<div id="tile_detail_container">
+					<p class="mhn mbs strong large white-text">
+					<?php echo $shots;?>
+					</p>
+				</div>
+			</div>
+<?php }?>
 		</div>
 		<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 	</div>
