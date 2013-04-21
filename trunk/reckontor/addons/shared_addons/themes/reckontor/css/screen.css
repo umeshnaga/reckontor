@@ -3713,3 +3713,17 @@ ul.number {
     margin-top: -4px;
     width: 11px;
 }
+.gallery-thumbs .selected img {
+    border: 3px solid #DB6F2B;
+    opacity: 1;
+}
+#instagram_photos .main-image {
+	width: 260px;
+}
+#instagram_photos .img-thumb img {
+	width: 69px;
+	height:69px;
+}
+.white-text {
+	color:#fff;
+}

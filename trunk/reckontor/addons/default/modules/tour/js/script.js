@@ -5,6 +5,15 @@ $(document).ready(function() {
 		$($(this).attr("href")).removeClass("hidden");
 		return false;
 	});
+	$("#instagram_photos .img-thumb[class!='selected'] a").click(function() {
+		istg_link=$(this).attr("href");
+		istg_image=$(this).attr("ref-image");
+		istg_caption=$(this).attr("title");
+		$("#main-image-container").html('<a href="'+istg_link+'" id="tile_detail_link" class="img-link no-hover mtm"><img src="'+istg_image+'" alt="'+istg_caption+'" title="'+istg_caption+'" class="imgC img-border main-image" /></a><p class="mhn mbs strong large white-text">'+istg_caption+'</p>');
+		$('#instagram_photos .img-thumb.selected').removeClass("selected");
+		$(this).parent().addClass("selected");
+		return false;
+	});
 	Viator.SegmentedSearch.init();
 });
 
