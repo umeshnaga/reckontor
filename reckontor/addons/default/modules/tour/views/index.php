@@ -1,10 +1,7 @@
 
 
 		<div class="main-col">
-
-
-			<div mmid="9893" layoutcode="HOME_CENTER_WHY_BOOK_HOT_DEALS"
-				position="1">
+			<div>
 				<div class="mod basic viamod viamod-bar-hd mtm man">
 					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
 					<div class="inner">
@@ -40,39 +37,6 @@
 					</div>
 					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 				</div>
-			</div>
-			<div id="mm26119" mmid="26119" layoutcode="CC_VIDEO" position="2">
-				<div class="mod basic viamod standing mtm man">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd">
-							<h2 class="mhl pts mod-header h1 inverse-txt">
-
-								<a
-									href="javascript:;"
-									class="inverse-txt inverse-link hover-alt"
-									title="Video: Rome Vespa Tour">Video: Rome Vespa Tour</a>
-
-
-							</h2>
-						</div>
-					</div>
-				</div>
-				<div class="viamod-bar"></div>
-				<!-- ***** this is where the video goes ***** -->
-				<object width="486" height="296" id="playingObject">
-					<param
-						value="https://www.youtube.com/v/Lpa1g-dJY4Q?vq=hd720&amp;controls=1&amp;showinfo=0&amp;version=3"
-						name="movie">
-					<param value="true" name="allowFullScreen">
-					<param value="always" name="allowScriptAccess">
-					<param value="opaque" name="wmode">
-					<embed width="486" height="296" wmode="opaque"
-						allowscriptaccess="always" allowfullscreen="true"
-						type="application/x-shockwave-flash"
-						src="https://www.youtube.com/v/Lpa1g-dJY4Q?vq=hd720&amp;controls=1&amp;showinfo=0&amp;version=3">
-				
-				</object>
 			</div>
 			<div id="mm26051">
 				<div
