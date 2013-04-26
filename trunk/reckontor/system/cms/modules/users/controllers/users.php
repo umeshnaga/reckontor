@@ -148,6 +148,7 @@ class Users extends Public_Controller
 		}
 
 		$this->template->set_layout('user/nosidebar.html')
+			->set('title', lang('user_login_header'))
 			->build('login', array(
 				'_user' => $user,
 				'redirect_to' => $redirect_to,

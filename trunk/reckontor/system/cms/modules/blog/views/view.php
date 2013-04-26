@@ -1,39 +1,23 @@
-<div class="post">
-
-	<h3><?php echo $post->title; ?></h3>
-
-	<div class="meta">
-		<div class="date"><?php echo lang('blog:posted_label');?>: <span><?php echo format_date($post->created_on); ?></span></div>
-		
-		<?php if (isset($post->display_name)): ?>
-		<div class="author">
-			<?php echo lang('blog:written_by_label'); ?>: 
-			<span><?php echo anchor('user/' . $post->author_id, $post->display_name); ?></span>
-		</div>
-		<?php endif; ?>
-
-		<?php if ($post->category->slug): ?>
-		<div class="category">
-			<?php echo lang('blog:category_label');?>: 
-			<span><?php echo anchor('blog/category/'.$post->category->slug, $post->category->title);?></span>
-		</div>
-		<?php endif; ?>
-		<?php if ($post->keywords): ?>
-		<div class="keywords">
-			<?php echo lang('blog:tagged_label');?>:
-			<?php foreach ($post->keywords as $keyword): ?>
-				<span><?php echo anchor('blog/tagged/'.$keyword->name, $keyword->name, 'class="keyword"') ?></span>
-			<?php endforeach; ?>
-		</div>
-		<?php endif; ?>
-	</div>
-
-	<div class="body">
-		<?php echo $post->body; ?>
-	</div>
+<div class="mlm line">
+		<div id="top" class="main aboutus">
+			<div class="mlm line">
+				<div class="main-title-bar">
+					<div class="inner tall overlay">
+                        <div class="mhl inverse-txt">
+                            <div class="print_logo"><img alt="Viator" src="/images/general/logo_print.gif"></div>
+							<h1 class="man strong ptl"><?php echo $post->category->title; ?></h1>
+							<h2 class="man strong info-label h6"><?php echo $post->title; ?></h2>  
+                        </div>                      
+						<!-- end line -->
+					</div>
+				</div><!-- end main-title-bar -->
+				<div class="main-content">
+						<div class="sub-nav tabs mvm clearfix">
+						</div><!-- end of sub-nav -->
+						<?php echo $post->body; ?>
 	
-</div>
-
-<?php if ($post->comments_enabled): ?>
-	<?php echo display_comments($post->id); ?>
-<?php endif; ?>
+					<!-- right-col -->
+				</div><!-- end main-content -->
+			</div>
+		</div><!-- end main -->
+                    </div>

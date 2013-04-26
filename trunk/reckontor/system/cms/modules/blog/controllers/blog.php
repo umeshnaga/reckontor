@@ -15,6 +15,17 @@ class Blog extends Public_Controller
 		$this->load->model('comments/comments_m');
 		$this->load->library(array('keywords/keywords'));
 		$this->lang->load('blog');
+		$this->load->model('tour/region_m');
+		
+		$countries = $this->region_m->get_all_countries();
+		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
+		
+		$this->template
+			 ->set('hot_cities', $hot_cities)
+			 ->set('countries', $countries);
+		
+		$this->template->set_layout('two_cols.html')
+			   ->set_partial('left_sidebar', 'partials/left_sidebar');
 	}
 
 	/**
