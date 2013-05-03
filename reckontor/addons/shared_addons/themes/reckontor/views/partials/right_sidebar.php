@@ -199,7 +199,7 @@ if(!empty($shots->data)){
 			<div class="bd">
 				<div id="tile_detail_container">
 					<p class="mhn mbs strong large white-text">
-					<?php echo $shots;?>
+						No photo
 					</p>
 				</div>
 			</div>

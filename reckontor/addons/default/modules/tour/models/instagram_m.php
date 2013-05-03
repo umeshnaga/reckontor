@@ -22,8 +22,11 @@ class Instagram_m extends MY_Model {
      * Constructor
      */
     public function __construct() {
-       	$this->username='khanhvk';
-        $this->access_token = '178423405.b7ca09f.e4cadcec4e314175bc8404e66aed74fb';
+       	$this->username='ongoasia';
+       	/**
+       	 * To get access token, enter URL: https://instagram.com/oauth/authorize/?client_id=b7ca09fe11914fe4a73af0d42a831a61&redirect_uri=http://ongoasia.com/&response_type=token
+       	 */
+        $this->access_token = '361862360.b7ca09f.ff749fbfc8f44bffb9473642395b10f9';
     }
 
     /*
