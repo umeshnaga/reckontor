@@ -101,7 +101,7 @@ class Blog_m extends MY_Model
 		elseif (isset($params['limit']))
 			$this->db->limit($params['limit']);
 
-		return $this->get_all();
+		return $this->order_by('sequence')->get_all();
 	}
 	
 	public function count_tagged_by($tag, $params)
