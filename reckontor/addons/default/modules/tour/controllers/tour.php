@@ -25,7 +25,10 @@ class Tour extends Public_Controller
 		$this->load->model('tour_m');
 		$this->load->model('region_m');
 		$this->load->model('booking_m');
+		$this->load->model('banner_m');
 		$this->load->model('instagram_m');
+		$this->load->model('blog/blog_m');
+		$this->load->model('blog/blog_categories_m');
 		$this->lang->load('tour');
 		$this->load->helper('html');
 		$this->load->helper('user');
@@ -35,17 +38,21 @@ class Tour extends Public_Controller
 
 		$countries = $this->region_m->get_all_countries();
 		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
-
+		$banners = $this->banner_m->get_all();
 		try
 		{
 			$shots = $this->instagram_m->getUserMedia(array('count'=>20)); //Get the shots from instagram
 		} catch(Exception $e){
 			$shots = 'Failed to get data from Instagram: ' .$e->getMessage();
 		}
+		
+		$banner_groups = array_chunk($banners, 4);
+		
 		$this->template
 			->set('hot_cities', $hot_cities)
 			->set('countries', $countries)
 			->set('shots', $shots)
+			->set('banner_groups', $banner_groups)
 			->set('title', "Tours, sightseeing tours, activities &amp; things to do | ".SITE_URL);
 	}
 
@@ -57,13 +64,30 @@ class Tour extends Public_Controller
 	 */
 	function index()
 	{
+		$cat_blogs_mapping = array();
+		
+		$categories = $this->blog_categories_m->order_by('sequence')->get_all();
+		
+		foreach ($categories as $index => $category) {
+			$category_id = $category->id;
+			$category = $this->blog_categories_m->get_by('id', $category_id);
+			
+			$blogs = $this->blog_m->limit(10)->get_many_by(array(
+				'category' => $category_id,
+				'status' => 'live'
+			));
+			
+			$cat_blogs_mapping[$category_id] = new stdClass();
+			$cat_blogs_mapping[$category_id]->category = $category;
+			$cat_blogs_mapping[$category_id]->blogs = $blogs;
+		}
+		
 		$this->template->set_layout('three_cols.html')
-		->set_partial('left_sidebar', 'partials/left_sidebar')
-		->set_partial('right_sidebar', 'partials/right_sidebar')
-		->set_partial('home_slider', 'partials/home_slider');
-
-		$this->template
-		->build('index');
+			->set_partial('left_sidebar', 'partials/left_sidebar')
+			->set_partial('right_sidebar', 'partials/right_sidebar')
+			->set_partial('home_slider', 'partials/home_slider')
+			->set('cat_blogs_mapping', $cat_blogs_mapping)
+			->build('index');
 	}
 
 	function search($page = 1, $country_id, $city_id = "") {
