@@ -107,7 +107,7 @@ class Instagram_m extends MY_Model {
      */
     public function queryInstagram($url){
         //prepare caching
-        $cachefolder = __DIR__.'/';
+        $cachefolder = dirname(__FILE__).'/';
         $cachekey = md5($url);
         $cachefile = $cachefolder.$cachekey.'_'.date('i').'.txt'; //cached for one minute
 
