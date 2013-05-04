@@ -1,136 +1,99 @@
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
-    	$('#destImages').slides({
-            play: 4000,
-            fadeSpeed: 0,
-            effect: 'fade',
-            generatePagination: false,
-            hoverPause: false,
-            preload: true
-        });
+	// Lowering the opacity of all slide in divs
+	$('.banner div').css('opacity',0.4);
+
+	// Using the hover method 
+	$('.banner').hover(function(){
+		// Executed on mouseenter
+		var el = $(this);
+		// Find all the divs inside the banner div,
+		// and animate them with the new size
+		el.find('div').stop().animate({width:200,height:200},'slow',function(){
+			// Show the "Visit Company" text:
+			el.find('p').fadeIn('fast');
+		});
+
+	},function(){
+		// Executed on moseleave
+		var el = $(this);
+		// Hiding the text
+		el.find('p').stop(true,true).hide();
+		// Animating the divs
+		el.find('div').stop().animate({width:60,height:60},'fast');
+	}).click(function(){
+		// When clicked, open a tab with the address of the hyperlink
+		window.open($(this).find('a').attr('href'));
+		
+	});
+});
+
+$(document).ready(function(){
+	$('#banner_slides').slides({
+		effect:'fade',
+        generateNextPrev: false,
+        play: 5000,
+        hoverPause: false,
+        pause: 500,
+       generatePagination: true
+    });
 });
 </script>
-<div style="margin-top: 10px;">
-	<div
-		class="mod basic viamod viamod-bar-hd hanging mhn destination-list">
-		<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-		<div class="inner">
-			<div id="destImages">
-				<div class="slidesContainer">
-					{{ theme:image id="slide_img" file="1_002.jpg" alt=""
-					class="hero-img" }}
-					<div class="slideUnit">{{ theme:image id="slide_img" file="1.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="2.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="3.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="4.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="5.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="6.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="7.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="8.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="9.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="11.jpg"
-						alt="" class="hero-img" }}</div>
-					<div class="slideUnit">{{ theme:image id="slide_img" file="12.jpg"
-						alt="" class="hero-img" }}</div>
 
+<div class="mod basic viamod viamod-bar-hd hanging mhn destination-list">
+	<b class="top"><b class="tl"></b><b class="tr"></b></b>
+	<div class="inner">
+		<div class="hd">
+		</div>
+		<div class="bd inverse-txt">
+			<div id="banner_slides">
+				<div class="slidesContainer" id="billBoard" style="height: 312px">
+				<?php
+				foreach ($banner_groups as $i => $banners) {
+				 
+				?>
+				<ul class="bannerHolder">
+				<?php
+				
+				foreach ($banners as $i => $banner) {
+				?>
+				<li>
+				<div class="banner">
+					<a href="<?php echo $banner->url;?>">
+						<img src="{{url:base}}uploads/default/files/banners/<?php echo $banner->image;?>" alt="<?php echo $banner->company;?>" width="130" height="130" />
+					</a>
+					<p class="companyInfo">Visit <?php echo $banner->company;?></p>
+					<div class="cornerTL"></div>
+					<div class="cornerTR"></div>
+					<div class="cornerBL"></div>
+					<div class="cornerBR"></div>
 				</div>
-			</div>
-
-			<div class="hd">
-				<div class="line hd-border mhm">
-					<div class="mtm mod-header media mhn mbs h1">
-						<i class="icon icon-hands-up-l img"></i>
-						<div class="bd pbs">
-							Let the <br>Activities Begin
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bd inverse-txt">
-
-				<div class="mhm viamod-border-b">
-
-					<h3 class="info-label strong mbn mhn h5">
-						<a href="javascript:;" class="inverse-link">North America</a><a
-							href="javascript:;" class="no-hover"><i
-							class="icon icon-arrow-east mls"></i> </a>
-					</h3>
-					<p class="mtn mhn xsmall">
-						<a href="javascript:;" class="inverse-link">New York</a>, <a
-							href="javascript:;" class="inverse-link">Las Vegas</a>, <a
-							href="javascript:;" class="inverse-link">Grand Canyon</a>, <a
-							href="javascript:;" class="inverse-link">San Francisco</a>, <a
-							href="javascript:;" class="inverse-link">Los Angeles</a>, <a
-							href="javascript:;" class="inverse-link">Oahu</a>, <a
-							href="javascript:;" class="inverse-link">New Orleans</a>, <a
-							href="javascript:;" class="inverse-link">Orlando</a>, <a
-							href="javascript:;" class="inverse-link">Washington DC</a>, <a
-							href="javascript:;" class="inverse-link">Vancouver</a>, <a
-							href="javascript:;" class="inverse-link">Montreal</a>, <a
-							href="javascript:;" class="inverse-link">Cancun</a>, <a
-							href="javascript:;" class="more-link inverse-link">See all
-							&raquo;</a>
-					</p>
-				</div>
-
-				<div class="mhm viamod-border-b" mmid="2510"
-					layoutcode="FIND_TTD_1a" position="2">
-
-					<h3 class="info-label strong mbn mhn h5">
-						<a href="javascript:;" class="inverse-link">Europe</a><a
-							href="javascript:;" class="no-hover"><i
-							class="icon icon-arrow-east mls"></i> </a>
-					</h3>
-					<p class="mtn mhn xsmall">
-						<a href="javascript:;" class="inverse-link">Paris</a>, <a
-							href="javascript:;" class="inverse-link">London</a>, <a
-							href="javascript:;" class="inverse-link">Rome</a>, <a
-							href="javascript:;" class="inverse-link">Vatican</a>, <a
-							href="javascript:;" class="inverse-link">Florence</a>, <a
-							href="javascript:;" class="inverse-link">Venice</a>, <a
-							href="javascript:;" class="inverse-link">Milan</a>, <a
-							href="javascript:;" class="inverse-link">Barcelona</a>, <a
-							href="javascript:;" class="inverse-link">Madrid</a>, <a
-							href="javascript:;" class="inverse-link">Amsterdam</a>, <a
-							href="javascript:;" class="more-link inverse-link">See all
-							&raquo;</a>
-					</p>
-				</div>
-
-				<div class="mhm viamod-border-b">
-
-					<h3 class="info-label strong mbn mhn h5">
-						<a href="javascript:;" class="inverse-link">Australia &amp;
-							Pacific</a><a href="javascript:;" class="no-hover"><i
-							class="icon icon-arrow-east mls"></i> </a>
-					</h3>
-					<p class="mtn mhn xsmall">
-						<a href="javascript:;" class="inverse-link">Sydney</a>, <a
-							href="javascript:;" class="inverse-link">Melbourne</a>, <a
-							href="javascript:;" class="inverse-link">Cairns</a>, <a
-							href="javascript:;" class="inverse-link">Ayers Rock</a>, <a
-							href="javascript:;" class="inverse-link">Perth</a>, <a
-							href="javascript:;" class="inverse-link">Australia</a>, <a
-							href="javascript:;" class="inverse-link">Queenstown</a>, <a
-							href="javascript:;" class="inverse-link">Auckland</a>, <a
-							href="javascript:;" class="inverse-link">New Zealand</a>, <a
-							href="javascript:;" class="more-link inverse-link">See all
-							&raquo;</a>
-					</p>
+				</li>
+				<?php 
+				}
+				?>
+				</ul>
+				<?php 
+				}
+				?>
 				</div>
 			</div>
 		</div>
-		<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
 	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="clear: both;margin-bottom: 10px">
 </div>
 <div id="instagram_photos">
 	<div class="mod basic viamod mtn mhn">

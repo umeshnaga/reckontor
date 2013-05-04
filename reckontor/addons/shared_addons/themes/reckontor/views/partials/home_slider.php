@@ -2,7 +2,7 @@
 $(document).ready(function(){
     	$('#slides').slides({
             generateNextPrev: true,
-            play: 5000,
+            play: 7000,
             hoverPause: true,
             pause: 500,
            generatePagination: true
