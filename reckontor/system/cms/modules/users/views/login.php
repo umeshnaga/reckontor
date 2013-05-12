@@ -1,10 +1,5 @@
 <div class="body page-shader mtm">             
 				<div class="omniture">
- <!--/DO NOT REMOVE/-->
-
-
-
-
         </div><!-- End of Omniture Code-->
         <div class="line pvl">
         	<div class="unit size1of6">&nbsp;</div>

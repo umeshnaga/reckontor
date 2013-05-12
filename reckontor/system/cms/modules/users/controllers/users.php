@@ -438,11 +438,14 @@ class Users extends Public_Controller
 	 */
 	public function activate($id = 0, $code = NULL)
 	{
+		$email = $this->input->post('email');
 		// Get info from email
 		if ($this->input->post('email'))
 		{
 			$this->template->activate_user = $this->ion_auth->get_user_by_email($this->input->post('email'));
-			$id = $this->template->activate_user->id;
+			if (isset($this->template->activate_user)) {
+				$id = $this->template->activate_user->id;
+			}
 		}
 
 		$code = ($this->input->post('activation_code')) ? $this->input->post('activation_code') : $code;
@@ -467,11 +470,16 @@ class Users extends Public_Controller
 			{
 				$this->template->error_string = $this->ion_auth->errors();
 			}
+		} else {
+			if (!empty($code) || !empty($email)) {
+				$this->template->error_string = "Incorrect email or activation code.";
+			}
 		}
 
 		$this->template
 			->title(lang('user_activate_account_title'))
 			->set_breadcrumb(lang('user_activate_label'), 'users/activate')
+			->set_layout('user/nosidebar.html')
 			->build('activate');
 	}
 
@@ -492,6 +500,7 @@ class Users extends Public_Controller
 
 		$this->template
 			->title(lang('user_activated_account_title'))
+			->set_layout('user/nosidebar.html')
 			->build('activated');
 	}
 

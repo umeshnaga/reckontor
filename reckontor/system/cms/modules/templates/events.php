@@ -27,10 +27,6 @@ class Events_Templates {
 
     public function send_email($data = array())
     {
-    	//FIXME: Let enable this function again
-    	if(true) {
-    		return true;
-    	}
         $this->ci =& get_instance();
 
         $slug = $data['slug'];
@@ -41,6 +37,7 @@ class Events_Templates {
 		//get all email templates
 		$templates = $this->ci->email_templates_m->get_templates($slug);
 
+		
         //make sure we have something to work with
         if ( ! empty($templates))
         {
@@ -58,7 +55,7 @@ class Events_Templates {
 
             $body = array_key_exists($lang, $templates) ? $templates[$lang]->body : $templates['en']->body ;
             $body = $this->ci->parser->parse_string($body, $data, TRUE);
-
+			
             $this->ci->email->from($from, $from_name);
             $this->ci->email->reply_to($reply_to);
             $this->ci->email->to($to);
@@ -75,8 +72,9 @@ class Events_Templates {
 					$this->ci->email->attach($attachment);
 				}
 			}
-
-			return (bool) $this->ci->email->send();
+			
+			$result = (bool) $this->ci->email->send();
+			return $result;
         }
 
         //return false if we can't find the necessary templates
