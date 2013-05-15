@@ -101,7 +101,7 @@
 						<div class="img-product overlay">
 							<a class="img-link no-hover"
 								href="{{ url:site uri='tour/detail' }}/<?php echo $tour->tour_id;?>">
-								{{ theme:image file="<?php echo $tour->photo_path;?>" alt="" }}
+								<img src="{{ url:site uri='files/thumb' }}/<?php echo $tour->photo_id;?>/154/109/fit"/>
 							</a>
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 										<div class="media man">
 											<i title="Duration" class="icon icon-clock img"></i>
 											<div class="bd">
-											<?php echo $tour->duration_hours;?>
+											<?php echo $tour->duration;?>
 											</div>
 										</div>
 									</li>

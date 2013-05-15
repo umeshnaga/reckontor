@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 define('RECORD_PER_PAGE', 15);
 define('MAX_PAGE_DISPLAYED', 5);
-define('DEFAULT_TOUR_PHOTO_PATH','photo_154x109.png');
 define('DATE_VALUE_PATTERN','m Y');
 define('DATE_TEXT_PATTERN','M Y');
 define('SITE_URL', 'Ongoasia.com');

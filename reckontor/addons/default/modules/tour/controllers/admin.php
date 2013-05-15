@@ -211,7 +211,7 @@ class Admin extends Admin_Controller
 					'additional_info'	=> $this->input->post('additional_info')
 				))){
 					if($this->add_tour_available_dates($tour_id)){
-						$this->pyrocache->delete('tour_m');
+						$this->clear_tour_related_cache();
 						$this->session->set_flashdata('success', sprintf('The tour "%s" was added.', $this->input->post('title')));
 						redirect('admin/tour');
 					}
@@ -278,7 +278,7 @@ class Admin extends Admin_Controller
 					'additional_info'	=> $this->input->post('additional_info')
 				))){
 					if($this->update_tour_available_dates($tour_id)){
-						$this->pyrocache->delete('tour_m');
+						$this->clear_tour_related_cache();
 						$this->session->set_flashdata('success', sprintf('The tour "%s" was updated.', $this->input->post('title')));
 						redirect('admin/tour');
 					}
@@ -325,8 +325,7 @@ class Admin extends Admin_Controller
 			{
 				if ($this->tour_m->delete_tour_detail($ids)){
 					if ($this->tour_m->delete_tour($ids)){
-						// Wipe cache for this model, the content has changed
-						$this->pyrocache->delete('tour_m');
+						$this->clear_tour_related_cache();
 		
 						if (count($ids) == 1)
 						{
@@ -400,6 +399,7 @@ class Admin extends Admin_Controller
 			}
 		}
 	}
+	
 	private function add_tour_available_dates($tour_id){
 		$items = $this->input->post('tour_available_date_id');
 		if ( ! empty($items)){
@@ -417,6 +417,11 @@ class Admin extends Admin_Controller
 		}
 		return true;
 	} 
+	
+	private function clear_tour_related_cache(){
+		$this->pyrocache->delete('tour_m');
+		$this->pyrocache->delete('region_m');
+	}
 	
 	private function update_tour_available_dates($tour_id){						
 		$delete_ids=$this->input->post('delete_tour_available_date_ids');

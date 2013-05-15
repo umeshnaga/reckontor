@@ -10,7 +10,7 @@
         <div class="media man plm">
             <div class="img img-product overlay">                   
 				<a href="#" title="0 Photos of <?php echo $tour->title;?>">
-					{{ theme:image file="<?php echo $tour->photo_path;?>" title="<?php echo $tour->title;?>" alt="<?php echo $tour->title;?>" class="product-display-header" }}
+					<img src="{{ url:site uri='files/thumb' }}/<?php echo $tour->photo_id;?>/154/109/fit" title="<?php echo $tour->title;?>" alt="<?php echo $tour->title;?>" class="product-display-header"/>
 				</a>
             </div>
             <div class="bd">
@@ -28,7 +28,7 @@
                             <i class="icon icon-clock-alt img mtxs"></i>
                             <div class="bd">
                                 <span class="info-label strong">Duration:</span> 
-                                <span class="large"><?php echo $tour->duration_hours;?> hours</span>
+                                <span class="large"><?php echo $tour->duration;?></span>
                             </div>
                         </div>
                         <div class="media man">
