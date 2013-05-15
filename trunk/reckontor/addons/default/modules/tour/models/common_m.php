@@ -36,4 +36,12 @@ class Common_m extends MY_Model {
 		return array("page"=>$page,"page_start"=>$page_start,"page_end"=>$page_end,"page_count"=>$page_count,"next_page"=>$next_page,
 			"start_record"=>$start_record,"end_record"=>$end_record,"record_count"=>$record_count);
 	}
+	
+	function get_select_options($items) {
+		$options = array();
+		foreach ($items as $i => $item) {
+			$options[$item->id] = $item->name;
+		}
+		return $options;
+	}
 }

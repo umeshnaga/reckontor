@@ -12,34 +12,53 @@ class Module_Tour extends Module {
                 'en' => 'Tour System'
             ),
             'description' => array(
-                'en' => 'Tour System'
+                'en' => 'Tour System for Ongoasia'
             ),
-            'frontend' => TRUE,
-            'backend' => TRUE,
-            'menu' => 'content'
+			'frontend'	=> true,
+			'backend'	=> true,
+            'menu' => 'Tour',
+            'sections' => array(
+			    'tours' => array(
+				    'name' => 'Tour',
+				    'uri' => 'admin/tour',
+				    'shortcuts' => array(
+						array(
+					 	   	'name' => 'tour_create_title',
+						    'uri' => 'admin/tour/create',
+						    'class' => 'add'
+						),
+						array(
+					 	   	'name' => 'tour_manage_photo',
+						    'uri' => 'admin/files'
+						)
+					)
+				),
+				'bookings' => array(
+				    'name' => 'Booking',
+				    'uri' => 'admin/tour/booking'
+			    ),
+		    ),
         );
     }
 
     public function install() {
-        return TRUE;
+        return true;
     }
 
     public function uninstall() {
-        return TRUE; //Not interested in uninstalling this for the time being.
+		return true;
     }
 
     public function upgrade($old_version) {
         // Your Upgrade Logic
-        return TRUE;
+        return true;
     }
 
     public function help() {
         // Return a string containing help info
         // You could include a file and return it here.
         return "<h4>Overview</h4>
-		<p>The tour module is the application that controls the submitting of Tour Hours of Work, and generates receipts based on that input.</p>
-		<h4>More information to be added</h4>
-		<p>Help will be added here</p>";
+		<p>The tour module for Ongoasia.</p>";
     }
 
 }

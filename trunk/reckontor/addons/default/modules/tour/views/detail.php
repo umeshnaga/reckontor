@@ -135,19 +135,19 @@
 		                <div class="hd">
 		                    <ul class="tab-control" id="topTabs">
 		                        <li class="current">
-		                            <a href="javascript:;">
+		                            <a href="#tab1">
 		                                <span>
 		                                    <strong>Description</strong>
 		                                </span>
 		                            </a>
 		                        </li>
 		                        <li>
-		                            <a href="javascript:;">
+		                            <a href="#tab2">
 		                                <span>Schedule &amp; Pricing</span>
 		                            </a>
 		                        </li>
 		                        <li>
-		                            <a href="javascript:;">
+		                            <a href="#tab3">
 		                                <span>Additional Info</span>
 		                            </a>
 		                        </li>
