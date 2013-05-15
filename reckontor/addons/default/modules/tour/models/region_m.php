@@ -27,6 +27,7 @@ class Region_m extends MY_Model {
 			default:
 				$this->db->db_debug = FALSE;
 		}
+		$this->load->model('common_m');
 	}
 	
 	function get_all_countries() {
@@ -40,6 +41,15 @@ class Region_m extends MY_Model {
 		$_SERVER['ALL_COUNTRIES'] = $countries;
 		return $countries;
 		
+	}
+	
+	function get_all_cities() {		
+		$sql = "SELECT city_id as id, CONCAT(country_name,' - ',city_name) as name FROM r_country INNER JOIN r_city USING (country_id) ORDER BY country_name, city_name"; 
+		return $this->db->query($sql)->result_object();		
+	}
+	
+	function get_city_options() {
+		return $this->common_m->get_select_options($this->pyrocache->model('region_m', 'get_all_cities', array()));
 	}
 	
 	function get_country_cities_mapping() {
