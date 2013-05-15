@@ -36,8 +36,8 @@ class Tour extends Public_Controller
 		$this->template->append_js('module::SegmentedSearch.js');
 		$this->template->append_js('module::script.js');
 
-		$countries = $this->region_m->get_all_countries();
-		$hot_cities = $this->region_m->get_cities_by_highlight_level('HOT CITY');
+		$countries = $this->pyrocache->model('region_m', 'get_all_countries', array());
+		$hot_cities = $this->pyrocache->model('region_m', 'get_cities_by_highlight_level', array('HOT CITY'));
 		$banners = $this->banner_m->get_all();
 		try
 		{
@@ -92,15 +92,15 @@ class Tour extends Public_Controller
 
 	function search($page = 1, $country_id, $city_id = "") {
 		if($city_id==""){
-			$tour_count = $this->tour_m->get_tours_count_by_country_id($country_id);
+			$tour_count = $this->pyrocache->model('tour_m', 'get_tours_count_by_country_id', array($country_id));
 				
-			$tours = $this->tour_m->get_tours_by_country_id($country_id, $page);
-			$info = $this->region_m->get_country_by_id($country_id);
+			$tours = $this->pyrocache->model('tour_m', 'get_tours_by_country_id', array($country_id, $page));
+			$info = $this->pyrocache->model('region_m', 'get_country_by_id', array($country_id));
 		}else {
-			$tour_count = $this->tour_m->get_tours_count_by_city_id($city_id);
+			$tour_count = $this->pyrocache->model('tour_m', 'get_tours_count_by_city_id', array($city_id));
 				
-			$tours = $this->tour_m->get_tours_by_city_id($city_id, $page);
-			$info = $this->region_m->get_city_by_id($city_id);
+			$tours = $this->pyrocache->model('tour_m', 'get_tours_by_city_id', array($city_id, $page));
+			$info = $this->pyrocache->model('region_m', 'get_city_by_id', array($city_id));
 		}
 		$page_count = ceil($tour_count/RECORD_PER_PAGE);
 		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
@@ -108,8 +108,7 @@ class Tour extends Public_Controller
 
 		$this->template->set_layout('three_cols.html')
 		->set_partial('left_sidebar', 'partials/left_sidebar')
-		->set_partial('right_sidebar', 'partials/right_sidebar');
-		$this->template
+		->set_partial('right_sidebar', 'partials/right_sidebar')
 		->set('title',$title)
 		->set('page_nav',$page_nav)
 		->set('selected_country_id', $country_id)
@@ -124,19 +123,17 @@ class Tour extends Public_Controller
 	function search_keyword($page = 1, $keyword){
 		$keyword=urldecode($keyword);
 
-		$country_destinations = $this->region_m->get_countries($keyword);
-		$city_destinations = $this->region_m->get_cities($keyword);
+		$country_destinations = $this->pyrocache->model('region_m', 'get_countries', array($keyword));
+		$city_destinations = $this->pyrocache->model('region_m', 'get_cities', array($keyword));
 
-		$tour_count = $this->tour_m->get_tours_count_by_keyword($keyword);
-		$tours = $this->tour_m->get_tours_by_keyword($keyword, $page);
+		$tour_count = $this->pyrocache->model('tour_m', 'get_tours_count_by_keyword', array($keyword));
+		$tours = $this->pyrocache->model('tour_m', 'get_tours_by_keyword', array($keyword, $page));
 
 		$page_count = ceil($tour_count/RECORD_PER_PAGE);
 		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
 
 		$this->template->set_layout('two_cols.html')
-		->set_partial('left_sidebar', 'partials/left_sidebar');
-
-		$this->template
+		->set_partial('left_sidebar', 'partials/left_sidebar')
 		->set('title',"Search Results for ".$keyword." on ".SITE_URL.".")
 		->set('keyword',$keyword)
 		->set('country_destinations',$country_destinations)
@@ -149,15 +146,13 @@ class Tour extends Public_Controller
 	}
 
 	function detail($tour_id) {
-		$tour = $this->tour_m->get_tour_by_id($tour_id);
+		$tour = $this->pyrocache->model('tour_m', 'get_tour_by_id', array($tour_id));
 
 		$this->template->set_layout('two_cols.html')
-		->set_partial('left_sidebar', 'partials/left_sidebar');
-
-		$this->template
+		->set_partial('left_sidebar', 'partials/left_sidebar')
 		->set('selected_country_id',$tour->country_id)
 		->set('selected_city_id',$tour->city_id)
-		->set("tour", $tour)->build('detail');
+		->set('tour', $tour)->build('detail');
 	}
 
 	function add_to_cart () {
@@ -323,17 +318,17 @@ class Tour extends Public_Controller
 	 */
 	public function cities_by_country($country_id)
 	{
-		$country_cities_mapping = $this->region_m->get_country_cities_mapping();
-		return $this->template->build_json($country_cities_mapping[$country_id]);
+		return $this->template->build_json($this->pyrocache->model('region_m', 'get_cities_by_country_id', array($country_id)));
 	}
 
 	function search_keyword_ajax($keyword){
 		$keyword=urldecode($keyword);
 		$response= new stdClass;
-		$response->destinations = $this->region_m->get_countries_ajax($keyword);
-		$city_destinations = $this->region_m->get_cities_ajax($keyword);
+		
+		$response->destinations = $this->pyrocache->model('region_m', 'get_countries_ajax', array($keyword));
+		$city_destinations = $this->pyrocache->model('region_m', 'get_cities_ajax', array($keyword));
 		$response->destinations=array_merge($response->destinations,$city_destinations);
-		$response->products = $this->tour_m->get_tours_by_keyword_ajax($keyword, 5);
+		$response->products = $this->pyrocache->model('tour_m', 'get_tours_by_keyword_ajax', array($keyword, 5));
 
 		$response->moreResults=array();
 		$response->moreResults[0]=new stdClass;
