@@ -1,71 +1,39 @@
-<div class="left-col sidebar">
-	<div class="mod basic viamod-alt mhn mtn">
-		<b class="top"><b class="tl"></b><b class="tr"></b>
-		</b>
-		<div class="inner">
-			<div class="hd">
-				<div class="mam pbs mod-header hd-border h2">Find Things to Do</div>
-			</div>
-			<div class="bd">
-					<div class="mhm">
-						<select class="mbs input-full no-border country_box" with_city_box="#cityDropdown" id="countryDropdown">
-							<option selected="selected" value="">Select a country</option>
-							<?php
-							foreach ($countries as $row)
-							{
-								if($selected_country_id==$row->country_id){
-									echo '<option selected="selected" value="'.$row->country_id.'">'.$row->country_name.'</option>';
-								}else{
-									echo '<option value="'.$row->country_id.'">'.$row->country_name.'</option>';
-								}
-							}
-							?>
-						</select>
-
-						<select class="input-full no-border" id="cityDropdown"
+<div class="f-left sidebar">	
+	<div class="select-dest component">
+		<div class="heading heading1">WHERE DO YOU WANT TO GO?</div>
+		<select class="mbs input-full no-border country_box"
+			with_city_box="#cityDropdown" id="countryDropdown">
+			<option selected="selected" value="">Select a country</option>
+			<?php
+			foreach ($countries as $row)
+			{
+				if($selected_country_id==$row->country_id){
+					echo '<option selected="selected" value="'.$row->country_id.'">'.$row->country_name.'</option>';
+				}else{
+					echo '<option value="'.$row->country_id.'">'.$row->country_name.'</option>';
+				}
+			}
+			?>
+		</select>
+		<label>Country</label>
+		<select class="input-full no-border" id="cityDropdown"
 							disabled="true" selected-value="<?php echo $selected_city_id;?>">
 							<option selected="selected" value="">Select region/city</option>
 						</select>
-					</div>
-
-					<div class="btn unitRight mam size-btn-go">
-						<button value="Go" name="go" id="goButton"
+		<label>Destination</label>
+		<!-- <button value="Go" name="go" id="goButton"
 							type="button">
 							<span>Go</span>
-						</button>
-					</div>
-			</div>
-		</div>
-		<b class="bottom"><b class="bl"></b><b class="br"></b>
-		</b>
+						</button> -->
 	</div>
-	<!-- on the LHS -->
+	<div class="ad-banner component"><div>AD BANNER</div>
+	</div>
+	
+	<div class="ad-banner small component"><div>AD BANNER</div>
+	</div>
+	
 
-	<div>
-		<div class="mod basic viamod-alt mtn mhn">
-			<b class="top"><b class="tl"></b><b class="tr"></b>
-			</b>
-			<div class="inner">
-				<div class="hd">
-					<div class="mam">
-						<i class="icon icon-destinations mbm"></i>
-						<div class="pbs mod-header hd-border h3">Hot Destinations</div>
-					</div>
-				</div>
-				<div class="bd">
-					<ul class="mtn">
-						<?php foreach ($hot_cities as $i => $hot_city) { ?>
-						<li><a href="{{ url:site uri='tour/search/1/<?php echo $hot_city->country_id;?>/<?php echo $hot_city->city_id;?>' }}"
-							class="inverse-txt inverse-link info-label strong"><?php echo $hot_city->city_name;?></a>
-						</li>
-						<?php }?>
-					</ul>
-				</div>
-			</div>
-			<b class="bottom"><b class="bl"></b><b class="br"></b>
-			</b>
-		</div>
-	</div>
+	<!-- 
 
 
 	<div>
@@ -96,10 +64,13 @@
 			<b class="bottom"><b class="bl"></b><b class="br"></b>
 			</b>
 		</div>
-	</div>
+	</div> -->
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
+	$(".sidebar select").each(function() {
+		//$(this).combobox();
+	});
 	$('#goButton').click(function(){
 		var city = $("#cityDropdown").val();
 	    var country = $("#countryDropdown").val();

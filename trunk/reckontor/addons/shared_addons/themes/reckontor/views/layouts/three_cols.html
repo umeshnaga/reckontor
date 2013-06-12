@@ -1,31 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
-	<head>
-		{{ theme:partial name="metadata" }}
-	</head>
-	<body>
-		
+<head>{{ theme:partial name="metadata" }}
+</head>
+<body>
 	{{ theme:partial name="header" }}
-	<div class="page">
-		<div class="body">
-			<div class="main">
-				<div class="line mlm">
-		
-					<div class="main-content">
-						{{ template:partial name="home_slider" }}
-						<div class="main-col">
-							{{ template:body }}
-						</div>
-						<div class="right-col">
-							{{ template:partial name="right_sidebar" }}
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			{{ template:partial name="left_sidebar" }}
+	<div class="clear"></div>
+	{{ template:partial name="home_slider" }}
+	<div class="content">
+		{{ template:partial name="left_sidebar" }}
+		<div class="main-col component">
+			{{ template:body }} 
 		</div>
-		{{ theme:partial name="footer" }}
-	</div>	
-	</body>
+		{{ template:partial name="right_sidebar" }}
+	</div>
+	{{ theme:partial name="footer" }}
+</body>
 </html>

@@ -1,83 +1,40 @@
-<div id="header">
-	<div class="header_toolbar_wrap">
-		<div class="header_toolbar">
-			<div class="main_tools size1of6 unit"></div>
-			<div class="other_tools size5of6 unitRight">
-				<div id="accountToolsHeaderDiv" class="line">
+<div class="header content">
+	{{ if user:logged_in }}
+	<div class="login-text">
+		Hi, <a href="{{ url:site uri='users' }}">{{
+			user:first_name }} {{ user:last_name }}</a> <a
+			href="{{ url:site uri='users/logout' }}">{{ helper:lang
+			line="logout_label" }}</a>
+	</div>
+	{{ else }}
+	<div class="login-text">
+		<a href="{{ url:site uri='users/login' }}">{{ helper:lang
+			line="user_login_btn" }}</a> <a href="{{ url:site uri='register' }}">{{
+			helper:lang line="user_register_btn" }}</a>
+	</div>
+	{{ endif }}
 
-					<div class="unit size3of4">
-						<ul class="line mvn mhm unitRight">
-							{{ if user:logged_in }}
-
-							<li class="inline-unit"><i
-								class="icon unit mts"></i> Hi, <a
-								href="{{ url:site uri='users' }}">{{
-									user:first_name }} {{ user:last_name }}</a><span
-								class="toolbar-pipe">|</span></li>
-							<li class="inline-unit"><a
-								href="{{ url:site uri='users/logout' }}">{{ helper:lang
-									line="logout_label" }}</a><span class="toolbar-pipe">|</span>
-							</li> {{ else }}
-							<li class="inline-unit"><a
-								href="{{ url:site uri='users/login' }}">{{ helper:lang
-									line="user_login_btn" }}</a><span class="toolbar-pipe">|</span>
-							</li>
-							<li class="inline-unit"><a
-								href="{{ url:site uri='register' }}">{{ helper:lang
-									line="user_register_btn" }}</a><span class="toolbar-pipe">|</span>
-							</li> {{ endif }}
-							<li class="inline-unit"><a rel="nofollow"
-								href="{{ url:site uri='' }}" class="inverse-link">Shopping
-									Cart</a> <a rel="nofollow"
-								href="{{ url:site uri='' }}"
-								class="inverse-txt no-hover mls"><span class="toolbar-count"><span
-										id="shopCartCount">0</span>
-								</span>
-							</a></li>
-						</ul>
-					</div>
-
-
-					<div class="unitRight size1of4">
-						<div class="line global-search">
-							<form action="{{ url:site uri='tour/search_keyword' }}" name="search" title="search" enctype="" method="get" onsubmit="return doFreeTextSearchSubmit('freeTextKeyword', '{{ url:site uri='tour/search_keyword' }}');">
-								<div class="unit size-toolbar-input mrs">
-									<input name="freeTextKeyword" size="16" maxlength="50"
-										id="freeTextKeyword" placeholder="Search..." type="text" autocomplete="off" />
-								</div>
-								<div class="btn unit">
-									<input name="submit" value=""
-										title="Search Ongoasia Tours &amp; Things to Do" type="submit" />
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- end search -->
-
-				</div>
+	<div class="search-bar">
+		<div class="label">SEARCH</div>
+		<form action="{{ url:site uri='tour/search_keyword' }}" name="search"
+			title="search" enctype="" method="get"
+			onsubmit="return doFreeTextSearchSubmit('freeTextKeyword', '{{ url:site uri='tour/search_keyword' }}');">
+			<div class="input-div">
+				<input name="freeTextKeyword" size="16" maxlength="50"
+					id="freeTextKeyword" type="text"
+					autocomplete="off" />
 			</div>
-		</div>
+			<input name="submit" value="GO!"
+				title="Search Ongoasia Tours &amp; Things to Do" type="submit"
+				class="btn" />
+		</form>
 	</div>
-	<!-- end of header_toolbar_wrap -->
 
-</div>
-<!-- end toolbar-->
-
-<h1 class="header-text">Book tours, things to do &amp; day trips.
-	450+ destinations, 100,000+ tour reviews &amp; photos. Trip planning
-	&amp; tour tips from real travelers.</h1>
-
-<div id="opt_global_header" class="opt_header"></div>
-
-<div class="header page overlay mbm">
-	<div class="line">
-		<a href="{{ url:site uri='' }}"
-			title="Ongoasia | Travel with an insider" class="img-link no-hover">{{
-			theme:image file="logo_tagline_full.png" alt="Ongoasia | Travel with an
-			insider" }}</a>
-		<div class="home_counter">
-			<h1 class="tagline">Book tours &amp; things to do with the
-				worldwide leader</h1>
-		</div>
+	<div class="travel-cart">
+		<a rel="nofollow" href="{{ url:site uri='' }}">TRAVEL CART</a> <a
+			rel="nofollow" href="{{ url:site uri='' }}" 
+			id="shopCartCount">0</a>
 	</div>
+	
+	<div class="clear"></div>
 </div>
