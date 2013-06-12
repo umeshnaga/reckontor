@@ -27,7 +27,6 @@ class Region_m extends MY_Model {
 			default:
 				$this->db->db_debug = FALSE;
 		}
-		$this->load->model('common_m');
 	}
 	
 	function get_all_countries() {		
@@ -41,7 +40,11 @@ class Region_m extends MY_Model {
 	}
 	
 	function get_city_options() {
-		return $this->common_m->get_select_options($this->pyrocache->model('region_m', 'get_all_cities', array()));
+		$options = array();
+		foreach ($this->pyrocache->model('region_m', 'get_all_cities', array()) as $i => $item) {
+			$options[$item->id] = $item->name;
+		}
+		return $options;
 	}
 	
 	function get_cities_by_country_id($country_id) {

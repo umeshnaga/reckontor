@@ -1,82 +1,108 @@
-		<div class="main-col">
-			<?php
-			foreach ($cat_blogs_mapping as $categor_id => $cat_blogs) {
-			?>
-			<?php
-				if($cat_blogs->category->title == 'Why book with us?' ||
-				   $cat_blogs->category->title == 'About Ongoasia') {
-			?>
-			<div>
-				<div class="mod basic viamod viamod-bar-hd mtm man">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd hd-border mhl pvs">
-							<h2 class="mtm pbs mod-header h1 xxxlarge"><?php echo $cat_blogs->category->title; ?></h2>
-						</div>
-						<div class="bd">
-							<ul class="large inverse-txt mhl mbl">
-							<?php
-							$blogs = $cat_blogs->blogs;
-							foreach ($blogs as $i => $blog) {
-							?>
-							
-								<li class="ptxs"><i class="item"></i><?php echo  anchor('blog/'.date('Y/m/', $blog->created_on).$blog->slug, $blog->title, array('class' => 'inverse-link')); ?></li>
-							<?php 
-								}
-							?>	
-							</ul>
-						</div>
-					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
-				</div>
-			</div>
-			<?php			
-			
-				} else { ?>
-			<div id="mm26050">
-				<div class="mod basic viamod viamod-bar-hd mtm man">
-					<b class="top"><b class="tl"></b><b class="tr"></b> </b>
-					<div class="inner">
-						<div class="hd">
-							<h2 class="mhl ptxs pbm mod-header hd-border h1">
-								<a class="inverse-txt inverse-link hover-alt"
-									href="javascript:;"><?php echo $cat_blogs->category->title;?></a>
-							</h2>
-						</div>
-						<div class="bd">
-							<div class="mhm pbm">
-							<?php
-							$blogs = $cat_blogs->blogs;
-							foreach ($blogs as $i => $blog) {
-							?>
-								<div class="media pbm viamod-border-b">
+<div class="highlight">HIGHLIGHTS OF THE SEASON</div>
+<div class="highlight-item">
+	<div class="images">
+		{{ theme:image file="img1.png" alt="" title="" class="main-image" }}
+		{{ theme:image file="img2.png" alt="" title="" }}
+		{{ theme:image file="img3.png" alt="" title="" }}
+		{{ theme:image file="img4.png" alt="" title="" }}
+	</div>
+	<div class="text">
+		<div class="title">SURF IN THEIR TURF</div>
+		<div class="title sub-title">BALI, INDONESIA</div>
+		<div class="title dest-title">Catch waves &amp; soak up the sun in sanctuary.</div>
+		<div>Catch waves &amp; soak up the sun in sanctuary. Catch waves &amp; soak up the sun in sanctuary. Catch waves &amp; soak up the sun in sanctuary. Catch waves &amp; soak up the sun in sanctuary. </div>
+		<a class="read-more" href="javascript:;">READ MORE >></a>
+	</div>
+	<div class="clear"></div>
+</div>
 
+<div class="highlight-item video-item">
+	<div class="text">
+		<div class="title">A CITY THAT NEVER SLEEPS</div>
+		<div class="title sub-title">HONG KONG</div>
+		<a class="read-more" href="javascript:;">READ<br/> MORE >></a>
+	</div>
+	<div class="video">
+		{{ theme:image file="video.png" alt="" title="" }}
+	</div>
+	<div class="clear"></div>
+</div>
 
-									<div class="bd">
+<div class="line"></div>
 
-										<p class="mts mbn inverse-txt small">
-										<?php echo  anchor('blog/'.date('Y/m/', $blog->created_on).$blog->slug, $blog->title, array('class' => 'h3 strong inverse-link')); ?>
-										<?php echo  anchor('blog/'.date('Y/m/', $blog->created_on).$blog->slug, '<i class="icon icon-arrow-east mls"></i>', array('class' => 'no-hover')); ?>
-										</p>
-										<p class="mod-txt mvn"><?php echo $blog->intro;?></p>
-									</div>
-								</div>
-							<?php
-							} 
-							?>
+<div class="highlight-item type2">
+	<div class="images">
+		{{ theme:image file="img5.png" alt="" title="" class="main-image" }}
+		{{ theme:image file="img6.png" alt="" title="" }}
+		{{ theme:image file="img7.png" alt="" title="" }}
+		{{ theme:image file="img8.png" alt="" title="" }}
+	</div>
+	<div class="text">
+		<div class="title">F1 NIGHT RACE</div>
+		<div class="title sub-title">SINGAPORE</div>
+		<div class="title dest-title">Fast &amp; furious in the Lion City.</div>
+		<div>Catch waves &amp; soak up the sun in sanctuary. Catch waves &amp; soak up the sun in sanctuary. Catch waves &amp; soak up the sun in sanctuary. Catch waves &amp; soak up the sun in sanctuary. </div>
+		<a class="read-more" href="javascript:;">READ MORE >></a>
+	</div>
+	<div class="clear"></div>
+</div>
 
-							</div>
-						</div>
-					</div>
-					<b class="bottom"><b class="bl"></b><b class="br"></b> </b>
-				</div>
-			</div>
-			<?php 
-				}
-				   
-			} 
-			?>
-			
+<div class="instagram-photos component">
+	<div class="heading">TRAVELSHOTS ON THE GO</div>
+<?php
+if(!empty($shots->data)){
+	$firstImage='';
+	$instagramImage='';
+	$shotIndex=0;
+	foreach($shots->data as $istg){
+		//If you want to display another size, you can use 'low_resolution', or 'standard_resolution' in place of 'thumbnail'
+		$istg_thumbnail = $istg->{'images'}->{'thumbnail'}->{'url'};
+		$istg_image = $istg->{'images'}->{'low_resolution'}->{'url'};
 
+		//The link
+		$istg_link = $istg->{'link'};
+
+		//The caption
+		$istg_caption = isset($istg->{'caption'}->{'text'})?$istg->{'caption'}->{'text'}:'No caption';
+
+		//The markup
+		if($shotIndex==0){
+			$firstImage.='<a href="'.$istg_link.'">';
+			$firstImage.='<img src="'.$istg_image.'" alt="'.$istg_caption.'" title="'.$istg_caption.'" />';
+			$firstImage.='</a>';
+			$instagramImage.='<div class="img-thumb selected">
+							<a href="javascript:;" ref-image="'.$istg_image.'" ref-link="'.$istg_link.'"
+								alt="'.$istg_caption.'" title="'.$istg_caption.'"><img src="'.$istg_thumbnail.'" alt="'.$istg_caption.'" title="'.$istg_caption.'" /></a>
+						</div>';
+		} else {
+			$instagramImage.='<div class="img-thumb">
+							<a href="javascript:;" ref-image="'.$istg_image.'" ref-link="'.$istg_link.'"
+								alt="'.$istg_caption.'" title="'.$istg_caption.'"><img src="'.$istg_thumbnail.'" alt="'.$istg_caption.'" title="'.$istg_caption.'" /></a>
+						</div>';
+		}
+		$shotIndex++;
+	}
+	$instagramWidth=80*$shotIndex+10;
+?>
+	<div class="main-photo">
+		<?php echo $firstImage;?>
+	</div>
+	<div class="photos-container">
+		<div style="width: <?php echo $instagramWidth;?>px;">
+			<?php echo $instagramImage;?>
 		</div>
+	</div>
+	<?php } else { ?>
+	<p>No photo</p>
+<?php }?>
+</div>
+
+<div class="hot-deals component">
+	<div class="deal-item">SINGAPORE HOTELS WEEKEND PROMO FROM <span class="yellow">250SGD</span> INCLU BREAKFAST
+		<input type="button" class="btn" value="GO!"/>
+	</div>
+	<div class="deal-item blue-item">BEERFEST ASIA<br/> VIP PASSES<br/><span class="yellow">20% OFF</span>
+		<input type="button" class="btn" value="GO!"/>
+	</div>
+</div>
 

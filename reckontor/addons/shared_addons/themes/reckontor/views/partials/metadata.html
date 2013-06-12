@@ -6,17 +6,14 @@ var SITE_URL					= "<?php echo rtrim(site_url(), '/').'/';?>";
 var BASE_URL					= "<?php echo BASE_URL;?>";
 var BASE_URI					= "<?php echo BASE_URI;?>";
 </script>
-{{ theme:css file="reset.css" }}
-{{ theme:css file="global.css" }}
-{{ theme:css file="components.css" }}
-{{ theme:css file="openit.css" }}
+{{ theme:css file="style.css" }}
 {{ theme:css file="highslide.css" }}
-{{ theme:css file="nyroModal.css" }}
-{{ theme:css file="screen.css" }}
-{{ theme:css file="ticker.css" }} 
 
 {{ theme:js file="jquery_core.js" }}
 {{ theme:js file="jquery-ui.js" }}
+{{ theme:js file="jquery.mousewheel.js" }
+{{ theme:js file="jquery.jScrollPane.js" }
+{{ theme:js file="jquery.autocomplete.js" }
 {{ theme:js file="jquery.js" }}
 {{ theme:js file="jquery_002.js" }}
 {{ theme:js file="jquery_003.js" }}
@@ -24,4 +21,5 @@ var BASE_URI					= "<?php echo BASE_URI;?>";
 {{ theme:js file="jquery_slides_min.js" }}
 {{ theme:js file="console.js" }}
 {{ theme:js file="formValidate.js" }}
+
 {{ template:metadata }}
