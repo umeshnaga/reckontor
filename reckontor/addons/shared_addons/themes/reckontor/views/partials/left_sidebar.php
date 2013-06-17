@@ -21,50 +21,13 @@
 							<option selected="selected" value="">Select region/city</option>
 						</select>
 		<label>Destination</label>
-		<!-- <button value="Go" name="go" id="goButton"
-							type="button">
-							<span>Go</span>
-						</button> -->
+		<input type="button" value="Go" name="go" id="goButton" class="btn"/>
 	</div>
 	<div class="ad-banner component"><div>AD BANNER</div>
 	</div>
 	
 	<div class="ad-banner small component"><div>AD BANNER</div>
 	</div>
-	
-
-	<!-- 
-
-
-	<div>
-		<div class="mod basic viamod mtn mhn">
-			<b class="top"><b class="tl"></b><b class="tr"></b>
-			</b>
-			<div class="inner">
-				<div class="hd">
-					<a href="javascript:;" class="no-hover">
-						<div class="mam pbs mod-header hd-border h3">
-							Questions?<br>Need a Hug?
-						</div> </a>
-				</div>
-				<div class="bd">
-					<p class="inverse-txt xlarge mvn">
-
-						<a class="inverse-link" href="javascript:;"
-							onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;">
-
-							Click Here</a><span class="inverse-txt"> or Call</span> <a
-							href="javascript:;"
-							onclick="window.open('/customerCareHelpShow.jspa?code=&amp;entryName=&amp;fromShopCart=false','popupwindow','scrollbars=1,resizable=1,width=650,height=850');return false;"
-							class="inverse-link"> +1(702) 648-5873 </a>
-					</p>
-					<i class="icon icon-customer-care mam"></i>
-				</div>
-			</div>
-			<b class="bottom"><b class="bl"></b><b class="br"></b>
-			</b>
-		</div>
-	</div> -->
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
