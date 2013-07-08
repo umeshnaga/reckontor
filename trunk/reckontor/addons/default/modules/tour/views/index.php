@@ -38,8 +38,8 @@
 			$i++;
 		?>
 		<!--column-->
-		<article class="one-fourth<?php if($i%4==0) echo " last";?>">
-			<figure><a class="top-destination" href="{{ url:site uri='tour/search' }}/1/<?php echo $hot_city->country_id;?>/<?php echo $hot_city->city_id;?>" title="">{{ theme:image file="destinations/<?php echo $hot_city->city_name;?>.jpg" alt="" width="270" height="152" }}<div><?php echo $hot_city->city_name;?></div></a></figure>
+		<article class="top-destination-box one-fourth<?php if($i%4==0) echo " last";?>">
+			<figure><a href="{{ url:site uri='tour/search' }}/1/<?php echo $hot_city->country_id;?>/<?php echo $hot_city->city_id;?>" title="">{{ theme:image file="destinations/<?php echo $hot_city->city_name;?>.jpg" alt="" width="270" height="152" }}<div><?php echo $hot_city->city_name;?></div></a></figure>
 		</article>
 		<!--//column-->
 		<?php } ?>
