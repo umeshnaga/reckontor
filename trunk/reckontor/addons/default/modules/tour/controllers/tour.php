@@ -35,23 +35,14 @@ class Tour extends Public_Controller
 		$this->template->append_js('module::ajax.js');
 		$this->template->append_js('module::SegmentedSearch.js');
 		$this->template->append_js('module::script.js');
-
-		$countries = $this->pyrocache->model('region_m', 'get_all_countries', array());
-		$hot_cities = $this->pyrocache->model('region_m', 'get_cities_by_highlight_level', array('HOT CITY'));
+		
 		$banners = $this->banner_m->get_all();
-		try
-		{
-			$shots = $this->instagram_m->getUserMedia(array('count'=>20)); //Get the shots from instagram
-		} catch(Exception $e){
-			$shots = 'Failed to get data from Instagram: ' .$e->getMessage();
-		}
+		
 		
 		$banner_groups = array_chunk($banners, 4);
 		
 		$this->template
-			->set('hot_cities', $hot_cities)
-			->set('countries', $countries)
-			->set('shots', $shots)
+			//->set('shots', $shots)
 			->set('banner_groups', $banner_groups)
 			->set('title', "Tours, sightseeing tours, activities &amp; things to do | ".SITE_URL);
 	}
@@ -64,7 +55,7 @@ class Tour extends Public_Controller
 	 */
 	function index()
 	{
-		$cat_blogs_mapping = array();
+		/*$cat_blogs_mapping = array();
 		
 		$categories = $this->blog_categories_m->order_by('sequence')->get_all();
 		
@@ -80,13 +71,26 @@ class Tour extends Public_Controller
 			$cat_blogs_mapping[$category_id] = new stdClass();
 			$cat_blogs_mapping[$category_id]->category = $category;
 			$cat_blogs_mapping[$category_id]->blogs = $blogs;
+		}*/
+		$countries = $this->pyrocache->model('region_m', 'get_all_countries', array());
+		$hot_cities = $this->pyrocache->model('region_m', 'get_cities_by_highlight_level', array('HOT CITY'));
+		$latest_tours = $this->pyrocache->model('tour_m', 'get_latest_tours', array(4));
+		
+		try
+		{
+			$shots = $this->instagram_m->getUserMedia(array('count'=>20)); //Get the shots from instagram
+		} catch(Exception $e){
+			$shots = 'Failed to get data from Instagram.';
 		}
 		
-		$this->template->set_layout('three_cols.html')
-			->set_partial('left_sidebar', 'partials/left_sidebar')
-			->set_partial('right_sidebar', 'partials/right_sidebar')
+		$this->template
 			->set_partial('home_slider', 'partials/home_slider')
-			->set('cat_blogs_mapping', $cat_blogs_mapping)
+			->set_partial('search', 'partials/search')
+			->set('hot_cities', $hot_cities)
+			->set('latest_tours', $latest_tours)
+			->set('countries', $countries)
+			->set('shots', $shots)
+			//->set('cat_blogs_mapping', $cat_blogs_mapping)
 			->build('index');
 	}
 
@@ -106,18 +110,18 @@ class Tour extends Public_Controller
 		$page_nav=$this->common_m->get_page_nav($page, $page_count, count($tours), $tour_count);
 		$title= $info->name." Tours & Things to Do in ".$info->name." | ".SITE_URL;
 
-		$this->template->set_layout('three_cols.html')
-		->set_partial('left_sidebar', 'partials/left_sidebar')
-		->set_partial('right_sidebar', 'partials/right_sidebar')
-		->set('title',$title)
-		->set('page_nav',$page_nav)
-		->set('selected_country_id', $country_id)
-		->set('selected_city_id', $city_id)
-		->set('country_id', $country_id)
-		->set('city_id', $city_id)
-		->set('location_info', $info)
-		->set('tours', $tours)
-		->build('list_tour');
+		$this->template
+			->set_partial('left_sidebar', 'partials/left_sidebar')
+			->set_partial('right_sidebar', 'partials/right_sidebar')
+			->set('title',$title)
+			->set('page_nav',$page_nav)
+			->set('selected_country_id', $country_id)
+			->set('selected_city_id', $city_id)
+			->set('country_id', $country_id)
+			->set('city_id', $city_id)
+			->set('location_info', $info)
+			->set('tours', $tours)
+			->build('list_tour');
 	}
 
 	function search_keyword($page = 1, $keyword){

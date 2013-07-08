@@ -1,25 +1,32 @@
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />        
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="HandheldFriendly" content="True">
 <title><?php echo $title;?></title>
+{{ theme:css file="style.css" media="screen,projection,print" }}
+{{ theme:css file="prettyPhoto.css" media="screen"}}
+{{ theme:css file="custom.css" media="screen,projection,print" }}
+{{ theme:css file="favicon.ico" rel="shortcut icon"}}
+{{ theme:js file="jquery.min.js" }}
+{{ theme:js file="jquery-ui.min.js" }}
+{{ theme:js file="css3-mediaqueries.js" }}
+{{ theme:js file="sequence.jquery-min.js" }}
+{{ theme:js file="jquery.uniform.min.js" }}
+{{ theme:js file="jquery.prettyPhoto.js" }}
+{{ theme:js file="sequence.js" }}
+{{ theme:js file="selectnav.js" }}
+{{ theme:js file="scripts.js" }}
 <script type="text/javascript">
-var APPPATH_URI					= "<?php echo APPPATH_URI;?>";
-var SITE_URL					= "<?php echo rtrim(site_url(), '/').'/';?>";
-var BASE_URL					= "<?php echo BASE_URL;?>";
-var BASE_URI					= "<?php echo BASE_URI;?>";
+	var APPPATH_URI					= "<?php echo APPPATH_URI;?>";
+	var SITE_URL					= "<?php echo rtrim(site_url(), '/').'/';?>";
+	var BASE_URL					= "<?php echo BASE_URL;?>";
+	var BASE_URI					= "<?php echo BASE_URI;?>";
 </script>
-{{ theme:css file="style.css" }}
-{{ theme:css file="highslide.css" }}
-
-{{ theme:js file="jquery_core.js" }}
-{{ theme:js file="jquery-ui.js" }}
-{{ theme:js file="jquery.mousewheel.js" }
-{{ theme:js file="jquery.jScrollPane.js" }
-{{ theme:js file="jquery.autocomplete.js" }
-{{ theme:js file="jquery.js" }}
-{{ theme:js file="jquery_002.js" }}
-{{ theme:js file="jquery_003.js" }}
-{{ theme:js file="jquery_004.js" }}
-{{ theme:js file="jquery_slides_min.js" }}
-{{ theme:js file="console.js" }}
-{{ theme:js file="formValidate.js" }}
-
 {{ template:metadata }}
+<script type="text/javascript">	
+	$(document).ready(function(){
+		$(".form").hide();
+		$(".form:first").show();
+		$(".f-item:first").addClass("active");
+		$(".f-item:first span").addClass("checked");
+	});
+</script>

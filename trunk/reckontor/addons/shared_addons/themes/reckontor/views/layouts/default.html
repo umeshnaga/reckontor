@@ -1,16 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
-<head>{{ theme:partial name="metadata" }}
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 	 ]>    <html class="ie" lang="en"> <![endif]-->
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<html>
+<head>
+    {{ theme:partial name="metadata" }}
 </head>
 <body>
+	<!--header-->
 	{{ theme:partial name="header" }}
-	<div class="clear"></div>
+	<!--//header-->
+	
+	<!--slider-->
 	{{ template:partial name="home_slider" }}
-	<div class="content">
-		<div class="main-col one-col component">
-			{{ template:body }} 
-		</div>
+	<!--//slider-->
+	
+	<!--search-->
+	{{ template:partial name="search" }}
+	<!--//search-->
+	
+	<!--main-->
+	<div class="main" role="main">
+		{{ template:body }} 
 	</div>
+	<!--//main-->
+	
+	<!--footer-->
 	{{ theme:partial name="footer" }}
+	<!--//footer-->
+	<script>
+		// Initiate selectnav function
+		selectnav();
+	</script>
 </body>
 </html>
