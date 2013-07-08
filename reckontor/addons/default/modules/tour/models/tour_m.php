@@ -30,6 +30,13 @@ class Tour_m extends MY_Model {
 		}
 	}
 	
+	function get_latest_tours($num_of_records){
+		$sql = "SELECT tour_id, photo_id, title 
+		        FROM r_tour INNER JOIN r_tour_detail USING(tour_id)
+		        ORDER BY tour_id DESC LIMIT 0,?";
+		return $this->db->query($sql, array($num_of_records))->result_object();
+	}
+	
 	public function get_tour_by_id($tour_id)
 	{
 		$sql = "SELECT r_tour.*,r_tour_detail.*, country_id, country_name, city_name, photo_id FROM r_country INNER JOIN r_city USING (country_id) INNER JOIN r_tour USING (city_id) INNER JOIN r_tour_detail USING(tour_id) WHERE tour_id = ? limit 1";

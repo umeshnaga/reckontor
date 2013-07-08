@@ -1,40 +1,67 @@
-<div class="header content">
-	{{ if user:logged_in }}
-	<div class="login-text">
-		Hi, <a href="{{ url:site uri='users' }}">{{
-			user:first_name }} {{ user:last_name }}</a> <a
-			href="{{ url:site uri='users/logout' }}">{{ helper:lang
-			line="logout_label" }}</a>
-	</div>
-	{{ else }}
-	<div class="login-text with-bg">
-		<a href="{{ url:site uri='users/login' }}">{{ helper:lang
-			line="user_login_btn" }}</a> <a href="{{ url:site uri='register' }}">{{
-			helper:lang line="user_register_btn" }}</a>
-	</div>
-	{{ endif }}
-
-	<div class="search-bar">
-		<div class="label">SEARCH</div>
-		<form action="{{ url:site uri='tour/search_keyword' }}" name="search"
+<header>
+	<div class="wrap clearfix">
+		<!--logo-->
+		<h1 class="logo"><a href="{{ url:site uri='' }}" title="Book Your Travel - home">{{ theme:image file="txt/logo.png" alt="Book Your Travel" }}</a></h1>
+		<!--//logo-->
+		
+		<!--ribbon-->
+		<div class="ribbon">
+			<nav>
+				<ul class="profile-nav">
+					{{ if user:logged_in }}
+					<li class="active"><a href="{{ url:site uri='users' }}" title="Settings">Settings</a></li>
+					<li><a href="{{ url:site uri='users/logout' }}" title="Log out">Log out</a></li>
+					{{ else }}
+					<li class="active only"><a href="login.html" title="Login">Login</a></li>
+					{{ endif }}
+				</ul>
+				<ul class="lang-nav">
+					<li class="active only"><a href="#" title="English (US)">English (US)</a></li>
+				</ul>
+				<ul class="currency-nav">
+					<li class="active"><a href="#" title="$US Dollar">$US Dollar</a></li>
+					<li><a href="#" title="€ Euro">€ Euro</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!--//ribbon-->
+		
+		<!--search-->
+		<div class="search" id="freeTextSearchDiv">
+			<form action="{{ url:site uri='tour/search_keyword' }}" name="search"
 			title="search" enctype="" method="get"
 			onsubmit="return doFreeTextSearchSubmit('freeTextKeyword', '{{ url:site uri='tour/search_keyword' }}');">
-			<div class="input-div">
-				<input name="freeTextKeyword" size="16" maxlength="50"
-					id="freeTextKeyword" type="text"
-					autocomplete="off" />
-			</div>
-			<input name="submit" value="GO!"
-				title="Search Ongoasia Tours &amp; Things to Do" type="submit"
-				class="btn" />
-		</form>
-	</div>
-
-	<div class="travel-cart">
-		<a rel="nofollow" href="{{ url:site uri='' }}">TRAVEL CART</a> <a
-			rel="nofollow" href="{{ url:site uri='' }}" 
-			id="shopCartCount">0</a>
+				<div class="input-div">
+					<input type="text" placeholder="Search entire site here" name="freeTextKeyword" 
+						id="freeTextKeyword" 
+						autocomplete="off" />
+				</div>
+				<input type="submit" name="submit" value="submit-site-search"/>
+			</form>
+		</div>
+		<!--//search-->
+		
+		<!--contact-->
+		<div class="slogan">
+			<span>destinations on the go!</span>
+		</div>
+		<!--//contact-->
 	</div>
 	
-	<div class="clear"></div>
-</div>
+	<!--main navigation-->
+	<nav class="main-nav" role="navigation" id="nav">
+		<ul class="wrap">
+			<li><a href="{{ url:site uri='' }}" title="Home">Home</a></li>
+			<li><a href="#" title="Offers &amp; Highlights">Offers &amp; Highlights</a></li>
+			<li><a href="#" title="Destinations">Destinations</a></li>
+			<li><a href="#" title="Tours">Tours</a></li>
+			<li><a href="#" title="Attractions">Attractions</a></li>
+			<li><a href="#" title="Products">Products</a></li>
+			<li><a href="#" title="Stays">Stays</a></li>
+			<li><a href="#" title="Partners">Partners</a></li>
+			<li><a href="#" title="Blog">Blog</a></li>
+			<li><a href="#" title="FAQ">FAQ</a></li>
+		</ul>
+	</nav>
+	<!--//main navigation-->
+</header>

@@ -71,7 +71,7 @@ class Region_m extends MY_Model {
 	
 	function get_city_by_id($city_id)
 	{
-		$sql = "SELECT city_name as name FROM r_city WHERE city_id = ?";
+		$sql = "SELECT country_id, country_name, city_name, city_name as name FROM r_city INNER JOIN r_country USING (country_id) WHERE city_id = ?";
 		return $this->db->query($sql, array($city_id))->row();
 	}
 	

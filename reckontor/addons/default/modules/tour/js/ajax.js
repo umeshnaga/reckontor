@@ -16,7 +16,7 @@ $(document).ready(function() {
 							option_html += '<option value="' + cities[i]['city_id'] + '">'+cities[i]['city_name']+'</option>'
 						}
 						$city_box.html(option_html);
-						$city_box.attr("disabled", "");
+						$city_box.prop('disabled', false);
 						selected_value=$city_box.attr("selected-value");
 						if(selected_value!=""){
 							$city_box.find("option").filter(function() {
@@ -28,7 +28,7 @@ $(document).ready(function() {
 				});				
 			} else {
 				$city_box.html('<option value="">Select region/city</option>');
-				$city_box.attr("disabled", "true");
+				$city_box.prop('disabled', true);
 			}
 		}
 	});

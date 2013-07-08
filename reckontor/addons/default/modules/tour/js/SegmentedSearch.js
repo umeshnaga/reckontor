@@ -401,10 +401,10 @@ Viator.SegmentedSearch = function() {
 
 					var off = $('.ui-autocomplete').offset();
 					var ul = $($('.ui-autocomplete').get(0));
-					var width = $(ul).width();
-					var left = off.left - width + 105;
+					var left = off.left;
 					$('.ui-autocomplete').css({
-						'left' : left + 'px'
+						'left' : left + 'px',
+						'max-width' : $('#freeTextSearchDiv').outerWidth(true) + 'px'
 					});
 
 				}
