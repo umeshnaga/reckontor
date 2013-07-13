@@ -9,14 +9,14 @@ class Module_Tour extends Module {
     public function info() {
         return array(
             'name' => array(
-                'en' => 'Tour System'
+                'en' => 'Tours'
             ),
             'description' => array(
                 'en' => 'Tour System for Ongoasia'
             ),
 			'frontend'	=> true,
 			'backend'	=> true,
-            'menu' => 'Tour',
+            'menu' => 'Ongoasia',
             'sections' => array(
 			    'tours' => array(
 				    'name' => 'Tour',
@@ -35,7 +35,18 @@ class Module_Tour extends Module {
 				),
 				'bookings' => array(
 				    'name' => 'Booking',
-				    'uri' => 'admin/tour/booking'
+				    'uri' => 'admin/booking',
+					'shortcuts' => array(
+							array(
+						 	   	'name' => 'tour_create_title',
+							    'uri' => 'admin/tour/create',
+							    'class' => 'add'
+							),
+							array(
+						 	   	'name' => 'tour_manage_photo',
+							    'uri' => 'admin/files'
+							)
+						)
 			    ),
 		    ),
         );
