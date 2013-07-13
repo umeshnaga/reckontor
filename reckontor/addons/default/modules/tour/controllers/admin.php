@@ -177,7 +177,49 @@ class Admin extends Admin_Controller
 			? $this->template->build('admin/tables/tours')
 			: $this->template->build('admin/index');
 	}
+	
+	/**
+	 * Index method
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function booking()
+	{
+		$all_cities = $this->region_m->get_city_options();
+		$all_tour_statuses = $this->tour_status_m->get_tour_status_options();
+		//set the base/default where clause
+		$base_where = array();
 
+		//add post values to base_where if f_module is posted
+		if ($this->input->post('f_tour_status_id')) 	$base_where['tour_status_id'] = $this->input->post('f_tour_status_id');
+		if ($this->input->post('f_city_id')) 	$base_where['city_id'] 	= $this->input->post('f_city_id');
+		if ($this->input->post('f_title')) 	$base_where['title'] = $this->input->post('f_title');
+
+		// Create pagination links
+		$total_rows = $this->tour_m->count_by($base_where);
+		$pagination = create_pagination('admin/tour/index', $total_rows);
+
+		// Using this data, get the relevant results
+		$tours = $this->tour_m->limit($pagination['limit'])->get_many_by($base_where);
+
+		//do we need to unset the layout because the request is ajax?
+		$this->input->is_ajax_request() and $this->template->set_layout(FALSE);
+		
+		$this->template
+			->title($this->module_details['name'])
+			->append_js('admin/filter.js')
+			->set_partial('filters', 'admin/partials/filters')
+			->set('pagination', $pagination)
+			->set('all_cities', $all_cities)
+			->set('all_tour_statuses', $all_tour_statuses)
+			->set('tours', $tours);
+
+		$this->input->is_ajax_request()
+			? $this->template->build('admin/tables/tours')
+			: $this->template->build('admin/index');
+	}
+	
 	public function create(){
 		$this->form_validation->set_rules($this->validation_rules);
 
